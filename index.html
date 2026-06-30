@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Star | Character Collection</title>
+
+    <meta name="description" content="Trang tổng hợp các AI Character của Star.">
+    <meta name="theme-color" content="#071424">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gradient: radial-gradient(circle at top, #194e9b, #081528 45%, #03060d);
+            --container-bg: rgba(9, 18, 35, .55);
+            --card-bg: rgba(255, 255, 255, .04);
+            --card-hover-border: #49bfff;
+            --accent-blue: #2496ff;
+            --accent-cyan: #4fd8ff;
+            --text-color: #ffffff;
+            --text-muted: #b7dfff;
+            --tag-bg: rgba(40, 160, 255, .12);
+            --tag-color: #78d7ff;
+            --tag-border: rgba(80, 180, 255, .15);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Be Vietnam Pro", sans-serif;
+            color: var(--text-color);
+            min-height: 100vh;
+            background: var(--primary-gradient);
+            padding: 0;
+        }
+
+        /* Container */
+        .container {
+            width: min(1200px, 95%);
+            margin: 0 auto 40px;
+            border-radius: 0 0 32px 32px;
+            background: var(--container-bg);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(130, 200, 255, .12);
+            border-top: none;
+            box-shadow: 0 0 80px rgba(0, 120, 255, .12);
+            padding: 0 35px 35px;
+        }
+
+        /* Banner */
+        .banner {
+            width: calc(100% + 70px);
+            margin-left: -35px;
+            display: block;
+            border-radius: 0;
+        }
+
+        .hero-note {
+            text-align: center;
+            color: var(--text-muted);
+            margin: 20px 0 20px;
+            line-height: 1.6;
+        }
+
+        .author-tag {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        /* Search Box */
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .search-box input {
+            width: min(700px, 100%);
+            padding: 16px 22px;
+            border-radius: 16px;
+            border: 1px solid rgba(120, 210, 255, .15);
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            color: var(--text-color);
+            font-size: 16px;
+            outline: none;
+            transition: var(--transition-speed);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .15);
+        }
+
+        .search-box input::placeholder {
+            color: #8fb7d7;
+        }
+
+        .search-box input:focus {
+            border-color: var(--card-hover-border);
+            box-shadow: 0 0 25px rgba(70, 190, 255, .25);
+        }
+
+        /* Card List */
+        .character-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Card Item */
+        .character-card {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            align-items: center;
+            gap: 0;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: var(--transition-speed) ease-in-out;
+        }
+
+        .character-card:hover {
+            border-color: var(--card-hover-border);
+            box-shadow: 0 0 40px rgba(0, 180, 255, .18);
+        }
+
+        /* Card Left Content */
+        .left {
+            padding: 40px 32px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left h2 {
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .tagline {
+            color: #d7ecff;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .tags span {
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: var(--tag-bg);
+            color: var(--tag-color);
+            border: 1px solid var(--tag-border);
+            font-size: 14px;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .chat-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            min-width: 140px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: var(--text-color);
+            font-weight: 600;
+            letter-spacing: .3px;
+            text-decoration: none;
+            transition: var(--transition-speed);
+            box-shadow: 0 8px 24px rgba(45, 170, 255, .28);
+        }
+
+        .chat-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(45, 170, 255, .42);
+        }
+
+        .chat-btn-secondary {
+            background: rgba(70, 170, 255, .12);
+            border: 1px solid rgba(120, 210, 255, .25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: none;
+        }
+
+        .chat-btn-secondary:hover {
+            background: rgba(70, 170, 255, .20);
+            border-color: #67d0ff;
+            box-shadow: 0 10px 28px rgba(60, 180, 255, .18);
+        }
+
+        /* Card Right (Image) */
+        .right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .right img {
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 7/10;
+            height: auto;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .35), 0 0 20px rgba(80, 180, 255, .15);
+            transition: var(--transition-speed) ease-in-out;
+        }
+
+        .character-card:hover .right img {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 42px rgba(0, 0, 0, .45), 0 0 30px rgba(80, 180, 255, .28);
+        }
+
+        /* Credit Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(130, 200, 255, .12);
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.45);
+            letter-spacing: 0.5px;
+        }
+
+        .footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-speed);
+        }
+
+        .footer a:hover {
+            color: var(--card-hover-border);
+            text-shadow: 0 0 10px rgba(79, 216, 255, 0.4);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                border-radius: 0;
+                padding: 0 16px 20px;
+            }
+
+            .banner {
+                width: calc(100% + 32px);
+                margin-left: -16px;
+            }
+
+            .character-card {
+                grid-template-columns: 1fr 180px;
+                gap: 12px;
+            }
+
+            .left {
+                padding: 20px;
+            }
+
+            .left h2 {
+                font-size: 24px;
+            }
+
+            .tagline {
+                font-size: 14px;
+                line-height: 1.6;
+                margin-bottom: 18px;
+            }
+
+            .tags {
+                gap: 6px;
+                margin-bottom: 20px;
+            }
+
+            .tags span {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .chat-btn {
+                height: 44px;
+                font-size: 13px;
+                min-width: 110px;
+            }
+
+            .right {
+                padding: 16px 16px 16px 0;
+            }
+
+            .right img {
+                max-width: 160px;
+            }
+
+            .footer {
+                margin-top: 35px;
+                padding-top: 20px;
+                font-size: 12px;
+            }
+        }
+
+        /* Mobile nhỏ */
+        @media (max-width: 540px) {
+            .character-card {
+                grid-template-columns: 1fr;
+            }
+
+            .right {
+                padding: 0 20px 20px;
+                justify-content: center;
+            }
+
+            .right img {
+                max-width: 100%;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="hero">
+            <img class="banner" src="banner.png" alt="Banner">
+            <p class="hero-note">
+                <i>Vi vu trong bể trời rộng lớn, cũng chỉ vì muốn trở thành một ngôi sao rực rỡ mà thôi. Một ngày vất vả rồi, về đây các chồng ảo thương nhé!</i>
+            </p>
+            <p class="hero-note author-tag">
+                <b>@Le Bel Astre</b>
+            </p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm nhân vật, hashtag..." onkeyup="searchCharacter()">
+            </div>
+        </header>
+
+        <main class="character-list">
+            <!-- Card 1 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Ace Merceron</h2>
+                    <p class="tagline">Kèo này khó? Đừng lo, vì anh là "Ace" mà.</p>
+                    <div class="tags">
+                        <span>#Spider-Man</span>
+                        <span>#Spider-Verse</span>
+                        <span>#Đa vũ trụ</span>
+                        <span>#Hài hước</span>
+                        <span>#Hành động</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/147ed21a-ef4c-41f8-8828-40070b18d66f" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ourufI0b1dzlTDNbSxLpZ8ctnTnexOD4%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="ace.png" alt="Ace Merceron">
+                </div>
+            </section>
+
+            <!-- Card 2 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Lục Chiến Đình</h2>
+                    <p class="tagline">Trung đoàn trưởng Lục cái gì cũng giỏi, giỏi nhất là nhẫn nhịn cô vợ nặng gần bằng cả hai bao tải lương thực của mình!</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#80s</span>
+                        <span>#Niên đại</span>
+                        <span>#Xuyên không</span>
+                        <span>#Ngọt</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/a26d31ef-cdb0-4075-93c8-a1d1c160650a" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221pSUNg2MLBrdJISZH4VlAWOBNlD_sDCCd%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="lcd.png" alt="Lục Chiến Đình">
+                </div>
+            </section>
+
+            <!-- Card 3 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Cố Yến Thần</h2>
+                    <p class="tagline">Cố thiếu gia tự vả mặt vì lỡ trót dại yêu muốn uốn nắn nhầm vợ yêu!!!</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Dân Quốc</span>
+                        <span>#Oan gia ngõ hẹp</span>
+                        <span>#Nữ giả nam</span>
+                        <span>#Học viện quân sự</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/75622a53-50d4-43a2-aeed-8aa2440cc7cb" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2214cyHnAudvXawguKSxE4Ra8gfT35_VG6q%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="cyt.png" alt="Cố Yến Thần">
+                </div>
+            </section>
+
+            <!-- Card 4 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Hoắc Chí Quân</h2>
+                    <p class="tagline">Nhặt được một tên sĩ quan mất trí nhớ, hắn cứ khăng khăng gọi bạn là vợ?!</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Dân Quốc</span>
+                        <span>#Mất trí nhớ</span>
+                        <span>#Ngọt</span>
+                        <span>#Hài hước</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/48bc569d-bac5-4488-ac6b-d4324b88baf7" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221_21JrNlcL5gyMPfYb5pTih9NArrsHjej%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="hcq.png" alt="Hoắc Chí Quân">
+                </div>
+            </section>
+
+            <!-- Card 5 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Kael Donovan</h2>
+                    <p class="tagline">Tay đập nhà Westbrigde phải để ý đến anti fan ngày đủ ba cử thì mới ăn ngon được.</p>
+                    <div class="tags">
+                        <span>#TXVT</span>
+                        <span>#Đại học</span>
+                        <span>#Bóng chuyền</span>
+                        <span>#Mỏ hỗn</span>
+                        <span>#Hài hước</span>
+                        <span>#BL/BG</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/71b3a8ac-bdf3-4aee-a9ec-e1e0fb9a58af" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221wBpRk6fZ0ak_4_5zcdkY9pRUFM1aFn7B%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="kael.png" alt="Kael Donovan">
+                </div>
+            </section>
+
+            <!-- Card 6 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Bùi Khánh Luân</h2>
+                    <p class="tagline">Khói nhang quấn mái đình, gió chạm đầu ngọn cỏ, chuyện dương gian ai tỏ cùng ai?</p>
+                    <div class="tags">
+                        <span>#Việt Nam</span>
+                        <span>#Bắc Bộ xưa</span>
+                        <span>#Tâm linh</span>
+                        <span>#Thầy pháp đểu</span>
+                        <span>#Hài hước</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/341ddec2-f76c-4f79-8a27-cd13c62b2468" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ZbNyU2JS3Pcle4vxMvG3JF01K1o1Wq8F%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="bkl.png" alt="Bùi Khánh Luân">
+                </div>
+            </section>
+
+            <!-- Card 7 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Nghiêm Sở Yến</h2>
+                    <p class="tagline">Đồng chí, xin chỉ giáo nửa đời sau.</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Dân quốc</span>
+                        <span>#Tình báo ngầm</span>
+                        <span>#Slowburn</span>
+                        <span>#Ngọt</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/442b860f-ec92-4a1d-bfe7-a7a8756d3cf7" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221aNteGUw99T41a9jda_WWeBNwWsXRdgEQ%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="nsy.png" alt="Nghiêm Sở Yến">
+                </div>
+            </section>
+
+            <!-- Card 8 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Tô Vệ Châu</h2>
+                    <p class="tagline">Mũi tên của Cupid thật sự có thể định nghĩa được tình yêu sao?</p>
+                    <div class="tags">
+                        <span>#TXVT</span>
+                        <span>#Đại học</span>
+                        <span>#Mọt sách</span>
+                        <span>#Ngọt</span>
+                        <span>#Hài hước</span>
+                        <span>#BL/BG</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/3266b2cf-6443-413b-94af-dc81aadff6dc" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221gUJXMZ6xlSAzgAfNcR1CfM-Eo_p3GzT4%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="1774570508916.png" alt="Tô Vệ Châu">
+                </div>
+            </section>
+
+            <!-- Card 9 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Sầm Dã</h2>
+                    <p class="tagline">Kẻ bị bạn bỏ mặc giữa tận thế là người muốn bảo vệ bạn đến điên cuồng.</p>
+                    <div class="tags">
+                        <span>#Tận thế</span>
+                        <span>#Zombie</span>
+                        <span>#Sinh tồn</span>
+                        <span>#Enemies to lovers</span>
+                        <span>#Cục súc</span>
+                        <span>#BL/BG</span>
+                        <span>R18</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/8c6acab1-8f0a-4a9f-b993-3a37cac40b80" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ef5MQdeAT7IDoYrLG_-mKmM3GfjHEy1d%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="sd.png" alt="Sầm Dã">
+                </div>
+            </section>
+
+            <!-- Card 10 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Úc Vãn Húc</h2>
+                    <p class="tagline">Chia tay hơn nửa năm, bất ngờ gặp lại người yêu cũ ở bệnh viện tâm thần.</p>
+                    <div class="tags">
+                        <span>#Người yêu cũ</span>
+                        <span>#Gương vỡ lại lành</span>
+                        <span>#Tổng tài ba xu</span>
+                        <span>#Ngọt sủng</span>
+                        <span>#Simp</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/bdbff740-0c9a-41d8-994b-cbe9f78de426" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ZgLF0j8Tlc1CCDUsi1Hg3vy5G4EkCuWU%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="uvh.jpeg" alt="Úc Vãn Húc">
+                </div>
+            </section>
+
+            <!-- Card 11 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Hà Dĩ Trú</h2>
+                    <p class="tagline">Huhu... Bác sĩ ơi, cứu chó em với!!!</p>
+                    <div class="tags">
+                        <span>#Hồng hài nhi</span>
+                        <span>#Yêu động vật</span>
+                        <span>#Hài hước</span>
+                        <span>#Đời thường</span>
+                        <span>#User nghe được tiếng được lồng động vật</span>
+                        <span>#BL/BG</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221z2StsnKRWhNxBdvC9KFuR_TJOuMojjnp%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="hdt.jpeg" alt="Hà Dĩ Trú">
+                </div>
+            </section>
+
+            <!-- Card 12 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Kỷ Thừa Châu</h2>
+                    <p class="tagline">Nàng bảo ta không có tâm? Vậy nàng moi thử xem.</p>
+                    <div class="tags">
+                        <span>#Cổ trang</span>
+                        <span>#Ma đầu</span>
+                        <span>#Cưới trước yêu sau</span>
+                        <span>#User giả câm</span>
+                        <span>#Nuông chiều</span>
+                        <span>R18</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/0a9b1953-06f7-4db0-b7c2-6f3dc48c449c" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221zRtLqfEjLMZ7Ru0lv5XLlfQDvjvNUIot%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="ktc.png" alt="Kỷ Thừa Châu">
+                </div>
+            </section>
+
+            <!-- Card 13 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Huỳnh Thị Ngọc Đào</h2>
+                    <p class="tagline">Người trong phủ gọi em là mợ. Còn trong lòng cậu, em là ai?</p>
+                    <div class="tags">
+                        <span>#Nữ</span>
+                        <span>#Việt Nam</span>
+                        <span>#Nam Bộ xưa</span>
+                        <span>#User là nam</span>
+                        <span>#Cưới trước yêu sau</span>
+                        <span>#Vợ lẽ</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221xLx72lJXwoWU6GuEjUW5nc2q0GCyWb6F%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="htnd.png" alt="Huỳnh Thị Ngọc Đào">
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 <a href="#">Star</a> | <a href="#">Le Bel Astre</a>. Toàn bộ nội dung nhân vật thuộc bản quyền của người sáng tạo.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Hàm chuẩn hóa tiếng Việt, loại bỏ dấu để tìm kiếm dễ dàng hơn
+        function removeVietnameseTones(str) {
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+            str = str.replace(/đ/g, "d");
+            str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+            str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+            str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+            str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+            str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+            str = str.replace(/Ỳ|Ý|Y_|Ỷ|Ỹ/g, "Y");
+            str = str.replace(/Đ/g, "D");
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        function searchCharacter() {
+            let input = removeVietnameseTones(document.getElementById("searchInput").value);
+            let cards = document.querySelectorAll(".character-card");
+
+            cards.forEach(card => {
+                let cardText = removeVietnameseTones(card.innerText);
+                if (cardText.includes(input)) {
+                    if (window.innerWidth <= 540) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "grid";
+                    }
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        window.addEventListener('resize', () => {
+            let input = removeVietnameseTones(document.getElementById("searchInput").value);
+            if (!input) {
+                let cards = document.querySelectorAll(".character-card");
+                cards.forEach(card => {
+                    card.style.display = "";
+                });
+            } else {
+                searchCharacter();
+            }
+        });
+    </script>
+</body>
+
+</html>
