@@ -834,7 +834,7 @@ white-space:nowrap;
             </section>
 
             <!-- Card 14 -->
-            <section class="character-card" id="card14" data-news="">
+            <section class="character-card" id="card14" data-news="14">
                 <div class="left">
                     <h2>Bách Thần Duật</h2>
                     <p class="tagline">Tuổi mười bảy, ai cũng là nhân vật chính của cuộc đời mình.</p>
@@ -905,6 +905,18 @@ white-space:nowrap;
         </footer>
     </div>
 
+        <div id="newsOverlay">
+
+<div id="newsPanel">
+
+<h2>
+🔭 Chiêm tinh phát hiện ba ngôi sao mới!!!
+</h2>
+
+<div id="newsList"></div>
+
+</div>
+
     <script>
         // Hàm chuẩn hóa tiếng Việt, loại bỏ dấu để tìm kiếm dễ dàng hơn
         function removeVietnameseTones(str) {
@@ -957,10 +969,11 @@ white-space:nowrap;
 
         const cards=[...document.querySelectorAll(".character-card")];
 
-cards.sort((a,b)=>
-+b.dataset.news-
-+a.dataset.news
-);
+cards.sort((a, b) => {
+
+    return Number(b.dataset.news || 0) - Number(a.dataset.news || 0);
+
+});
 
 const newest=cards.slice(0,3);
 
@@ -1034,29 +1047,18 @@ block:"center"
 
 });
 
-        newsOverlay.onclick = (e) => {
+const newsOverlay = document.getElementById("newsOverlay");
 
-    if (e.target.id === "newsOverlay") {
+newsOverlay.addEventListener("click", (e) => {
+
+    if (e.target === newsOverlay) {
 
         newsOverlay.style.display = "none";
 
     }
 
-};
+});
     </script>
-
-    <div id="newsOverlay">
-
-<div id="newsPanel">
-
-<h2>
-🔭 Chiêm tinh phát hiện ba ngôi sao mới!!!
-</h2>
-
-<div id="newsList"></div>
-
-</div>
-
 </div>
     
 </body>
