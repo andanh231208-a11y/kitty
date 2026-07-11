@@ -45,6 +45,49 @@
             padding: 0;
         }
 
+        .sky{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-2;
+    pointer-events:none;
+}
+
+.stars{
+    position:absolute;
+    inset:0;
+    background-repeat:repeat;
+}
+
+.small{
+    background-image:radial-gradient(white 1px,transparent 1px);
+    background-size:55px 55px;
+    opacity:.45;
+    animation:blink 4s infinite alternate;
+}
+
+.medium{
+    background-image:radial-gradient(#9fdfff 1.8px,transparent 2px);
+    background-size:120px 120px;
+    opacity:.3;
+    animation:blink 7s infinite;
+}
+
+.big{
+    background-image:radial-gradient(white 2.6px,transparent 3px);
+    background-size:220px 220px;
+    opacity:.18;
+    animation:blink 10s infinite;
+}
+
+@keyframes blink{
+    from{
+        opacity:.2;
+    }
+    to{
+        opacity:.7;
+    }
+}
         /* Container */
         .container {
             width: min(1200px, 95%);
@@ -344,10 +387,146 @@
                 width: 200px;
             }
         }
+
+        #newsOverlay{
+
+position:fixed;
+
+inset:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(8px);
+
+z-index:9999;
+
+}
+
+#newsPanel{
+
+width:min(760px,92vw);
+
+height:min(600px,82vh);
+
+background:#091a32;
+
+border-radius:24px;
+
+padding:26px;
+
+overflow:hidden;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+#newsList{
+
+overflow-y:auto;
+
+margin-top:20px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+padding-right:8px;
+
+}
+
+.news-card{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+padding:14px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.04);
+
+}
+
+.news-card img{
+
+width:100px;
+
+height:140px;
+
+object-fit:cover;
+
+border-radius:14px;
+
+}
+
+.news-info{
+
+flex:1;
+
+}
+
+.news-tags{
+
+margin-top:10px;
+
+display:flex;
+
+gap:6px;
+
+flex-wrap:wrap;
+
+}
+
+.news-tags span{
+
+padding:4px 10px;
+
+border-radius:99px;
+
+background:#10365d;
+
+font-size:12px;
+
+}
+
+.news-btn{
+
+padding:12px 18px;
+
+border-radius:12px;
+
+background:#2d8cff;
+
+color:white;
+
+text-decoration:none;
+
+white-space:nowrap;
+
+}
     </style>
 </head>
 
 <body>
+    <div class="sky">
+    <div class="stars small"></div>
+    <div class="stars medium"></div>
+    <div class="stars big"></div>
+</div>
+    
     <div class="container">
         <header class="hero">
             <img class="banner" src="banner.png" alt="Banner">
@@ -364,7 +543,7 @@
 
         <main class="character-list">
             <!-- Card 1 -->
-            <section class="character-card">
+            <section class="character-card" data-news="1">
                 <div class="left">
                     <h2>Ace Merceron</h2>
                     <p class="tagline">Kèo này khó? Đừng lo, vì anh là "Ace" mà.</p>
@@ -386,7 +565,7 @@
             </section>
 
             <!-- Card 2 -->
-            <section class="character-card">
+            <section class="character-card" data-news="2">
                 <div class="left">
                     <h2>Lục Chiến Đình</h2>
                     <p class="tagline">Trung đoàn trưởng Lục cái gì cũng giỏi, giỏi nhất là nhẫn nhịn cô vợ nặng gần bằng cả hai bao tải lương thực của mình!</p>
@@ -408,7 +587,7 @@
             </section>
 
             <!-- Card 3 -->
-            <section class="character-card">
+            <section class="character-card" data-news="3">
                 <div class="left">
                     <h2>Cố Yến Thần</h2>
                     <p class="tagline">Cố thiếu gia tự vả mặt vì lỡ trót dại yêu muốn uốn nắn nhầm vợ yêu!!!</p>
@@ -430,7 +609,7 @@
             </section>
 
             <!-- Card 4 -->
-            <section class="character-card">
+            <section class="character-card" data-news="4">
                 <div class="left">
                     <h2>Hoắc Chí Quân</h2>
                     <p class="tagline">Nhặt được một tên sĩ quan mất trí nhớ, hắn cứ khăng khăng gọi bạn là vợ?!</p>
@@ -655,7 +834,7 @@
             </section>
 
             <!-- Card 14 -->
-            <section class="character-card">
+            <section class="character-card" id="card14" data-news="">
                 <div class="left">
                     <h2>Bách Thần Duật</h2>
                     <p class="tagline">Tuổi mười bảy, ai cũng là nhân vật chính của cuộc đời mình.</p>
@@ -677,8 +856,8 @@
                 </div>
             </section>
 
-                    <!-- Card 15 -->
-            <section class="character-card">
+            <!-- Card 15 -->
+            <section class="character-card" id="card15" data-news="15">
                 <div class="left">
                     <h2>Ôn Vãn Dư</h2>
                     <p class="tagline">Đạo trưởng, ta chỉ hơi thích bám người một chút thôi, tuyệt đối không gây phiền đâu.</p>
@@ -695,6 +874,28 @@
                 </div>
                 <div class="right">
                     <img src="ovd.png" alt="Ôn Vãn Dư">
+                </div>
+            </section>
+            
+            <!-- Card 16 -->
+            <section class="character-card" id="card16" data-news="16">
+                <div class="left">
+                    <h2>Kang Tae Oh</h2>
+                    <p class="tagline">Đến cuối cùng, nếu cả thế giới đều kết tội tôi... xin em đừng là người tuyên án.</p>
+                    <div class="tags">
+                        <span>#Phản diện x Nhà khoa học lập dị</span>
+                        <span>#Hero world</span>
+                        <span>#Bạn thời thơ ấu</span>
+                        <span>#Nuông chiều</span>
+                        <span>#Trên tình bạn, dưới tình yêu</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/8e87ade3-ee23-4006-8671-46f86adda455?delta=2#google_vignette" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221IhCZRICWGXS4Tyftnqomv-UlhKEGovMq%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="kto.png" alt="Kang Tae Oh">
                 </div>
             </section>
         </main>
@@ -753,7 +954,111 @@
                 searchCharacter();
             }
         });
+
+        const cards=[...document.querySelectorAll(".character-card")];
+
+cards.sort((a,b)=>
++b.dataset.news-
++a.dataset.news
+);
+
+const newest=cards.slice(0,3);
+
+const list=document.getElementById("newsList");
+
+newest.forEach(card=>{
+
+const name=card.querySelector("h2").innerText;
+
+const tag=card.querySelector(".tagline").innerText;
+
+const img=card.querySelector("img").src;
+
+const tags=[...card.querySelectorAll(".tags span")]
+
+.slice(0,4)
+
+.map(x=>x.outerHTML)
+
+.join("");
+
+list.innerHTML+=`
+
+<div class="news-card">
+
+<img src="${img}">
+
+<div class="news-info">
+
+<h3>${name}</h3>
+
+<p>${tag}</p>
+
+<div class="news-tags">
+
+${tags}
+
+</div>
+
+</div>
+
+<a class="news-btn">
+
+Contempler
+
+</a>
+
+</div>
+
+`;
+
+});
+
+document.querySelectorAll(".news-btn")
+
+.forEach((btn,i)=>{
+
+btn.onclick=()=>{
+
+document.getElementById("newsOverlay").style.display="none";
+
+newest[i].scrollIntoView({
+
+behavior:"smooth",
+
+block:"center"
+
+});
+
+};
+
+});
+
+        newsOverlay.onclick = (e) => {
+
+    if (e.target.id === "newsOverlay") {
+
+        newsOverlay.style.display = "none";
+
+    }
+
+};
     </script>
+
+    <div id="newsOverlay">
+
+<div id="newsPanel">
+
+<h2>
+🔭 Chiêm tinh phát hiện ba ngôi sao mới!!!
+</h2>
+
+<div id="newsList"></div>
+
+</div>
+
+</div>
+    
 </body>
 
 </html>
