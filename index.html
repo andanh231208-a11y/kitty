@@ -695,16 +695,16 @@ letter-spacing:1px;
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Tìm kiếm nhân vật, hashtag..." onkeyup="searchCharacter()">
             </div>
+
+            <div class="collection-header">
+
+                <div class="collection-title">
+        <h2><span id="characterCount">0</span> vì sao đang tỏa sáng ✦</h2>
+                </div>
+
+             </div>
         </header>
 
-        <div class="collection-header">
-
-    <div class="collection-title">
-        <h2><span id="characterCount">0</span> vì sao đang tỏa sáng ✦</h2>
-    </div>
-
-</div>
-        
         <main class="character-list">
             <!-- Card 1 -->
             <section class="character-card" data-news="1">
@@ -1230,6 +1230,7 @@ newsOverlay.addEventListener("click", (e) => {
 const cards = document.querySelectorAll(".character-card");
 
 document.getElementById("characterCount").textContent = cards.length;
+        
     </script>
 </div>
     
