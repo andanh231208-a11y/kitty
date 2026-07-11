@@ -45,7 +45,7 @@
             padding: 0;
         }
 
-        .sky{
+.sky{
     position:fixed;
     inset:0;
     overflow:hidden;
@@ -53,39 +53,71 @@
     pointer-events:none;
 }
 
+/* Layer chung */
 .stars{
     position:absolute;
     inset:0;
     background-repeat:repeat;
+    animation:blink linear infinite alternate;
 }
 
+/* Sao nhỏ */
 .small{
-    background-image:radial-gradient(white 1px,transparent 1px);
-    background-size:55px 55px;
-    opacity:.45;
-    animation:blink 4s infinite alternate;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.95) 0 2px, transparent 3px);
+    background-size:70px 70px;
+    opacity:.65;
+    animation-duration:4s;
 }
 
+/* Sao vừa */
 .medium{
-    background-image:radial-gradient(#9fdfff 1.8px,transparent 2px);
-    background-size:120px 120px;
-    opacity:.3;
-    animation:blink 7s infinite;
+    background-image:
+        radial-gradient(circle, #dff7ff 0 3px, transparent 4px);
+    background-size:140px 140px;
+    opacity:.55;
+    animation-duration:7s;
 }
 
+/* Sao lớn */
 .big{
-    background-image:radial-gradient(white 2.6px,transparent 3px);
+    background-image:
+        radial-gradient(circle, #ffffff 0 4px, transparent 5px);
     background-size:220px 220px;
-    opacity:.18;
-    animation:blink 10s infinite;
+    opacity:.45;
+    animation-duration:10s;
+
+    filter:
+        drop-shadow(0 0 4px rgba(255,255,255,.9))
+        drop-shadow(0 0 10px rgba(150,220,255,.8));
+    
+    .giant{
+    background-image:
+        radial-gradient(circle,#fff 0 6px,transparent 7px);
+
+    background-size:420px 420px;
+
+    opacity:.9;
+
+    animation:blink 3s infinite alternate;
+
+    filter:
+        drop-shadow(0 0 8px #fff)
+        drop-shadow(0 0 18px #9fdfff);
+}
 }
 
 @keyframes blink{
-    from{
-        opacity:.2;
+    0%{
+        opacity:.35;
     }
-    to{
-        opacity:.7;
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:.55;
     }
 }
         /* Container */
@@ -388,143 +420,259 @@
             }
         }
 
-        #newsOverlay{
+        /* =======================
+   NEWS POPUP
+======================= */
 
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:rgba(0,0,0,.55);
-
-backdrop-filter:blur(8px);
-
-z-index:9999;
-
+#newsOverlay{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+    background:rgba(0,0,0,.58);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    z-index:9999;
 }
 
 #newsPanel{
+    width:clamp(320px, 90vw, 760px);
+    max-height:85vh;
 
-width:min(760px,92vw);
+    background:rgba(9,26,50,.96);
+    border:1px solid rgba(120,200,255,.15);
+    border-radius:26px;
 
-height:min(600px,82vh);
+    overflow:hidden;
 
-background:#091a32;
+    display:flex;
+    flex-direction:column;
 
-border-radius:24px;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        0 0 30px rgba(70,170,255,.15);
+}
 
-padding:26px;
-
-overflow:hidden;
-
-display:flex;
-
-flex-direction:column;
-
+#newsPanel h2{
+    padding:22px 24px 18px;
+    font-size:clamp(22px,3vw,30px);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 #newsList{
-
-overflow-y:auto;
-
-margin-top:20px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:18px;
-
-padding-right:8px;
-
+    overflow-y:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
 }
+
+/* Card */
 
 .news-card{
 
-display:flex;
+    display:grid;
+    grid-template-columns:100px 1fr auto;
+    gap:16px;
 
-align-items:center;
+    align-items:center;
 
-gap:18px;
+    padding:14px;
 
-padding:14px;
+    border-radius:18px;
 
-border-radius:18px;
+    background:rgba(255,255,255,.05);
 
-background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.06);
 
 }
 
 .news-card img{
 
-width:100px;
+    width:100px;
 
-height:140px;
+    aspect-ratio:7/10;
 
-object-fit:cover;
+    object-fit:cover;
 
-border-radius:14px;
+    border-radius:14px;
 
 }
 
 .news-info{
 
-flex:1;
+    min-width:0;
+
+}
+
+.news-info h3{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+.news-info p{
+
+    color:#d8ebff;
+
+    line-height:1.6;
+
+    margin-bottom:10px;
+
+    font-size:14px;
 
 }
 
 .news-tags{
 
-margin-top:10px;
+    display:flex;
 
-display:flex;
+    flex-wrap:wrap;
 
-gap:6px;
-
-flex-wrap:wrap;
+    gap:6px;
 
 }
 
 .news-tags span{
 
-padding:4px 10px;
+    padding:5px 10px;
 
-border-radius:99px;
+    border-radius:999px;
 
-background:#10365d;
+    background:#11345b;
 
-font-size:12px;
+    color:#9ed9ff;
+
+    font-size:12px;
 
 }
 
 .news-btn{
 
-padding:12px 18px;
+    align-self:center;
 
-border-radius:12px;
+    padding:12px 18px;
 
-background:#2d8cff;
+    border-radius:12px;
 
-color:white;
+    background:linear-gradient(135deg,#2d8cff,#4ecbff);
 
-text-decoration:none;
+    color:#fff;
 
-white-space:nowrap;
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.25s;
+
+    white-space:nowrap;
+
+}
+
+.news-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Scroll */
+
+#newsList::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+#newsList::-webkit-scrollbar-thumb{
+
+    background:#2d8cff;
+
+    border-radius:999px;
+
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width:768px){
+
+#newsOverlay{
+
+    padding:12px;
+
+}
+
+#newsPanel{
+
+    width:100%;
+
+    max-height:88vh;
+
+    border-radius:20px;
+
+}
+
+#newsPanel h2{
+
+    padding:18px;
+
+    font-size:22px;
+
+}
+
+.news-card{
+
+    grid-template-columns:80px 1fr;
+
+    gap:12px;
+
+}
+
+.news-card img{
+
+    width:80px;
+
+}
+
+.news-info h3{
+
+    font-size:17px;
+
+}
+
+.news-info p{
+
+    font-size:13px;
+
+}
+
+.news-btn{
+
+    grid-column:1 / -1;
+
+    width:100%;
+
+    margin-top:8px;
+
+    text-align:center;
+
+}
 
 }
     </style>
 </head>
 
 <body>
-    <div class="sky">
+   <div class="sky">
     <div class="stars small"></div>
     <div class="stars medium"></div>
     <div class="stars big"></div>
+    <div class="stars giant"></div>
 </div>
     
     <div class="container">
