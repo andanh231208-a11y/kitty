@@ -1074,7 +1074,7 @@ letter-spacing:1px;
 <div id="newsPanel">
 
 <h2>
-🔭 Chiêm tinh phát hiện ba ngôi sao mới!!!
+🔭 Thông báo: Chiêm tinh vừa phát hiện ra vì sao mới!!!
 </h2>
 
 <div id="newsList"></div>
@@ -1104,6 +1104,10 @@ letter-spacing:1px;
             str = str.replace(/Đ/g, "D");
             return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         }
+
+        const cards = document.querySelectorAll(".character-card");
+
+document.getElementById("characterCount").textContent = cards.length;
 
         function searchCharacter() {
             let input = removeVietnameseTones(document.getElementById("searchInput").value);
@@ -1226,13 +1230,7 @@ newsOverlay.addEventListener("click", (e) => {
     }
 
 });
-
-const cards = document.querySelectorAll(".character-card");
-
-document.getElementById("characterCount").textContent = cards.length;
-        
     </script>
-</div>
     
 </body>
 
