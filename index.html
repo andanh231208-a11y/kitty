@@ -45,81 +45,6 @@
             padding: 0;
         }
 
-.sky{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    z-index:-2;
-    pointer-events:none;
-}
-
-/* Layer chung */
-.stars{
-    position:absolute;
-    inset:0;
-    background-repeat:repeat;
-    animation:blink linear infinite alternate;
-}
-
-/* Sao nhỏ */
-.small{
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.95) 0 2px, transparent 3px);
-    background-size:70px 70px;
-    opacity:.65;
-    animation-duration:4s;
-}
-
-/* Sao vừa */
-.medium{
-    background-image:
-        radial-gradient(circle, #dff7ff 0 3px, transparent 4px);
-    background-size:140px 140px;
-    opacity:.55;
-    animation-duration:7s;
-}
-
-/* Sao lớn */
-.big{
-    background-image:
-        radial-gradient(circle, #ffffff 0 4px, transparent 5px);
-    background-size:220px 220px;
-    opacity:.45;
-    animation-duration:10s;
-
-    filter:
-        drop-shadow(0 0 4px rgba(255,255,255,.9))
-        drop-shadow(0 0 10px rgba(150,220,255,.8));
-    
-    .giant{
-    background-image:
-        radial-gradient(circle,#fff 0 6px,transparent 7px);
-
-    background-size:420px 420px;
-
-    opacity:.9;
-
-    animation:blink 3s infinite alternate;
-
-    filter:
-        drop-shadow(0 0 8px #fff)
-        drop-shadow(0 0 18px #9fdfff);
-}
-}
-
-@keyframes blink{
-    0%{
-        opacity:.35;
-    }
-
-    50%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:.55;
-    }
-}
         /* Container */
         .container {
             width: min(1200px, 95%);
@@ -420,7 +345,7 @@
             }
         }
 
-        /* =======================
+/* =======================
    NEWS POPUP
 ======================= */
 
@@ -711,23 +636,59 @@
     }
 
 }
+
+.collection-header{
+
+display:flex;
+justify-content:space-between;
+align-items:end;
+
+margin:35px 0 20px;
+
+}
+
+.collection-title h2{
+
+font-size:34px;
+
+margin:0;
+
+font-weight:700;
+
+color:#ffffff;
+
+letter-spacing:.5px;
+
+}
+
+.collection-title p{
+
+margin-top:8px;
+
+color:#8ecfff;
+
+font-size:15px;
+
+letter-spacing:1px;
+
+}
     </style>
 </head>
 
 <body>
-   <div class="sky">
-    <div class="stars small"></div>
-    <div class="stars medium"></div>
-    <div class="stars big"></div>
-    <div class="stars giant"></div>
-</div>
-    
     <div class="container">
         <header class="hero">
-            <img class="banner" src="banner.png" alt="Banner">
-            <p class="hero-note">
-                <i>Vi vu trong bể trời rộng lớn, cũng chỉ vì muốn trở thành một ngôi sao rực rỡ mà thôi. Một ngày vất vả rồi, về đây các chồng ảo thương nhé!</i>
+            <img class="banner" src="banner.png" alt="Banner" loading="lazy">
+            <p class="hero-note"> Bonsoir, <span>mon étoile.</span>
+        <p class="hero-note">
+            Chào mừng đến với góc trời nhỏ của mình.<br>
+            Ở đây có vài vì sao biết nói, vài câu chuyện còn dang dở,
+            và rất nhiều nhân vật đang chờ một người ghé thăm để viết tiếp cuộc đời họ.<br><br>
+
+            Nếu hôm nay cậu thấy hơi mệt một chút,
+            cứ xem nơi này như một chỗ ngồi cạnh cửa sổ ngắm sao nhé.</i>
             </p>
+            
             <p class="hero-note author-tag">
                 <b>@Le Bel Astre</b>
             </p>
@@ -736,6 +697,14 @@
             </div>
         </header>
 
+        <div class="collection-header">
+
+    <div class="collection-title">
+        <h2><span id="characterCount">0</span> vì sao đang tỏa sáng ✦</h2>
+    </div>
+
+</div>
+        
         <main class="character-list">
             <!-- Card 1 -->
             <section class="character-card" data-news="1">
@@ -755,7 +724,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="ace.png" alt="Ace Merceron">
+                    <img src="ace.png" alt="Ace Merceron" loading="lazy">
                 </div>
             </section>
 
@@ -799,7 +768,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="cyt.png" alt="Cố Yến Thần">
+                    <img src="cyt.png" alt="Cố Yến Thần" loading="lazy">
                 </div>
             </section>
 
@@ -821,7 +790,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="hcq.png" alt="Hoắc Chí Quân">
+                    <img src="hcq.png" alt="Hoắc Chí Quân" loading="lazy">
                 </div>
             </section>
 
@@ -844,7 +813,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="kael.png" alt="Kael Donovan">
+                    <img src="kael.png" alt="Kael Donovan" loading="lazy">
                 </div>
             </section>
 
@@ -866,7 +835,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="bkl.png" alt="Bùi Khánh Luân">
+                    <img src="bkl.png" alt="Bùi Khánh Luân" loading="lazy">
                 </div>
             </section>
 
@@ -911,7 +880,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="1774570508916.png" alt="Tô Vệ Châu">
+                    <img src="1774570508916.png" alt="Tô Vệ Châu" loading="lazy">
                 </div>
             </section>
 
@@ -935,7 +904,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="sd.png" alt="Sầm Dã">
+                    <img src="sd.png" alt="Sầm Dã" loading="lazy">
                 </div>
             </section>
 
@@ -957,7 +926,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="uvh.jpeg" alt="Úc Vãn Húc">
+                    <img src="uvh.jpeg" alt="Úc Vãn Húc" loading="lazy">
                 </div>
             </section>
 
@@ -979,7 +948,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="hdt.jpeg" alt="Hà Dĩ Trú">
+                    <img src="hdt.jpeg" alt="Hà Dĩ Trú" loading="lazy">
                 </div>
             </section>
 
@@ -1002,7 +971,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="ktc.png" alt="Kỷ Thừa Châu">
+                    <img src="ktc.png" alt="Kỷ Thừa Châu" loading="lazy">
                 </div>
             </section>
 
@@ -1024,7 +993,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="htnd.png" alt="Huỳnh Thị Ngọc Đào">
+                    <img src="htnd.png" alt="Huỳnh Thị Ngọc Đào" loading="lazy">
                 </div>
             </section>
 
@@ -1047,7 +1016,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="btd.png" alt="Bách Thần Duật">
+                    <img src="btd.png" alt="Bách Thần Duật" loading="lazy">
                 </div>
             </section>
 
@@ -1068,7 +1037,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="ovd.png" alt="Ôn Vãn Dư">
+                    <img src="ovd.png" alt="Ôn Vãn Dư" loading="lazy">
                 </div>
             </section>
             
@@ -1090,7 +1059,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="kto.png" alt="Kang Tae Oh">
+                    <img src="kto.png" alt="Kang Tae Oh" loading="lazy">
                 </div>
             </section>
         </main>
@@ -1257,6 +1226,10 @@ newsOverlay.addEventListener("click", (e) => {
     }
 
 });
+
+const cards = document.querySelectorAll(".character-card");
+
+document.getElementById("characterCount").textContent = cards.length;
     </script>
 </div>
     
