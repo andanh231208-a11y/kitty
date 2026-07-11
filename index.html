@@ -675,6 +675,42 @@
 }
 
 }
+
+.news-close-tip{
+
+    position:absolute;
+
+    bottom:28px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:rgba(255,255,255,.8);
+
+    font-size:14px;
+
+    letter-spacing:.5px;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    animation:tipBlink 2.2s infinite;
+
+}
+
+@keyframes tipBlink{
+
+    0%,100%{
+        opacity:.45;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+}
     </style>
 </head>
 
@@ -1074,6 +1110,10 @@
 
 <div id="newsList"></div>
 
+</div>
+
+<div class="news-close-tip">
+    ⌁ Nhấn để đóng ⌁
 </div>
 
     <script>
