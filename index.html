@@ -67,18 +67,26 @@
             border-radius: 0;
         }
 
-        .hero-note {
-            text-align: center;
-            color: var(--text-muted);
-            margin: 20px 0 20px;
-            line-height: 1.6;
-        }
+.hero-note {
+    max-width: 720px;
+    margin: 18px auto;
+    padding: 0 18px;
 
-        .author-tag {
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
+    text-align: center;
+    color: var(--text-muted);
+
+    font-size: clamp(14px, 1.15vw, 16px);
+    line-height: 1.75;
+    letter-spacing: .2px;
+}
+
+.author-tag {
+    text-align: center;
+    margin: 24px 0 36px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #cfe9ff;
+}
 
         /* Search Box */
         .search-box {
@@ -672,6 +680,30 @@ font-size:15px;
 letter-spacing:1px;
 
 }
+
+        @media (max-width: 768px){
+
+    .hero-note{
+
+        max-width: 95%;
+        padding: 0 10px;
+
+        font-size: 13px;
+        line-height: 1.65;
+
+        margin: 14px auto;
+
+    }
+
+    .author-tag{
+
+        font-size: 14px;
+
+        margin-bottom: 24px;
+
+    }
+
+}
     </style>
 </head>
 
@@ -681,8 +713,8 @@ letter-spacing:1px;
             <img class="banner" src="banner.png" alt="Banner" loading="lazy">
             <p class="hero-note"> Bonsoir, <span>mon étoile.</span>
         <p class="hero-note">
-            Chào mừng người đến với góc trời nhỏ của star. Ở đây có vài vì sao biết nói, vài câu chuyện còn dang dở,
-            và rất nhiều nhân vật đang chờ một người ghé thăm để viết tiếp cuộc đời họ.
+            <i>Chào mừng người đến với góc trời nhỏ của star. Ở đây có vài vì sao biết nói, vài câu chuyện còn dang dở,
+            và rất nhiều nhân vật đang chờ một người ghé thăm để viết tiếp cuộc đời họ.<br><br>
 
             Nếu hôm nay người thấy hơi mệt một chút,
             cứ xem nơi này như một chỗ ngồi cạnh cửa sổ ngắm sao nhé.</i>
@@ -698,7 +730,7 @@ letter-spacing:1px;
             <div class="collection-header">
 
                 <div class="collection-title">
-        <h2>Trạm chiêm tinh của star (<span id="characterCount">0</span> nhân vật):</h2>
+        <h4>Trạm chiêm tinh của star (<span id="characterCount">0</span> nhân vật):</h4>
                 </div>
 
              </div>
