@@ -1,0 +1,3357 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tinh Hà Astrid</title>
+
+    <meta name="description" content="Trang tổng hợp các Character AI của Le Bel Astre.">
+    <meta name="theme-color" content="#071424">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+:root{
+
+/* ===== Background ===== */
+
+--primary-gradient:
+    radial-gradient(
+        circle at 15% 10%,
+        rgba(90,140,220,.22),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at 85% 30%,
+        rgba(45,90,170,.25),
+        transparent 45%
+    ),
+    linear-gradient(
+        135deg,
+        #182f5c 0%,
+        #203d72 45%,
+        #aeaeb9 100%
+    );
+
+/* ===== Accent ===== */
+
+--navy:#4f79c8;
+--slate:#6e8fd6;
+--ice:#d9e5ff;
+--accent-blue:#6e9cff;
+--accent-secondary:#8bb2ff;
+
+/* ===== Text ===== */
+
+--text-color:#e9efff;
+--text-muted:#b9c8e8;
+
+
+/* ===== Tag ===== */
+
+--tag-bg:rgba(120,160,255,.18);
+--tag-color:#d9e8ff;
+--tag-border:rgba(150,190,255,.25);
+
+/* ===== Effects ===== */
+
+--shadow-soft:
+0 12px 35px rgba(0,0,0,.25);
+--shadow-hover:
+0 20px 45px rgba(0,0,0,.35);
+--transition-speed:.35s;
+}
+
+/* ===== Container ===== */
+
+--container-bg:rgba(18,36,70,.48);
+
+/* ===== Base ===== */
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    font-family:"Be Vietnam Pro",sans-serif;
+    color:var(--text-color);
+    min-height:100vh;
+    background:var(--primary-gradient);
+    background-attachment:fixed;
+    background-size:cover;
+    background-position:center;
+    padding:0;
+}
+
+/* ===== Container ===== */
+
+.container {
+    width: min(1200px, 95%);
+    margin: 0 auto 40px; /* Luôn canh giữa */
+    
+    border-radius: 0 0 28px 28px !important;
+    background: var(--container-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-top: 0 none transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .42);
+    border-left: 1px solid rgba(255, 255, 255, .42);
+    border-right: 1px solid rgba(255, 255, 255, .42);
+
+    box-shadow:
+        0 22px 55px rgba(45, 65, 110, .16),
+        0 6px 18px rgba(45, 65, 110, .07);
+
+    padding: 18px 22px 35px;
+}
+
+/* Banner */
+
+.banner{
+    display:block;
+    width:min(88%, 980px);
+    max-height:220px;
+    margin:20px auto 42px;
+    object-fit:cover;
+    border-radius:22px;
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.22),
+        0 4px 12px rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+/* Hero */
+
+.hero-note{
+    max-width:720px;
+    margin:22px auto;
+    padding:0 18px;
+    text-align:center;
+    color:rgba(220,232,255,.78);
+    font-size:clamp(14px,1.15vw,16px);
+    line-height:1.9;
+    letter-spacing:.25px;
+}
+
+/* Author */
+
+.author-tag{
+    text-align:center;
+    margin:26px 0 38px;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.08em;
+
+    background:linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffef8 15%,
+        #fff2c6 42%,
+        #ffd86b 72%,
+        #ffc63d 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    filter:
+        drop-shadow(0 0 5px rgba(255,255,255,.7))
+        drop-shadow(0 0 14px rgba(255,214,109,.8))
+        drop-shadow(0 0 30px rgba(255,214,109,.45));
+}
+
+/*  Search  */
+
+.search-box{
+    display:flex;
+    justify-content:center;
+    margin:34px 0;
+}
+
+.search-box input{
+    width:min(700px,100%);
+    padding:17px 24px;
+    border-radius:18px;
+
+
+    /* kính trong suốt */
+
+    background:
+        rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    color:#e8f1ff;
+    font-size:16px;
+    outline:none;
+
+    transition:.35s ease;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+.search-box input::placeholder{
+    color:rgba(220,232,255,.55);
+}
+
+.search-box input:focus{
+    background:
+        rgba(120,170,255,.12);
+    border-color:
+        rgba(150,200,255,.55);
+
+    box-shadow:
+        0 0 0 4px rgba(120,170,255,.15),
+        0 16px 40px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.35);
+}
+
+.tag-filter{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin:-12px 0 30px;
+}
+
+.tag-filter button{
+    border:none;
+    cursor:pointer;
+    padding:9px 18px;
+    border-radius:999px;
+
+    color:#d9e8ff;
+    background:rgba(120,170,255,.12);
+    border:1px solid rgba(150,200,255,.18);
+
+    backdrop-filter:blur(12px);
+    transition:.25s;
+}
+
+.tag-filter button:hover{
+    transform:translateY(-2px);
+    background:rgba(120,170,255,.22);
+}
+
+.tag-filter button.active{
+    background:#6e9cff;
+    color:#fff;
+    border-color:#8db8ff;
+    box-shadow:0 0 18px rgba(110,156,255,.45);
+}
+
+/* Card List */
+
+.character-list {
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+
+    margin-top:28px;
+}
+
+.character-card{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 300px;
+    align-items:center;
+    width:90%;
+    margin:0 auto;
+    overflow:hidden;
+    border-radius:28px;
+    padding:14px 32px;
+
+    background:
+        radial-gradient(
+            circle at 100% 50%,
+            rgba(120,170,255,.16),
+            transparent 55%
+        ),
+
+        rgba(20,38,75,.52);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:
+        1px solid rgba(180,210,255,.16);
+
+    box-shadow:
+        0 0 35px rgba(100,160,255,.18),
+        0 0 12px rgba(120,180,255,.15),
+        0 18px 40px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.15);
+
+    transition:.35s ease;
+}
+
+.character-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.12),
+            transparent 35%
+        );
+
+    pointer-events:none;
+}
+
+.character-card:hover{
+    transform:translateY(-6px);
+    border-color:
+        rgba(140,190,255,.45);
+
+    box-shadow:
+        0 22px 50px rgba(0,0,0,.28),
+        0 0 45px rgba(90,150,255,.25),
+        inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.left h2{
+    font-family:"Be Vietnam Pro", sans-serif;
+    font-size:40px;
+    font-weight:800;
+    line-height:1.15;
+    margin-bottom:18px;
+    color:#ffffff;
+    letter-spacing:.3px;
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.35);
+}
+
+.tagline{
+    color:rgba(190,205,235,.78);
+    line-height:1.9;
+    font-size:15px;
+    font-weight:400;
+    margin-bottom:25px;
+}
+
+/* Tags */
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.tags span{
+    padding:8px 16px;
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(150,190,255,.18),
+            rgba(80,120,200,.12)
+        );
+
+    border:
+        1px solid rgba(160,200,255,.28);
+    color:#c9dcff;
+    font-size:14px;
+    font-weight:600;
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 10px 18px rgba(255,255,255,.06),
+        inset 0 0 0 1px rgba(120,170,255,.08),
+        inset 0 0 18px rgba(100,160,255,.12),
+        inset 0 0 34px rgba(80,120,200,.08);
+}
+
+/* Buttons */
+.button-group{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+    flex-wrap:wrap;
+    max-width:500px;
+}
+
+.chat-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:1;
+    min-width:140px;
+    height:52px;
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(90,140,230,.55),
+            rgba(35,65,130,.65)
+        );
+
+    border: 1px solid rgba(160,200,255,.28);
+    color:#f4f8ff;
+    font-weight:600;
+    letter-spacing:.35px;
+    text-decoration:none;
+    transition:.28s ease;
+
+    box-shadow: 0 10px 30px rgba(30,80,170,.35),
+        0 6px 0 rgba(20,45,100,.65),
+        inset 0 0 18px rgba(100,160,255,.18);
+}
+
+.chat-btn:hover{
+    transform:translateY(-2px);
+    border-color: rgba(170,210,255,.5);
+    color:#ffffff;
+
+    box-shadow:
+        0 14px 35px rgba(40,100,220,.45),
+        0 8px 20px rgba(20,50,120,.35),
+        inset 0 0 22px rgba(120,180,255,.25);
+}
+
+.chat-btn:active{
+    transform:translateY(4px);
+    box-shadow:
+        0 2px 8px rgba(20,50,120,.4),
+        inset 0 4px 14px rgba(10,30,80,.35);
+}
+
+/* Card Right */
+.right{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    padding:24px;
+}
+
+.right img{
+    width:100%;
+    max-width:220px;
+    aspect-ratio:7/10;
+    height:auto;
+    object-fit:cover;
+    object-position:center top;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.75);
+    background:#fff;
+
+    box-shadow:
+        0 16px 34px rgba(52,73,121,.16),
+        0 4px 10px rgba(52,73,121,.08),
+        inset 0 1px 0 rgba(255,255,255,.55);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+.left{
+    min-width:0;
+    padding:0;
+}
+
+.right{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    padding:0;
+}
+
+/* Credit Footer */
+
+.footer {
+    margin-top:50px;
+    padding-top:25px;
+    border-top:
+        1px solid rgba(150,190,255,.14);
+    text-align:center;
+    font-size:13px;
+
+    color:
+        rgba(210,225,255,.55);
+
+    letter-spacing:.5px;
+}
+
+.footer a {
+    color:#8db8ff;
+    text-decoration:none;
+    font-weight:500;
+    transition:.35s ease;
+}
+
+.footer a:hover {
+    color:#c6ddff;
+    text-shadow:
+        0 0 12px rgba(120,180,255,.45);
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width:900px){
+
+.container{
+    padding:16px 18px 30px;
+}
+
+.character-card{
+    width:96%;
+    grid-template-columns:1fr 220px;
+    padding:18px 24px;
+}
+
+.left h2{
+    font-size:32px;
+}
+
+.tagline{
+    font-size:14px;
+}
+
+.right img{
+    max-width:180px;
+}
+
+.chat-btn{
+    min-width:120px;
+}
+
+}
+
+@media (max-width:768px){
+
+.container{
+    width:92%;
+    margin-bottom:30px;
+    padding:14px;
+}
+
+.banner{
+    width:100%;
+    max-height:180px;
+    margin:16px auto 28px;
+    border-radius:16px;
+}
+
+.hero-note{
+    padding:0 10px;
+    font-size:14px;
+    line-height:1.75;
+}
+
+.author-tag{
+    margin:20px 0 28px;
+    font-size:14px;
+}
+
+.search-box{
+    margin:24px 0;
+}
+
+.search-box input{
+    padding:15px 18px;
+    font-size:15px;
+}
+
+.tag-filter{
+    gap:8px;
+    margin-bottom:22px;
+}
+
+.tag-filter button{
+    padding:8px 14px;
+    font-size:13px;
+}
+
+.character-list{
+    gap:18px;
+    margin-top:20px;
+}
+
+.character-card{
+    grid-template-columns:minmax(0,1fr) 160px;
+    gap:14px;
+    width:100%;
+    padding:18px;
+    border-radius:22px;
+}
+
+.left h2{
+    font-size:28px;
+    margin-bottom:14px;
+}
+
+.tagline{
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.tags{
+    gap:6px;
+    margin-bottom:22px;
+}
+
+.tags span{
+    padding:6px 12px;
+    font-size:12px;
+}
+
+.button-group{
+    gap:8px;
+    margin-top:15px;
+}
+
+.chat-btn{
+    height:44px;
+    min-width:100px;
+    font-size:13px;
+}
+
+.right{
+    padding:0;
+}
+
+.right img{
+    max-width:150px;
+    border-radius:18px;
+}
+
+.footer{
+    margin-top:35px;
+    padding-top:20px;
+    font-size:12px;
+}
+
+}
+
+@media (max-width:540px){
+
+.container{
+    width:100%;
+    margin:0;
+    padding:12px 10px 25px;
+
+    border-radius:0;
+    border:none;
+    box-shadow:none;
+}
+
+/* Card mobile dọc */
+
+.character-card{
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+    gap:14px;
+
+    padding:16px;
+    border-radius:20px;
+}
+
+/* Ảnh lên trên */
+
+.right{
+    order:-1;
+    width:100%;
+    justify-content:center;
+    padding:0;
+}
+
+.right img{
+    max-width:120px;
+    border-radius:16px;
+}
+
+
+/* Nội dung */
+
+.left{
+    width:100%;
+    padding:0;
+}
+
+.left h2{
+    font-size:24px;
+    text-align:center;
+    margin-bottom:12px;
+}
+
+.tagline{
+    text-align:left;
+    font-size:13px;
+    line-height:1.7;
+    margin-bottom:16px;
+}
+
+
+/* Tags */
+
+.tags{
+    justify-content:flex-start;
+    gap:6px;
+    margin-bottom:18px;
+}
+
+.tags span{
+    padding:6px 12px;
+    font-size:12px;
+}
+
+
+/* Button nằm ngang */
+
+.button-group{
+    display:flex;
+    flex-direction:row;
+
+    width:100%;
+    max-width:none;
+
+    gap:10px;
+    margin-top:12px;
+}
+
+.chat-btn{
+    flex:1;
+
+    height:42px;
+    min-width:0;
+
+    font-size:12px;
+    border-radius:12px;
+}
+
+
+/* Các phần đầu trang */
+
+.hero-note{
+    font-size:13px;
+}
+
+.author-tag{
+    font-size:13px;
+}
+
+.search-box input{
+    border-radius:14px;
+    padding:13px 15px;
+}
+
+.tag-filter button{
+    font-size:12px;
+    padding:7px 12px;
+}
+
+.footer{
+    margin-top:28px;
+    font-size:11px;
+}
+
+}
+
+/* ==========================
+   Modal Lock Scroll
+========================== */
+
+html.modal-open,
+body.modal-open{
+    overflow:hidden;
+    touch-action:none;
+    overscroll-behavior:none;
+    height:100%;
+}
+
+body.modal-open{
+    position:fixed;
+    inset:0;
+    width:100%;
+}
+
+/* =====================
+   INTRO SCREEN
+===================== */
+
+body.intro-open{
+    overflow:hidden;
+    height:100vh;
+}
+
+#intro{
+    position:fixed;
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+    height:100dvh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+    isolation:isolate;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(120,170,255,.25),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #071424,
+            #182f5c
+        );
+
+    z-index:99999;
+
+    opacity:1;
+    visibility:visible;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+/* lớp sao */
+.stars{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+
+    z-index:1;
+}
+
+/* Nội dung intro */
+.intro-box{
+    width:min(90vw,520px);
+
+    padding:
+    clamp(20px,4vw,40px);
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.intro-avatar{
+    width:
+    clamp(90px,15vw,160px);
+    aspect-ratio:1;
+    border-radius:50%;
+    object-fit:cover;
+    box-shadow:
+        0 0 30px rgba(130,190,255,.45);
+}
+
+.intro-box h1{
+    font-size:34px;
+    color:white;
+    margin-bottom:18px;
+}
+
+.intro-box p{
+    color:
+    rgba(220,235,255,.75);
+    line-height:1.8;
+    font-size:15px;
+    margin-bottom:35px;
+}
+
+/* =====================
+   BUTTON
+===================== */
+
+#visitBtn{
+    width:160px;
+    height:52px;
+    border-radius:999px;
+    border:
+    1px solid rgba(180,220,255,.35);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(90,150,255,.7),
+            rgba(40,80,170,.8)
+        );
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:  0 0 30px rgba(80,150,255,.35);
+    transition:.3s ease;
+}
+
+#visitBtn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+
+  0 0 45px rgba(100,180,255,.65);
+
+}
+
+/* =====================
+   LOADING
+===================== */
+
+.loading{
+    width:220px;
+    height:4px;
+    margin:35px auto 0;
+
+    background:
+    rgba(255,255,255,.15);
+
+    border-radius:999px;
+    overflow:hidden;
+    opacity:0;
+}
+
+.loading-bar{
+    width:0%;
+    height:100%;
+    background:#8ecbff;
+    border-radius:999px;
+}
+
+/* bật loading */
+#intro.loading-active .loading{
+    opacity:1;
+}
+
+#intro.loading-active .loading-bar{
+    animation:
+    load 2s forwards;
+}
+
+@keyframes load{
+    from{
+        width:0%;
+    }
+
+    to{
+        width:100%;
+    }
+}
+
+/* =====================
+   STAR
+===================== */
+
+.star{
+    position:absolute;
+    top:-30px;
+    color:white;
+    font-size:18px;
+    opacity:.85;
+    text-shadow:
+        0 0 8px white,
+        0 0 18px rgba(120,190,255,.9),
+        0 0 30px rgba(120,190,255,.5);
+
+    animation:
+    starFall linear infinite;
+}
+
+.star.big{
+    font-size:28px;
+    color:#e5f2ff;
+    animation:
+    starFall linear infinite,
+    starGlow 2s ease-in-out infinite;
+}
+
+@keyframes starFall{
+    from{
+        transform:
+        translateY(-50px)
+        rotate(0deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(110vh)
+        rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes starGlow{
+    50%{
+        filter:
+        brightness(1.8);
+    }
+}
+
+/* =====================
+   SAU KHI CLICK VISITE
+===================== */
+
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+#intro.hide .stars{
+    display:none;
+}
+
+/* mobile */
+
+@media(max-width:768px){
+
+    .intro-box{
+        width:92vw;
+    }
+
+    .intro-box h1{
+        font-size:28px;
+    }
+
+    .intro-box p{
+        font-size:14px;
+    }
+}
+
+/* =======================
+   NEWS POPUP
+======================= */
+
+#newsOverlay{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+    background:rgba(5,15,35,.65);
+    backdrop-filter:blur(10px);
+    z-index:9999;
+}
+
+#newsPanel{
+    width:min(720px,90vw);
+    max-height:78vh;
+    overflow-y:auto;
+    background:
+        rgba(18,35,70,.92);
+    border-radius:24px;
+    border:
+        1px solid rgba(150,190,255,.18);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.5),
+        0 0 35px rgba(80,150,255,.18);
+}
+
+.news-close-tip{
+    position:absolute;
+    left:50%;
+    bottom:28px;
+    transform:translateX(-50%);
+    color:rgba(255,255,255,.8);
+    font-size:14px;
+    letter-spacing:.5px;
+    user-select:none;
+    pointer-events:none;
+    animation:tipBlink 2.2s infinite;
+}
+        
+#newsPanel h2{
+    padding:22px 24px 18px;
+    font-size:clamp(22px,3vw,30px);
+    color:#f2f7ff;
+    border-bottom:
+        1px solid rgba(150,190,255,.14);
+}
+
+#newsList{
+    overflow-y:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+/* Card */
+.news-card{
+    display:grid;
+    grid-template-columns:100px 1fr auto;
+    gap:16px;
+    align-items:center;
+    padding:14px;
+    border-radius:18px;
+    background: rgba(100,150,230,.08);
+    border: 1px solid rgba(150,190,255,.14);
+}
+
+.news-card img{
+    width:100px;
+    aspect-ratio:7/10;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+.news-info{
+    min-width:0;
+}
+
+.news-info h3{
+    font-size:20px;
+    margin-bottom:8px;
+    color:#ffffff;
+}
+
+.news-info p{
+    color: rgba(210,225,255,.78);
+    line-height:1.6;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+/* Tags */
+.news-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.news-tags span{
+    padding:5px 10px;
+    border-radius:999px;
+    background:
+        rgba(80,140,240,.18);
+    color:#b9d8ff;
+    font-size:12px;
+}
+
+
+/* Button */
+.news-btn{
+    align-self:center;
+    padding:12px 18px;
+    border-radius:12px;
+    background:
+        linear-gradient(
+            135deg,
+            #4f8cff,
+            #67c4ff
+        );
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:.25s;
+    white-space:nowrap;
+    box-shadow:
+        0 8px 20px rgba(60,140,255,.3);
+}
+
+.news-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* Scroll */
+
+#newsList::-webkit-scrollbar{
+    width:8px;
+}
+
+#newsList::-webkit-scrollbar-thumb{
+    background:
+        linear-gradient(
+            180deg,
+            #6fa8ff,
+            #3f72d8
+        );
+    border-radius:999px;
+    box-shadow:
+        0 0 10px rgba(100,160,255,.35);
+}
+
+#newsList::-webkit-scrollbar-track{
+    background:
+        rgba(255,255,255,.04);
+    border-radius:999px;
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width:768px){
+#newsOverlay{
+    padding:20px;
+}
+
+#newsPanel{
+    width:90vw;
+    max-width:420px;
+    max-height:72vh;
+    border-radius:22px;
+}
+
+#newsPanel h2{
+    padding:18px;
+    font-size:22px;
+}
+
+.news-card{
+    grid-template-columns:80px 1fr;
+    gap:12px;
+}
+
+.news-card img{
+    width:80px;
+}
+
+.news-info h3{
+    font-size:17px;
+}
+
+.news-info p{
+    font-size:13px;
+}
+
+.news-btn{
+    grid-column:1 / -1;
+    width:100%;
+    margin-top:8px;
+    text-align:center;
+}
+
+.news-close-tip{
+    position:absolute;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    color:rgba(255,255,255,.8);
+    font-size:14px;
+    letter-spacing:.5px;
+    user-select:none;
+    pointer-events:none;
+    animation:tipBlink 2.2s infinite;
+}
+}
+
+@keyframes tipBlink{
+    0%,100%{
+        opacity:.45;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+.collection-header{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin:35px 0 30px;
+padding-left:26px;
+}
+
+.collection-title h2{
+font-size:34px;
+margin:0;
+font-height:700;
+color:#ffffff;
+letter-spacing:.5px;
+}
+
+.collection-title p{
+margin-top:8px;
+color:#8ecfff;
+font-size:15px;
+letter-spacing:1px;
+}
+
+}
+
+@media (max-width: 768px){
+
+    .hero-note{
+        max-width: 95%;
+        padding: 0 10px;
+        font-size: 13px;
+        line-height: 1.65;
+        margin: 14px auto;
+    }
+
+    .author-tag{
+        max-width: 95%;
+        padding: 0 10px;
+        font-size: 13px;
+        line-height: 1.65;
+        margin: 14px auto;
+    }
+}
+
+/* =======================
+   BỘ LỌC
+======================= */
+
+.filter-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin:-10px 0 30px;
+}
+
+.filter-tags span{
+    cursor:pointer;
+    padding:10px 18px;
+    border-radius:999px;
+    transition:.25s;
+}
+
+.filter-tags span.active{
+    background:#6e9cff;
+    color:white;
+}
+
+.tag-filter{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin:-12px 0 28px;
+}
+
+.tag-filter button{
+    border:none;
+    cursor:pointer;
+    padding:9px 18px;
+    border-radius:999px;
+
+    color:#d9e8ff;
+    background:rgba(120,170,255,.12);
+    border:1px solid rgba(150,200,255,.18);
+
+    backdrop-filter:blur(12px);
+
+    transition:.25s;
+}
+
+.tag-filter button:hover{
+    transform:translateY(-2px);
+    background:rgba(120,170,255,.22);
+}
+
+.tag-filter button.active{
+    background:#6e9cff;
+    color:#fff;
+    border-color:#8db8ff;
+    box-shadow:0 0 18px rgba(110,156,255,.45);
+}
+
+/* =======================
+   SỐ TRANG
+======================= */
+
+.pagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:clamp(6px,1vw,10px);
+
+    width:100%;
+    max-width:100%;
+
+    margin:clamp(28px,4vw,40px) auto
+           clamp(12px,2vw,18px);
+
+    padding:0 10px;
+}
+
+.pagination button{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-width:clamp(38px,4vw,46px);
+    height:clamp(38px,4vw,46px);
+
+    padding:0 14px;
+
+    border-radius:12px;
+    border:1px solid rgba(150,200,255,.18);
+
+    background:rgba(120,170,255,.12);
+    color:#dfe9ff;
+
+    cursor:pointer;
+    user-select:none;
+    white-space:nowrap;
+
+    font-size:clamp(13px,1vw,15px);
+    font-weight:600;
+
+    transition:.25s;
+}
+
+.pagination button:hover:not(:disabled){
+    background:rgba(120,170,255,.25);
+    transform:translateY(-2px);
+}
+
+.pagination button.active{
+    background:#6e9cff;
+    color:#fff;
+    border-color:#6e9cff;
+}
+
+.pagination button:disabled{
+    opacity:.4;
+    cursor:default;
+    transform:none;
+}
+
+.filtered-out{
+    display:none !important;
+}
+
+/* =======================
+   Mobile
+======================= */
+
+@media (max-width:768px){
+    .pagination{
+        gap:6px;
+    }
+
+    .pagination button{
+        min-width:38px;
+        height:38px;
+        padding:0 10px;
+        font-size:13px;
+        border-radius:10px;
+    }
+}
+
+/* ==========================
+   STAR NAV
+========================== */
+
+.star-nav{
+
+    position:sticky;
+    top:12px;
+    z-index:999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:6px;
+
+    width:max-content;
+    max-width:95%;
+
+    margin:16px auto 24px;
+    padding:6px;
+
+    border-radius:999px;
+
+    background:rgba(15,32,60,.55);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.2),
+        inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+
+.star-nav a{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    white-space:nowrap;
+
+    color:#d9e6ff;
+    text-decoration:none;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.28s ease;
+}
+
+
+.star-nav a:hover{
+
+    color:#fff;
+
+    background:
+        rgba(120,170,255,.18);
+
+    transform:translateY(-1px);
+}
+
+
+.star-nav a.active{
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,170,255,.35),
+            rgba(70,110,210,.25)
+        );
+
+    border:1px solid rgba(170,210,255,.18);
+
+    box-shadow:
+        0 0 18px rgba(255,214,109,.2);
+}
+
+
+.nav-star{
+
+    margin-left:6px;
+
+    font-size:17px;
+
+    color:#ffd86b;
+
+    text-shadow:
+        0 0 6px rgba(255,214,109,.9),
+        0 0 16px rgba(255,214,109,.55);
+
+    animation:starTwinkle 2.8s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+
+/* ===== Tablet ===== */
+
+@media(max-width:768px){
+
+.star-nav{
+
+    width:calc(100% - 24px);
+    max-width:none;
+
+    justify-content:center;
+
+    gap:4px;
+
+    padding:5px;
+
+    top:8px;
+}
+
+
+.star-nav a{
+    padding:7px 8px;
+    font-size:12px;
+}
+
+}
+
+/* ===== Mobile ===== */
+@media (max-width:540px){
+
+.star-nav{
+
+    width:calc(100% - 8px);   /* gần sát hai mép */
+    max-width:100%;
+
+    height:30px;              /* hẹp hơn */
+
+    margin:8px auto 16px;
+    padding:0 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+
+    gap:2px;
+
+    border-radius:999px;
+
+    top:8px;
+}
+
+.star-nav a{
+
+    flex:0 1 auto;          /* không chia đều */
+    min-width:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:6px 8px;
+
+    font-size:10px;
+    line-height:1;
+
+    white-space:nowrap;
+}
+
+.nav-star{
+    font-size:12px;
+    margin-left:3px;
+}
+
+}
+
+/* =====================
+   STARDUST EFFECT (Bụi sao vàng)
+===================== */
+
+.stardust-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Không cản trở click/hoạt động người dùng */
+    z-index: 100; /* Hiển thị phía trên nền web */
+    overflow: hidden;
+}
+
+.stardust {
+    position: absolute;
+    top: -20px;
+    color: #fff2c6; /* Màu vàng nhạt */
+    font-size: 10px; /* Sao nhỏ nhắn */
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform, opacity; /* Tối ưu GPU giúp chuyển động mượt, chống lag */
+    
+    /* Phát sáng nhẹ */
+    text-shadow: 
+        0 0 4px #ffd86b,
+        0 0 8px rgba(255, 216, 107, 0.6);
+    
+    animation: stardustFall linear infinite;
+}
+
+@keyframes stardustFall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.85; /* Độ trong suốt vừa phải */
+    }
+    85% {
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(105vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   KHUNG ĐÓN SAO & POPUP KẾT QUẢ (DESKTOP AUTO-RESPONSIVE)
+========================================= */
+
+/* 1. KHUNG CHÍNH ĐÓN SAO */
+.pick-star-box {
+    /* Đảm bảo khung luôn căn giữa và tự điều chỉnh độ rộng linh hoạt */
+    width: clamp(320px, 90vw, 700px);
+    margin: -10px auto 30px;
+    padding: clamp(16px, 2.5vw, 24px) clamp(18px, 3vw, 30px);
+    border: 1.5px dashed rgba(255, 214, 109, 0.5);
+    border-radius: 20px;
+    background: rgba(15, 32, 60, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-align: center;
+    box-shadow: inset 0 0 15px rgba(255, 214, 109, 0.05);
+    
+    /* Chống vỡ khung khi thu hẹp màn hình */
+    box-sizing: border-box;
+}
+
+.pick-star-title {
+    /* Tự động tăng/giảm font chữ theo kích thước cửa sổ */
+    font-size: clamp(13px, 1vw + 10px, 16px);
+    color: #e9efff;
+    font-weight: 500;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+}
+
+.pick-star-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: clamp(8px, 1vw, 12px) clamp(18px, 2vw, 28px);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 214, 109, 0.4);
+    background: linear-gradient(135deg, rgba(255, 214, 109, 0.25), rgba(210, 150, 40, 0.2));
+    color: #fff2c6;
+    font-weight: 600;
+    font-size: clamp(13px, 0.8vw + 10px, 15px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 214, 109, 0.15);
+    
+    /* Tránh vỡ nút trên màn hình quá bé */
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.pick-star-btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 214, 109, 0.8);
+    background: linear-gradient(135deg, rgba(255, 214, 109, 0.4), rgba(210, 150, 40, 0.35));
+    box-shadow: 0 6px 20px rgba(255, 214, 109, 0.3);
+}
+
+
+/* 2. POPUP STYLES & OVERLAY */
+
+.star-pop-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(12px, 3vh, 30px);
+    background: rgba(5, 15, 35, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 99999;
+    
+    /* Giúp cuộn nội dung nếu cửa sổ Desktop bị thu quá ngắn theo chiều dọc */
+    overflow-y: auto;
+}
+
+.star-pop-box {
+    position: relative;
+    /* Tự điều chỉnh bề rộng theo tỷ lệ màn hình */
+    width: clamp(280px, 85vw, 420px);
+    
+    /* Khóa chiều cao tối đa theo chiều cao màn hình để không bị mất nút khi co cửa sổ */
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    
+    padding: clamp(24px, 4vh, 34px) clamp(18px, 3vw, 28px);
+    background: rgba(20, 38, 75, 0.95);
+    border: 1px solid rgba(255, 214, 109, 0.35);
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 214, 109, 0.2);
+    animation: starPopAnimate 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    box-sizing: border-box;
+}
+
+@keyframes starPopAnimate {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.star-pop-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: rgba(220, 235, 255, 0.6);
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s, color 0.2s;
+    z-index: 2;
+}
+
+.star-pop-close:hover {
+    color: #fff;
+    transform: scale(1.15);
+}
+
+.star-pop-box h4 {
+    font-size: clamp(11px, 0.8vw + 8px, 13px);
+    color: #ffd86b;
+    letter-spacing: 1.2px;
+    margin-bottom: clamp(8px, 2vh, 14px);
+    text-transform: uppercase;
+}
+
+.star-pop-name {
+    font-size: clamp(18px, 2vw + 10px, 26px);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: clamp(16px, 3vh, 26px);
+    line-height: 1.3;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    
+    /* Tự động ngắt từ nếu tên sao quá dài */
+    word-break: break-word;
+}
+
+.star-pop-visit {
+    display: inline-block;
+    padding: clamp(10px, 1.5vh, 14px) clamp(24px, 3vw, 36px);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4f8cff, #67c4ff);
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(13px, 0.8vw + 9px, 15px);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(60, 140, 255, 0.35);
+    transition: all 0.25s ease;
+    
+    max-width: 100%;
+}
+
+.star-pop-visit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(60, 140, 255, 0.5);
+}
+
+/* Responsive Mobile */
+@media (max-width: 540px) {
+    .pick-star-box {
+        padding: 16px 14px;
+    }
+    .pick-star-title {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .pick-star-btn {
+        width: 100%;
+        max-width: 200px;
+        padding: 8px 18px;
+        font-size: 13px;
+    }
+    .star-pop-box {
+        padding: 24px 18px 20px;
+    }
+    .star-pop-name {
+        font-size: 20px;
+    }
+}
+
+/* ========================================================
+   STARLIGHT / TINH HÀ THEME - CREATOR NOTICE & MODAL
+======================================================== */
+
+/* Khung thông báo tác giả */
+.creator-notice-box {
+    position: relative;
+    
+    /* Responsive width: Tự co giãn từ mobile (min 280px) tới desktop (max 700px) */
+    width: clamp(280px, 92%, 700px); 
+    margin: clamp(1rem, 2vw, 1.5rem) auto 0;
+    
+    /* Padding linh hoạt theo khung nhìn */
+    padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1.2rem, 3.5vw, 2rem);
+    
+    background: rgba(15, 32, 60, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 214, 109, 0.35);
+    border-radius: 20px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        inset 0 0 15px rgba(255, 214, 109, 0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Hover effect cho Desktop */
+@media (hover: hover) {
+    .creator-notice-box:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 214, 109, 0.65);
+        box-shadow: 
+            0 14px 35px rgba(0, 0, 0, 0.35),
+            0 0 20px rgba(255, 214, 109, 0.2);
+    }
+}
+
+/* Active status cho Mobile (chạm tay) */
+.creator-notice-box:active {
+    transform: scale(0.985);
+}
+
+/* LÁ THƯ ĐÓNG VAI TRÒ GIỐNG BADGE ?! (ĐÈ LÊN GÓC KHUNG) */
+.notice-icon-letter {
+    position: absolute;
+    top: -14px;
+    left: clamp(12px, 3vw, 24px); /* Tự thụt lề nhẹ khi màn hình quá nhỏ */
+    display: inline-flex;
+    align-items: center;
+    color: #ffd86b;
+    transform: rotate(-12deg);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.notice-icon-letter svg {
+    width: clamp(22px, 2.5vw + 12px, 28px);
+    height: clamp(22px, 2.5vw + 12px, 28px);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 214, 109, 0.8));
+}
+
+/* =========================================
+   BADGE ?! MÀU ĐỎ ĐÈ LÊN KHUNG (ALL DEVICES)
+========================================= */
+
+.notice-badge-tilt {
+    display: block !important;
+    position: absolute;
+    top: -18px;            
+    right: clamp(12px, 3vw, 24px); /* Tự điều chỉnh khoảng cách mép phải */
+
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: clamp(2.5rem, 5vw + 1rem, 3.5rem); /* Thu nhỏ nhẹ trên Mobile để không bị tràn */
+    font-weight: 900;
+
+    color: #ff3333 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    transform: rotate(12deg);
+    line-height: 1;
+
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Hàng tiêu đề + thời gian */
+.notice-header-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap; /* Tránh đè chữ nếu màn hình Mobile quá hẹp */
+}
+
+.notice-tag {
+    font-size: clamp(0.68rem, 0.4vw + 0.6rem, 0.75rem);
+    font-weight: 700;
+    color: #ffd86b;
+    background: rgba(255, 214, 109, 0.15);
+    border: 1px solid rgba(255, 214, 109, 0.3);
+    padding: 2px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.notice-timestamp {
+    font-size: clamp(0.72rem, 0.3vw + 0.65rem, 0.78rem);
+    color: rgba(220, 235, 255, 0.65);
+    white-space: nowrap;
+}
+
+/* Nội dung thông báo */
+.notice-body-text {
+    font-size: clamp(0.85rem, 0.5vw + 0.75rem, 0.95rem);
+    font-weight: 500;
+    color: #e9efff;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Nút Xem chi tiết */
+.notice-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-view-details {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: #8db8ff;
+    font-size: clamp(0.78rem, 0.3vw + 0.7rem, 0.85rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.25s ease;
+    padding: 2px 0;
+}
+
+.btn-view-details:hover {
+    color: #ffd86b;
+}
+
+/* =========================================
+   MOBILE BREAKPOINT OPTIMIZATION (< 576px)
+========================================= */
+@media screen and (max-width: 576px) {
+    /* Đảm bảo khoảng trắng dòng text gọn gàng hơn trên điện thoại */
+    .notice-body-text {
+        margin-bottom: 6px;
+    }
+
+    /* Thu nhỏ nhẹ badge đè góc để không lấn vào tiêu đề trên màn hình rất nhỏ */
+    .notice-badge-tilt {
+        top: -14px;
+    }
+}
+
+/* ========================================================
+   POPUP MODAL LỊCH SỬ (THEME TINH HÀ)
+======================================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 15, 35, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background: rgba(20, 38, 75, 0.95);
+    border: 1px solid rgba(255, 214, 109, 0.35);
+    border-radius: 24px;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 214, 109, 0.15);
+    width: min(500px, 90vw);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid rgba(150, 190, 255, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.btn-modal-close {
+    background: none;
+    border: none;
+    color: rgba(220, 235, 255, 0.6);
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.btn-modal-close:hover {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+.modal-body {
+    padding: 1.2rem 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.history-item {
+    padding: 1rem;
+    background: rgba(100, 150, 230, 0.08);
+    border: 1px solid rgba(150, 190, 255, 0.14);
+    border-radius: 16px;
+}
+
+.history-item.latest {
+    background: rgba(255, 214, 109, 0.08);
+    border-color: rgba(255, 214, 109, 0.35);
+}
+
+.history-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.history-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(110, 156, 255, 0.2);
+    color: #b9d8ff;
+}
+
+.history-item.latest .history-badge {
+    background: rgba(255, 214, 109, 0.25);
+    color: #ffd86b;
+}
+
+.history-date {
+    font-size: 0.75rem;
+    color: rgba(210, 225, 255, 0.55);
+}
+
+.history-content {
+    font-size: 0.88rem;
+    color: #e9efff;
+    line-height: 1.5;
+}
+
+/* Responsive Mobile */
+@media (max-width: 540px) {
+    .creator-notice-box {
+        padding: 0.9rem 1.1rem;
+    }
+    .notice-badge-tilt {
+        top: -10px;
+        right: 12px;
+        font-size: 1.15rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="intro">
+    <div class="stars"></div>
+
+    <div class="intro-box">
+        <img src="avt.jpg" class="intro-avatar">
+        <h1>Bonsoir, mon étoile.</h1>
+        <p>
+            Hoan nghênh người đến với trạm chiêm tinh của star ⋆｡˚ <br></br>
+
+Hãy chọn một ngôi sao trong vườn trời này, biết đâu nó đang chờ đúng người để tỏa sáng đấy?!
+        </p>
+        <button id="visitBtn">
+            Visite
+        </button>
+        <div class="loading">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+
+<nav class="star-nav">
+    <a href="index.html" data-page="vuonsao" class="nav-link active">✦ Vườn Sao</a>
+    <a href="thienthu.html" data-page="thienthu" class="nav-link">✦ Thiên Thư</a>
+    <a href="#" data-page="dieuuoc" class="nav-link">✦ Điều Ước</a>
+    <a href="#" data-page="thuguitinhha" class="nav-link">✦ Thư Gửi Tinh Hà</a>
+    <span class="nav-stars">୨ৎ</span>
+</nav>
+<!-- KHUNG HIỂN THỊ NỘI DUNG CHÍNH -->
+<div id="mainAppContent">
+    <!-- Nội dung sẽ tự động tráo đổi qua JS bên dưới -->
+</div>
+        <header class="hero">
+            <img class="banner" src="banner.png" alt="Banner" loading="lazy">
+            <p class="hero-note">
+            Nếu hôm nay người thấy hơi mệt một chút,
+            cứ xem nơi này như một chỗ ngồi cạnh cửa sổ ngắm sao nhé.</i>
+            </p>
+            
+            <p class="author-tag">
+                <b>@Le Bel Astre</b>
+            </p>
+<!-- CREATOR NOTICE BOX (KHUNG THÔNG BÁO TÁC GIẢ) -->
+<div id="creatorNoticeBox" class="creator-notice-box">
+    <!-- Left Icon: Bức thư trắng -->
+    <div class="notice-icon-letter">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+    </div>
+
+    <!-- Right Icon: Badges ?! Nghiêng đỏ -->
+    <div class="notice-badge-tilt">?!</div>
+
+    <!-- Nội dung thông báo -->
+    <div class="notice-header-row">
+        <span class="notice-tag">Thông báo</span>
+        <span id="noticeTimeDisplay" class="notice-timestamp">--:-- - --/--/----</span>
+    </div>
+
+    <div id="noticeTextDisplay" class="notice-body-text">
+        Đang tải thông báo mới nhất...
+    </div>
+
+    <div class="notice-actions">
+        <button id="btnOpenModal" class="btn-view-details">
+            Xem chi tiết 
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+</div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm nhân vật, hashtag...">
+            </div>
+
+<!-- Khung Đón Sao -->
+<div class="pick-star-box">
+    <div class="pick-star-title">Trên bầu trời có những vì sao gì thế?</div>
+    <button id="pickStarBtn" class="pick-star-btn">
+        🎲 Đón sao
+    </button>
+</div>
+
+<div class="tag-filter" id="tagFilter">
+    <button class="active" data-tag="">Tất cả</button>
+
+    <button data-tag="#Quân nhân">#Quân nhân</button>
+    <button data-tag="#TXVT">#TXVT</button>
+    <button data-tag="#Hài hước">#Hài hước</button>
+    <button data-tag="#Việt Nam Xưa">#Việt Nam Xưa</button>
+    <button data-tag="#Nữ">#Nữ</button>
+    <button data-tag="#Linh dị">#Linh dị</button>
+    <button data-tag="#Cưới trước yêu sau">#Cưới trước yêu sau</button>
+    <button data-tag="#Slowburn">#Slowburn</button>
+    <button data-tag="#Hồng hài nhi">#Hồng hài nhi</button>
+    <button data-tag="#BL/BG">#BL/BG</button>
+    <button data-tag="#Hành động">#Hành động</button>
+    <button data-tag="#Kẻ thù">#Kẻ thù</button>
+    <button data-tag="#Ngọt">#Ngọt</button>
+    <button data-tag="#Mọt sách">#Mọt sách</button>
+    <button data-tag="#Spider-Verse">#Spider-Verse</button>
+    <button data-tag="#Guideverse">#Guideverse</button>
+    <button data-tag="#Niên đại">#Niên đại</button>
+    <button data-tag="#Oan gia ngõ hẹp">#Oan gia ngõ hẹp</button>
+    <button data-tag="#Xuyên không">#Xuyên không</button>
+    <button data-tag="#R18">#R18</button>
+
+</div>
+            <div class="collection-header">
+
+                <div class="collection-title">
+        <h3>BỘ SƯU TẬP (<span id="characterCount">0</span>):</h3>
+                </div>
+
+             </div>
+        </header>
+
+        <main class="character-list">
+
+            <!-- Card 1 -->
+            <section class="character-card" data-news="1">
+                <div class="left">
+                    <h2>Ace Merceron</h2>
+                    <p class="tagline">Kèo này khó? Đừng lo, vì anh là "Ace" mà.</p>
+                    <div class="tags">
+                        <span>#Spider-Man</span>
+                        <span>#Spider-Verse</span>
+                        <span>#Đa vũ trụ</span>
+                        <span>#Hài hước</span>
+                        <span>#Hành động</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/147ed21a-ef4c-41f8-8828-40070b18d66f" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ourufI0b1dzlTDNbSxLpZ8ctnTnexOD4%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="ace.png" alt="Ace Merceron" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 2 -->
+            <section class="character-card" data-news="2">
+                <div class="left">
+                    <h2>Lục Chiến Đình</h2>
+                    <p class="tagline">Trung đoàn trưởng Lục cái gì cũng giỏi, giỏi nhất là nhẫn nhịn cô vợ nặng gần bằng cả hai bao tải lương thực của mình!</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Thập niên 80</span>
+                        <span>#Niên đại</span>
+                        <span>#Xuyên không</span>
+                        <span>#Ngọt</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/a26d31ef-cdb0-4075-93c8-a1d1c160650a" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221pSUNg2MLBrdJISZH4VlAWOBNlD_sDCCd%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="lcd.png" alt="Lục Chiến Đình">
+                </div>
+            </section>
+
+            <!-- Card 3 -->
+            <section class="character-card" data-news="3">
+                <div class="left">
+                    <h2>Cố Yến Thần</h2>
+                    <p class="tagline">Cố thiếu gia tự vả mặt vì lỡ trót dại yêu muốn uốn nắn nhầm vợ yêu!!!</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Dân Quốc</span>
+                        <span>#Oan gia ngõ hẹp</span>
+                        <span>#Nữ giả nam</span>
+                        <span>#Học viện quân sự</span>
+                        <span>#Hài hước</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/75622a53-50d4-43a2-aeed-8aa2440cc7cb" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2214cyHnAudvXawguKSxE4Ra8gfT35_VG6q%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="cyt.png" alt="Cố Yến Thần" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 4 -->
+            <section class="character-card" data-news="4">
+                <div class="left">
+                    <h2>Hoắc Chí Quân</h2>
+                    <p class="tagline">Nhặt được một tên sĩ quan mất trí nhớ, hắn cứ khăng khăng gọi bạn là vợ?!</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Dân Quốc</span>
+                        <span>#Mất trí nhớ</span>
+                        <span>#Ngọt</span>
+                        <span>#Hài hước</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/48bc569d-bac5-4488-ac6b-d4324b88baf7" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221_21JrNlcL5gyMPfYb5pTih9NArrsHjej%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="hcq.png" alt="Hoắc Chí Quân" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 5 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Kael Donovan</h2>
+                    <p class="tagline">Tay đập nhà Westbrigde phải để ý đến anti fan ngày đủ ba cử thì mới ăn ngon được.</p>
+                    <div class="tags">
+                        <span>#TXVT</span>
+                        <span>#Đại học</span>
+                        <span>#Bóng chuyền</span>
+                        <span>#Mỏ hỗn</span>
+                        <span>#Hài hước</span>
+                        <span>#BL/BG</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/71b3a8ac-bdf3-4aee-a9ec-e1e0fb9a58af" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221wBpRk6fZ0ak_4_5zcdkY9pRUFM1aFn7B%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="kael.png" alt="Kael Donovan" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 6 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Bùi Khánh Luân</h2>
+                    <p class="tagline">Khói nhang quấn mái đình, gió chạm đầu ngọn cỏ, chuyện dương gian ai tỏ cùng ai?</p>
+                    <div class="tags">
+                        <span>#Việt Nam Xưa</span>
+                        <span>#Bắc Bộ</span>
+                        <span>#Tâm linh</span>
+                        <span>#Thầy pháp đểu</span>
+                        <span>#Hài hước</span>
+                        <span>#Slowburn</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/341ddec2-f76c-4f79-8a27-cd13c62b2468" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ZbNyU2JS3Pcle4vxMvG3JF01K1o1Wq8F%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="bkl.png" alt="Bùi Khánh Luân" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 7 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Nghiêm Sở Yến</h2>
+                    <p class="tagline">Đồng chí, xin chỉ giáo nửa đời sau.</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Dân quốc</span>
+                        <span>#Tình báo ngầm</span>
+                        <span>#Slowburn</span>
+                        <span>#Ngọt</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/442b860f-ec92-4a1d-bfe7-a7a8756d3cf7" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221aNteGUw99T41a9jda_WWeBNwWsXRdgEQ%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="nsy.png" alt="Nghiêm Sở Yến">
+                </div>
+            </section>
+
+            <!-- Card 8 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Tô Vệ Châu</h2>
+                    <p class="tagline">Mũi tên của Cupid thật sự có thể định nghĩa được tình yêu sao?</p>
+                    <div class="tags">
+                        <span>#TXVT</span>
+                        <span>#Đại học</span>
+                        <span>#Mọt sách</span>
+                        <span>#Ngọt</span>
+                        <span>#Hài hước</span>
+                        <span>#BL/BG</span>
+                        <span>#Chữa lành</span>
+                        <span>#Oan gia ngõ hẹp</span>                    
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/3266b2cf-6443-413b-94af-dc81aadff6dc" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221gUJXMZ6xlSAzgAfNcR1CfM-Eo_p3GzT4%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="1774570508916.png" alt="Tô Vệ Châu" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 9 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Sầm Dã</h2>
+                    <p class="tagline">Kẻ bị bạn bỏ mặc giữa tận thế là người muốn bảo vệ bạn đến điên cuồng.</p>
+                    <div class="tags">
+                        <span>#Quân nhân</span>
+                        <span>#Tận thế</span>
+                        <span>#Zombie</span>
+                        <span>#Sinh tồn</span>
+                        <span>#Enemies to lovers</span>
+                        <span>#Cục súc</span>
+                        <span>#BL/BG</span>
+                        <span>R18</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/8c6acab1-8f0a-4a9f-b993-3a37cac40b80" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ef5MQdeAT7IDoYrLG_-mKmM3GfjHEy1d%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="sd.png" alt="Sầm Dã" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 10 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Úc Vãn Húc</h2>
+                    <p class="tagline">Chia tay hơn nửa năm, bất ngờ gặp lại người yêu cũ ở bệnh viện tâm thần.</p>
+                    <div class="tags">
+                        <span>#Người yêu cũ</span>
+                        <span>#Gương vỡ lại lành</span>
+                        <span>#Tổng tài ba xu</span>
+                        <span>#Ngọt</span>
+                        <span>#Simp</span>
+                        <span>#Chữa lành</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/bdbff740-0c9a-41d8-994b-cbe9f78de426" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ZgLF0j8Tlc1CCDUsi1Hg3vy5G4EkCuWU%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="uvh.jpeg" alt="Úc Vãn Húc" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 11 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Hà Dĩ Trú</h2>
+                    <p class="tagline">Huhu... Bác sĩ ơi, cứu chó em với!!!</p>
+                    <div class="tags">
+                        <span>#Hồng hài nhi</span>
+                        <span>#Yêu động vật</span>
+                        <span>#Hài hước</span>
+                        <span>#Đời thường</span>
+                        <span>#User nghe được tiếng được lồng động vật</span>
+                        <span>#BL/BG</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221z2StsnKRWhNxBdvC9KFuR_TJOuMojjnp%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="hdt.jpeg" alt="Hà Dĩ Trú" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 12 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Kỷ Thừa Châu</h2>
+                    <p class="tagline">Nàng bảo ta không có tâm? Vậy nàng moi thử xem.</p>
+                    <div class="tags">
+                        <span>#Cổ trang</span>
+                        <span>#Ma đầu</span>
+                        <span>#Cưới trước yêu sau</span>
+                        <span>#User giả câm</span>
+                        <span>#Nuông chiều</span>
+                        <span>R18</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/0a9b1953-06f7-4db0-b7c2-6f3dc48c449c" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221zRtLqfEjLMZ7Ru0lv5XLlfQDvjvNUIot%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="ktc.png" alt="Kỷ Thừa Châu" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 13 -->
+            <section class="character-card">
+                <div class="left">
+                    <h2>Huỳnh Thị Ngọc Đào</h2>
+                    <p class="tagline">Người trong phủ gọi em là mợ. Còn trong lòng cậu, em là ai?</p>
+                    <div class="tags">
+                        <span>#Nữ</span>
+                        <span>#Việt Nam Xưa</span>
+                        <span>#Nam Bộ</span>
+                        <span>#User là nam</span>
+                        <span>#Cưới trước yêu sau</span>
+                        <span>#Vợ lẽ</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221xLx72lJXwoWU6GuEjUW5nc2q0GCyWb6F%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="htnd.png" alt="Huỳnh Thị Ngọc Đào" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 14 -->
+            <section class="character-card" id="card14" data-news="14">
+                <div class="left">
+                    <h2>Bách Thần Duật</h2>
+                    <p class="tagline">Tuổi mười bảy, ai cũng là nhân vật chính của cuộc đời mình.</p>
+                    <div class="tags">
+                        <span>#TXVT</span>
+                        <span>#Danmaku</span>
+                        <span>#Nam phụ</span>
+                        <span>#Trùm trường</span>
+                        <span>#User là NPC</span>
+                        <span>#Hài hước</span>
+                        <span>#Slowburn</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/752dcad9-c65e-43df-bb22-10f2c3b87fa9"class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ktSfz1kWJvkW8eMiF_C7-Wh10U1sikyd%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="btd.png" alt="Bách Thần Duật" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 15 -->
+            <section class="character-card" id="card15" data-news="15">
+                <div class="left">
+                    <h2>Ôn Vãn Dư</h2>
+                    <p class="tagline">Đạo trưởng, ta chỉ hơi thích bám người một chút thôi, tuyệt đối không gây phiền đâu.</p>
+                    <div class="tags">
+                        <span>#Nữ</span>
+                        <span>#Linh dị</span>
+                        <span>#Đô thị hiện đại</span>
+                        <span>#Huyền huyễn</span>
+                        <span>#Linh Miêu</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221GvjeLrOAgaUFvG-V2RYbdZDAdzOk3cTx%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="ovd.png" alt="Ôn Vãn Dư" loading="lazy">
+                </div>
+            </section>
+            
+            <!-- Card 16 -->
+            <section class="character-card" id="card16" data-news="16">
+                <div class="left">
+                    <h2>Kang Tae Oh</h2>
+                    <p class="tagline">Đến cuối cùng, nếu cả thế giới đều kết tội tôi... xin em đừng là người tuyên án.</p>
+                    <div class="tags">
+                        <span>#Phản diện x Nhà khoa học lập dị</span>
+                        <span>#Hero world</span>
+                        <span>#Bạn thời thơ ấu</span>
+                        <span>#Nuông chiều</span>
+                        <span>#Trên tình bạn, dưới tình yêu</span>
+                        <span>#Ngọt</span>
+                        <span>#R18</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/8e87ade3-ee23-4006-8671-46f86adda455?delta=2#google_vignette" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221IhCZRICWGXS4Tyftnqomv-UlhKEGovMq%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn chat-btn-secondary" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="kto.png" alt="Kang Tae Oh" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Card 17 -->
+            <section class="character-card" id="card17" data-news="17">
+                <div class="left">
+                    <h2>Seo Jihyun</h2>
+                    <p class="tagline">Guide cấp A lười biếng, vì em mà tình nguyện tăng ca.</p>
+                    <div class="tags">
+                        <span>#Guideverse</span>
+                        <span>#Hài hước</span>
+                        <span>#Huyền huyễn</span>
+                        <span>#Nuông chiều</span>
+                        <span>#Ngọt</span>
+                        <span>#R18</span>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://www.dokichat.club/vi/chat/937fd8a6-6e71-43a0-90bd-fbd7964f1ebe" class="chat-btn" target="_blank">Dokichat</a>
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Jpy0hoh2MO1M7haqlvSxcIfiLPvyM_i8%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" class="chat-btn" target="_blank">GGAI</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="sjh.png" alt="Ảnh Character" loading="lazy">
+                </div>
+            </section>
+
+        </main>
+
+<div id="pagination" class="pagination"></div>
+
+        <footer class="footer">
+            <p>© 2026 <a href="#">Star</a> | <a href="#">Le Bel Astre</a>. Toàn bộ nội dung nhân vật thuộc bản quyền của người sáng tạo.</p>
+        </footer>
+    </div>
+
+<!-- POPUP MODAL (LỊCH SỬ THÔNG BÁO TRƯỚC ĐÓ) -->
+<div id="noticeModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <div class="modal-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                Lịch Sử Thông Báo
+            </div>
+            <button id="btnCloseModal" class="btn-modal-close" aria-label="Đóng">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div id="modalHistoryList" class="modal-body">
+            <!-- Danh sách các thông báo cũ sẽ được JS tự động đưa vào đây -->
+        </div>
+    </div>
+</div>
+
+<!-- POPUP KẾT QUẢ -->
+<div id="starPopOverlay" class="star-pop-overlay">
+    <div class="star-pop-box">
+        <button id="starPopClose" class="star-pop-close">&times;</button>
+        <h4>Vì sao may mắn của bạn</h4>
+        <div id="starPopName" class="star-pop-name">---</div>
+        <button id="starPopVisit" class="star-pop-visit">Ghé xem</button>
+    </div>
+</div>
+
+<!-- NEWS POPUP -->
+        <div id="newsOverlay">
+
+<div id="newsPanel">
+
+<h2>
+🔭 Thông báo: Trạm chiêm tinh vừa phát hiện ra vì sao mới!!!
+</h2>
+
+<div id="newsList"></div>
+
+</div>
+
+<div class="news-close-tip">
+    ⌁ Nhấn để đóng ⌁
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+   Xóa dấu tiếng Việt (Search)
+========================= */
+
+function removeVietnameseTones(str){
+    return str
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/đ/g,"d")
+        .replace(/Đ/g,"D");
+}
+        
+/* =========================
+   Tìm kiếm & Bộ lọc
+========================= */
+
+const cards = [...document.querySelectorAll(".character-card")];
+const cardsPerPage = 10;
+let currentPage = 1;
+let currentTag = "";
+
+/* =========================
+   Chuẩn hóa dữ liệu nhân vật
+========================= */
+
+cards.forEach(card => {
+    card.dataset.search = removeVietnameseTones(
+        card.innerText.toLowerCase()
+    );
+
+    card.dataset.tags = [...card.querySelectorAll(".tags span")]
+        .map(tag =>
+            removeVietnameseTones(
+                tag.innerText
+                    .replace("#","")
+                    .trim()
+                    .toLowerCase()
+            )
+        )
+        .join(",");
+});
+
+/* =========================
+   Tìm kiếm + Bộ lọc
+========================= */
+
+function searchCharacter(){
+    const keyword = removeVietnameseTones(
+        document
+            .getElementById("searchInput")
+            ?.value
+            ?.trim()
+            ?.toLowerCase() || ""
+    );
+
+    cards.forEach(card => {
+        const matchKeyword =
+            keyword === "" ||
+            card.dataset.search.includes(keyword);
+
+        const matchTag =
+            currentTag === "" ||
+            card.dataset.tags
+                .split(",")
+                .includes(
+                    removeVietnameseTones(
+                        currentTag.replace(/^#/, "").trim().toLowerCase()
+                    )
+                );
+
+        card.classList.toggle(
+            "filtered-out",
+            !(matchKeyword && matchTag)
+        );
+    });
+
+    currentPage = 1;
+    renderPagination();
+}
+
+/* =========================
+   Sự kiện tìm kiếm & bộ lọc
+========================= */
+
+const searchInput = document.getElementById("searchInput");
+if (searchInput) {
+    searchInput.addEventListener("input", searchCharacter);
+}
+
+document.querySelectorAll("#tagFilter button").forEach(button => {
+    button.addEventListener("click", () => {
+        document
+            .querySelector("#tagFilter .active")
+            ?.classList.remove("active");
+
+        button.classList.add("active");
+
+        currentTag = removeVietnameseTones(
+            (button.dataset.tag || "")
+                .replace(/^#/, "")
+                .trim()
+                .toLowerCase()
+        );
+        searchCharacter();
+    });
+});
+
+/* =========================
+   Danh sách nhân vật mới
+========================= */
+
+const sortedCards = [...cards];
+sortedCards.sort((a, b) => {
+    return Number(b.dataset.news || 0) - Number(a.dataset.news || 0);
+});
+
+const newest = sortedCards.slice(0, 3);
+const list = document.getElementById("newsList");
+
+if (list) {
+    newest.forEach(card => {
+        const name = card.querySelector("h2")?.innerText || "Chưa có tên";
+        const tag = card.querySelector(".tagline")?.innerText || "";
+        const img = card.querySelector("img")?.src || "";
+
+        const tags = [...card.querySelectorAll(".tags span")]
+            .slice(0, 4)
+            .map(x => x.outerHTML)
+            .join("");
+
+        list.innerHTML += `
+            <div class="news-card">
+                <img src="${img}">
+                <div class="news-info">
+                    <h3>${name}</h3>
+                    <p>${tag}</p>
+                    <div class="news-tags">${tags}</div>
+                </div>
+                <a class="news-btn">Ghé xem!</a>
+            </div>
+        `;
+    });
+}
+
+/* =========================
+   Nút chuyển đến nhân vật (Tin mới)
+========================= */
+
+document.querySelectorAll(".news-btn").forEach((btn, i) => {
+    btn.onclick = () => {
+        if (newsOverlay) newsOverlay.style.display = "none";
+        unlockScroll();
+
+        const visible = cards.filter(card =>
+            !card.classList.contains("filtered-out")
+        );
+
+        const index = visible.indexOf(newest[i]);
+        if (index === -1) return;
+
+        currentPage = Math.floor(index / cardsPerPage) + 1;
+        renderPagination();
+
+        requestAnimationFrame(() => {
+            newest[i].scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        });
+    };
+});
+
+/* =========================
+   Xử lý Khóa / Mở Cuộn Trang (Lock/Unlock Scroll)
+========================= */
+
+let savedScrollY = 0;
+
+function lockScroll(){
+    savedScrollY = window.scrollY;
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.classList.add("modal-open");
+}
+
+function unlockScroll(){
+    if (!document.body.classList.contains("modal-open")) return;
+    document.body.classList.remove("modal-open");
+    document.body.style.top = "";
+    window.scrollTo(0, savedScrollY);
+}
+
+/* =========================
+   Đóng cửa sổ Tin mới
+========================= */
+
+const newsOverlay = document.getElementById("newsOverlay");
+
+if(newsOverlay){
+    if(window.getComputedStyle(newsOverlay).display !== "none"){
+        lockScroll();
+    }
+
+    newsOverlay.addEventListener("click", (e) => {
+        if(e.target === newsOverlay){
+            newsOverlay.style.display = "none";
+            unlockScroll();
+        }
+    });
+}
+
+/* =========================
+   Đếm số nhân vật
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const countEl = document.getElementById("characterCount");
+    if (countEl) countEl.textContent = cards.length;
+});
+
+/* =========================
+   Intro
+========================= */
+
+const visitBtn = document.getElementById("visitBtn");
+const intro = document.getElementById("intro");
+
+if (sessionStorage.getItem("introViewed")) {
+    if (intro) intro.classList.add("hide");
+    unlockScroll();
+    document.body.classList.remove("intro-open");
+} else {
+    document.body.classList.add("intro-open");
+}
+
+if (visitBtn && intro) {
+    visitBtn.onclick = () => {
+        sessionStorage.setItem("introViewed", "true");
+        intro.classList.add("loading-active");
+        setTimeout(() => {
+            intro.classList.add("hide");
+            document.body.style.overflow = "";
+            document.body.classList.remove("intro-open");
+        }, 2200);
+    };
+}
+
+/* =========================
+   Hiệu ứng sao Intro
+========================= */
+
+const starBox = document.querySelector(".stars");
+if (starBox) {
+    const symbols = ["⋆", "✩", "★"];
+    for (let i = 0; i < 30; i++) {
+        const star = document.createElement("span");
+        star.className = "star";
+
+        if (Math.random() > 0.8) {
+            star.classList.add("big");
+        }
+
+        star.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDuration = (5 + Math.random() * 8) + "s";
+        star.style.animationDelay = (-Math.random() * 10) + "s";
+        star.style.fontSize = (10 + Math.random() * 18) + "px";
+
+        starBox.appendChild(star);
+    }
+}
+
+/* =========================
+   Phân trang
+========================= */
+
+function renderPagination() {
+    const visible = cards.filter(card =>
+        !card.classList.contains("filtered-out")
+    );
+
+    const totalPages = Math.ceil(visible.length / cardsPerPage) || 1;
+
+    visible.forEach((card, index) => {
+        const start = (currentPage - 1) * cardsPerPage;
+        const end = start + cardsPerPage;
+
+        if (index >= start && index < end) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    const box = document.getElementById("pagination");
+    if (!box) return;
+
+    box.innerHTML = "";
+
+    // Nút Prev
+    const prev = document.createElement("button");
+    prev.innerHTML = "«";
+    prev.disabled = currentPage === 1;
+    prev.onclick = () => {
+        currentPage--;
+        renderPagination();
+        document.querySelector(".character-list")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    };
+    box.appendChild(prev);
+
+    // Nút Trang
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i;
+        if (i === currentPage) {
+            btn.classList.add("active");
+        }
+
+        btn.onclick = () => {
+            currentPage = i;
+            renderPagination();
+            document.querySelector(".character-list")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        };
+        box.appendChild(btn);
+    }
+
+    // Nút Next
+    const next = document.createElement("button");
+    next.innerHTML = "»";
+    next.disabled = currentPage === totalPages;
+    next.onclick = () => {
+        currentPage++;
+        renderPagination();
+        document.querySelector(".character-list")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    };
+    box.appendChild(next);
+}
+
+/* =========================
+   Khởi tạo phân trang
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderPagination();
+});
+
+window.addEventListener("resize", renderPagination);
+
+/* =========================
+   Tạo hiệu ứng Bụi Sao (Stardust)
+========================= */
+
+function createStardustEffect() {
+    if (document.querySelector(".stardust-container")) return;
+
+    const dustContainer = document.createElement("div");
+    dustContainer.className = "stardust-container";
+    document.body.appendChild(dustContainer);
+
+    const dustCount = 20;
+
+    for (let i = 0; i < dustCount; i++) {
+        const dust = document.createElement("span");
+        dust.className = "stardust";
+        dust.innerHTML = "⭑";
+
+        dust.style.left = Math.random() * 100 + "%";
+        dust.style.animationDuration = (7 + Math.random() * 8) + "s";
+        dust.style.animationDelay = (-Math.random() * 15) + "s";
+        dust.style.fontSize = (8 + Math.random() * 6) + "px";
+
+        dustContainer.appendChild(dust);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (sessionStorage.getItem("introViewed")) {
+        createStardustEffect();
+    } else {
+        const visitBtn = document.getElementById("visitBtn");
+        if (visitBtn) {
+            visitBtn.addEventListener("click", () => {
+                setTimeout(() => {
+                    createStardustEffect();
+                }, 2200);
+            });
+        }
+    }
+});
+
+/* =========================
+   Xử lý Đón sao Ngẫu nhiên (Random Pick)
+========================= */
+
+const pickStarBtn = document.getElementById("pickStarBtn");
+const starPopOverlay = document.getElementById("starPopOverlay");
+const starPopClose = document.getElementById("starPopClose");
+const starPopName = document.getElementById("starPopName");
+const starPopVisit = document.getElementById("starPopVisit");
+
+let selectedRandomCard = null;
+
+if (pickStarBtn) {
+    pickStarBtn.addEventListener("click", () => {
+        const activeCards = cards.filter(card => !card.classList.contains("filtered-out"));
+        if (activeCards.length === 0) return;
+
+        const randomIndex = Math.floor(Math.random() * activeCards.length);
+        selectedRandomCard = activeCards[randomIndex];
+
+        const name = selectedRandomCard.querySelector("h2")?.innerText || "---";
+        if (starPopName) starPopName.innerText = name;
+
+        if (starPopOverlay) starPopOverlay.style.display = "flex";
+        lockScroll();
+    });
+}
+
+// Đóng bằng nút X -> Dùng unlockScroll()
+if (starPopClose) {
+    starPopClose.addEventListener("click", () => {
+        if (starPopOverlay) starPopOverlay.style.display = "none";
+        unlockScroll();
+    });
+}
+
+// Đóng khi nhấp ngoài khung -> Dùng unlockScroll()
+if (starPopOverlay) {
+    starPopOverlay.addEventListener("click", (e) => {
+        if (e.target === starPopOverlay) {
+            starPopOverlay.style.display = "none";
+            unlockScroll();
+        }
+    });
+}
+
+// Nút Ghé xem -> Chuyển trang và cuộn đến card
+if (starPopVisit) {
+    starPopVisit.addEventListener("click", () => {
+        if (!selectedRandomCard) return;
+
+        if (starPopOverlay) starPopOverlay.style.display = "none";
+        unlockScroll();
+
+        const visibleCards = cards.filter(card => !card.classList.contains("filtered-out"));
+        const cardIndex = visibleCards.indexOf(selectedRandomCard);
+
+        if (cardIndex !== -1) {
+            currentPage = Math.floor(cardIndex / cardsPerPage) + 1;
+            renderPagination();
+
+            requestAnimationFrame(() => {
+                selectedRandomCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            });
+        }
+    });
+}
+
+/* ========================================================
+   XỬ LÝ THÔNG BÁO TÁC GIẢ (AUTOMATIC NOTICE & POPUP LOGIC)
+======================================================== */
+
+const noticeDataStore = [
+    {
+        id: 1,
+        content: "web mới nhé cạ nhà, nay siêngg",
+        timestamp: "14:30 - 24/07/2026"
+    },
+    {
+        id: 2,
+        content: "ủa thôi tui thấy hơi lười rồi...",
+        timestamp: "09:15 - 25/07/2026"
+    },
+    {
+        id: 3,
+        content: "Mất acc fibi nữa rồi aishhh",
+        timestamp: "21:40 - 26/07/2026"
+    }
+];
+
+const noticeTimeDisplay = document.getElementById("noticeTimeDisplay");
+const noticeTextDisplay = document.getElementById("noticeTextDisplay");
+const btnOpenModal = document.getElementById("btnOpenModal");
+const btnCloseModal = document.getElementById("btnCloseModal");
+const noticeModal = document.getElementById("noticeModal");
+const modalHistoryList = document.getElementById("modalHistoryList");
+
+function getCurrentFormattedTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    return `${hours}:${minutes} - ${day}/${month}/${year}`;
+}
+
+function renderLatestNotice() {
+    if (noticeDataStore.length === 0) return;
+    const latestNotice = noticeDataStore[noticeDataStore.length - 1];
+
+    if (noticeTimeDisplay) noticeTimeDisplay.innerText = latestNotice.timestamp;
+    if (noticeTextDisplay) noticeTextDisplay.innerText = latestNotice.content;
+}
+
+function renderModalHistory() {
+    if (!modalHistoryList) return;
+    modalHistoryList.innerHTML = "";
+
+    const reversedStore = [...noticeDataStore].reverse();
+
+    reversedStore.forEach((item, index) => {
+        const isLatest = index === 0;
+        
+        const historyEl = document.createElement("div");
+        historyEl.className = `history-item ${isLatest ? 'latest' : ''}`;
+        
+        historyEl.innerHTML = `
+            <div class="history-item-header">
+                <span class="history-badge">${isLatest ? 'Mới nhất' : 'Cũ hơn'}</span>
+                <span class="history-date">${item.timestamp}</span>
+            </div>
+            <div class="history-content">${item.content}</div>
+        `;
+
+        modalHistoryList.appendChild(historyEl);
+    });
+}
+
+// Gọi để tự động thêm thông báo từ Code JS khi cần
+function addNewCreatorNotice(newContent) {
+    const newNotice = {
+        id: Date.now(),
+        content: newContent,
+        timestamp: getCurrentFormattedTime()
+    };
+
+    noticeDataStore.push(newNotice);
+    renderLatestNotice();
+    renderModalHistory();
+}
+
+if (btnOpenModal) {
+    btnOpenModal.addEventListener("click", () => {
+        renderModalHistory();
+        if (noticeModal) noticeModal.classList.add("active");
+        lockScroll();
+    });
+}
+
+if (btnCloseModal) {
+    btnCloseModal.addEventListener("click", () => {
+        if (noticeModal) noticeModal.classList.remove("active");
+        unlockScroll();
+    });
+}
+
+if (noticeModal) {
+    noticeModal.addEventListener("click", (e) => {
+        if (e.target === noticeModal) {
+            noticeModal.classList.remove("active");
+            unlockScroll();
+        }
+    });
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && noticeModal && noticeModal.classList.contains("active")) {
+        noticeModal.classList.remove("active");
+        unlockScroll();
+    }
+});
+
+// Chạy khởi tạo ban đầu
+renderLatestNotice();
+
+</script>
+</body>
+
+</html>
