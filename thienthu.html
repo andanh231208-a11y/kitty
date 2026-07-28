@@ -1,0 +1,2968 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tinh Hà Astrid</title>
+
+    <meta name="description" content="Trang tổng hợp các Character AI của Le Bel Astre.">
+    <meta name="theme-color" content="#071424">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+:root{
+
+/* ===== Background ===== */
+
+--primary-gradient:
+    radial-gradient(
+        circle at 15% 10%,
+        rgba(90,140,220,.22),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at 85% 30%,
+        rgba(45,90,170,.25),
+        transparent 45%
+    ),
+    linear-gradient(
+        135deg,
+        #182f5c 0%,
+        #203d72 45%,
+        #aeaeb9 100%
+    );
+
+/* ===== Accent ===== */
+
+--navy:#4f79c8;
+--slate:#6e8fd6;
+--ice:#d9e5ff;
+--accent-blue:#6e9cff;
+--accent-secondary:#8bb2ff;
+
+/* ===== Text ===== */
+
+--text-color:#e9efff;
+--text-muted:#b9c8e8;
+
+
+/* ===== Tag ===== */
+
+--tag-bg:rgba(120,160,255,.18);
+--tag-color:#d9e8ff;
+--tag-border:rgba(150,190,255,.25);
+
+/* ===== Effects ===== */
+
+--shadow-soft:
+0 12px 35px rgba(0,0,0,.25);
+--shadow-hover:
+0 20px 45px rgba(0,0,0,.35);
+--transition-speed:.35s;
+}
+
+/* ===== Container ===== */
+
+--container-bg:rgba(18,36,70,.48);
+
+/* ===== Base ===== */
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    font-family:"Be Vietnam Pro",sans-serif;
+    color:var(--text-color);
+    min-height:100vh;
+    background:var(--primary-gradient);
+    background-attachment:fixed;
+    background-size:cover;
+    background-position:center;
+    padding:0;
+}
+
+/* ===== Container ===== */
+
+.container {
+    width:min(1280px,96%);
+    margin:0 auto 40px;
+    padding:18px 16px 35px;
+    
+    /* Đảm bảo góc trên phẳng tuyệt đối */
+    border-radius: 0 0 28px 28px !important;
+
+    background: var(--container-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    /* 1. Tách viền từng cạnh và khóa hẳn viền trên */
+    border-top: 0 none transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .42);
+    border-left: 1px solid rgba(255, 255, 255, .42);
+    border-right: 1px solid rgba(255, 255, 255, .42);
+
+    /* 2. Dùng Clip-path cắt sạch sẽ mép trên (Triệt tiêu lỗi sub-pixel) */
+    clip-path: inset(0px -20px -20px -20px);
+
+    /* 3. Bỏ mọi bóng hắt inset mép trên */
+    box-shadow:
+        0 22px 55px rgba(45, 65, 110, .16),
+        0 6px 18px rgba(45, 65, 110, .07);
+
+    padding: 18px 22px 35px;
+    overflow: hidden;
+}
+
+/* Credit Footer */
+
+.footer {
+    margin-top:50px;
+    padding-top:25px;
+    border-top:
+        1px solid rgba(150,190,255,.14);
+    text-align:center;
+    font-size:13px;
+
+    color:
+        rgba(210,225,255,.55);
+
+    letter-spacing:.5px;
+}
+
+.footer a {
+    color:#8db8ff;
+    text-decoration:none;
+    font-weight:500;
+    transition:.35s ease;
+}
+
+.footer a:hover {
+    color:#c6ddff;
+    text-shadow:
+        0 0 12px rgba(120,180,255,.45);
+}
+
+/* ==========================================
+   RESET ĐỘ RỘNG CHUẨN (Rất quan trọng)
+========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   RESPONSIVE (TỰ ĐỘNG THÍCH ỨNG)
+========================================== */
+
+/* Mobile lớn (<= 768px) */
+@media (max-width:768px){
+    .container{
+        width:92%;
+        margin-bottom:30px;
+        padding:14px;
+    }
+
+  }
+
+/* Mobile nhỏ */
+@media (max-width:540px){
+
+    .container{
+        width:100%;
+        margin:0;
+        padding:8px;
+        border-radius:0;
+        border:none;
+        box-shadow:none;
+    }
+
+    .footer {
+        margin-top: 28px;
+        padding-top: 16px;
+        font-size: 11px;
+    }
+}
+
+/* ==========================
+   STAR NAV
+========================== */
+
+.star-nav{
+    position:sticky;
+    top:12px;
+    z-index:999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    width:max-content;
+    max-width:95%;
+    margin:16px auto 24px;
+    padding:6px;
+    border-radius:999px;
+    background:rgba(15,32,60,.55);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.2),
+        inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.star-nav a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    white-space:nowrap;
+    color:#d9e6ff;
+    text-decoration:none;
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+    transition:.28s ease;
+}
+
+.star-nav a:hover{
+    color:#fff;
+    background:
+        rgba(120,170,255,.18);
+    transform:translateY(-1px);
+}
+
+
+.star-nav a.active{
+    color:#fff;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,170,255,.35),
+            rgba(70,110,210,.25)
+        );
+    border:1px solid rgba(170,210,255,.18);
+    box-shadow:
+        0 0 18px rgba(255,214,109,.2);
+}
+
+.nav-star{
+    margin-left:6px;
+    font-size:17px;
+    color:#ffd86b;
+    text-shadow:
+        0 0 6px rgba(255,214,109,.9),
+        0 0 16px rgba(255,214,109,.55);
+    animation:starTwinkle 2.8s ease-in-out infinite;
+    pointer-events:none;
+}
+
+/* ===== Tablet ===== */
+
+@media(max-width:768px){
+
+.star-nav{
+    width:calc(100% - 24px);
+    max-width:none;
+    justify-content:center;
+    gap:4px;
+    padding:5px;
+    top:8px;
+}
+
+.star-nav a{
+    padding:7px 8px;
+    font-size:12px;
+}
+
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width:540px){
+
+.star-nav{
+    width:calc(100% - 8px);   /* gần sát hai mép */
+    max-width:100%;
+    height:30px;              /* hẹp hơn */
+    margin:8px auto 16px;
+    padding:0 10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    gap:2px;
+    border-radius:999px;
+    top:8px;
+}
+
+.star-nav a{
+    flex:0 1 auto;          /* không chia đều */
+    min-width:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:6px 8px;
+    font-size:10px;
+    line-height:1;
+    white-space:nowrap;
+}
+
+.nav-star{
+    font-size:12px;
+    margin-left:3px;
+}
+
+}
+
+/* =========================
+   HERO MAGAZINE
+========================= */
+
+.hero-magazine {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto 30px;
+    border-radius: 32px;
+}
+
+/* Background */
+.hero-bg {
+    position: absolute;
+    inset: 0;                
+    overflow: hidden;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px) brightness(.80);
+    transform: scale(1.15);
+}
+
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(6, 15, 35, .85),
+        rgba(8, 20, 45, .65),
+        rgba(6, 15, 35, .75)
+    );
+}
+
+/* Layout Main Container (Desktop Default) */
+.hero-wrapper {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 290px 1fr; 
+    gap: 35px; 
+    align-items: start;
+    padding: 35px 25px 65px 25px; 
+    box-sizing: border-box;
+}
+
+/* =========================
+   LEFT CARD
+========================= */
+
+.profile-card {
+    width: 100%;
+    margin: 0;
+    background: rgba(12, 25, 55, .62);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+}
+
+.profile-cover {
+    height: 230px;
+}
+
+.profile-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-content {
+    padding: 22px 18px;
+}
+
+.chapter,
+.hero-text h1 span {
+    background: linear-gradient(180deg, #ffffff 0%, #fffef6 15%, #ffeeb0 45%, #ffd96d 70%, #ffcb47 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    filter:
+        drop-shadow(0 0 6px rgba(255, 255, 255, .65))
+        drop-shadow(0 0 14px rgba(255, 214, 109, .75))
+        drop-shadow(0 0 28px rgba(255, 214, 109, .45));
+    animation: goldBlink 3s ease-in-out infinite;
+}
+
+.profile-content h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.profile-content p {
+    color: #cbd9ff;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+.author-info {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.author-info div {
+    background: rgba(255, 255, 255, .06);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.author-info small {
+    display: block;
+    color: #9bb8f3;
+    margin-bottom: 4px;
+    font-size: 11px;
+}
+
+.author-info strong {
+    color: white;
+    font-size: 13.5px;
+}
+
+/* =========================
+   RIGHT CONTENT
+========================= */
+
+.hero-right {
+    align-self: start;
+    padding-top: 40px;
+    padding-right: 0;
+}
+
+.hero-small {
+    display: block;
+    color: #9ebfff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.hero-title {
+    display: inline-block;
+    margin: 0;
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(180deg, #ffffff 0%, #fffef5 18%, #fff0bf 48%, #ffd96d 72%, #ffc94b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter:
+        drop-shadow(0 0 6px rgba(255, 255, 255, .65))
+        drop-shadow(0 0 16px rgba(255, 214, 109, .75))
+        drop-shadow(0 0 34px rgba(255, 214, 109, .45));
+    animation: goldBlink 3s ease-in-out infinite;
+}
+
+.hero-description {
+    width: 100%;
+    margin-top: 20px;
+    color: #d8e4ff;
+    line-height: 1.75;
+    font-size: 15px;
+}
+
+blockquote {
+    margin-top: 40px;
+    padding-left: 18px;
+    border-left: 3px solid rgba(255, 214, 109, .75);
+    color: #f4f7ff;
+    font-size: 17px;
+    line-height: 1.6;
+    width: 100%;
+    text-shadow: 0 0 12px rgba(255, 255, 255, .12);
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET (<= 768px)
+========================================== */
+@media (max-width: 768px) {
+    .hero-magazine { border-radius: 24px; }
+    .hero-wrapper {
+        grid-template-columns: 200px 1fr; /* Thu nhỏ cột trái */
+        gap: 20px;
+        padding: 24px 20px 40px 20px;
+    }
+    .profile-cover { height: 160px; }
+    .hero-right { padding-top: 20px; }
+    .hero-title { font-size: 38px; }
+    .hero-description { font-size: 13px; margin-top: 14px; }
+    blockquote { font-size: 14px; margin-top: 24px; }
+}
+
+/* ==========================================
+   RESPONSIVE - MOBILE (<= 540px) 
+   (ĐÃ ĐƯA SLOGAN XUỐNG DƯỚI & LÙI CHỮ BÊN PHẢI)
+========================================== */
+@media (max-width: 540px) {
+    .hero-magazine { border-radius: 16px; margin-bottom: 20px; }
+    
+    .hero-wrapper {
+        position: relative; /* Thiết lập để làm điểm tựa cho Slogan bay xuống dưới */
+        grid-template-columns: 105px 1fr; 
+        gap: 12px;
+        /* Tăng padding-bottom lên 80px để chừa khoảng trống cho Slogan nằm bên dưới */
+        padding: 16px 10px 80px 10px; 
+    }
+
+    /* --- Thu nhỏ Card Trái --- */
+    .profile-card { border-radius: 12px; }
+    .profile-cover { height: 95px; } 
+    .profile-content { padding: 8px 6px; }
+    
+    .chapter { font-size: 8px; margin-bottom: 2px; } 
+    
+    .profile-content h3 { font-size: 11px; margin-bottom: 2px; }
+    .profile-content p { font-size: 8px; line-height: 1.3; }
+    
+    .author-info {
+        margin-top: 8px;
+        grid-template-columns: 1fr; 
+        gap: 4px;
+    }
+    .author-info div { padding: 4px 6px; border-radius: 6px; }
+    .author-info small { font-size: 7px; margin-bottom: 1px; }
+    .author-info strong { font-size: 8.5px; }
+
+    /* --- Cột Phải --- */
+    .hero-right { 
+        /* Tăng padding-top lên 16px để lùi chữ bên phải xuống, không bị cao ngang Card trái */
+        padding-top: 16px; 
+        min-width: 0; 
+    }
+    
+    .hero-small { font-size: 7.5px; letter-spacing: 1.5px; margin-bottom: 4px; }
+    
+    .hero-title { 
+        font-size: 20px; 
+        line-height: 1.15;
+    }
+    
+    .hero-description { 
+        font-size: 9.5px; 
+        line-height: 1.5; 
+        margin-top: 8px; 
+    }
+    
+    /* --- ĐƯA SLOGAN XUỐNG DƯỚI CARD TRÁI VÀ ĐÁY KHUNG --- */
+    blockquote { 
+        position: absolute;
+        bottom: 16px; /* Căn chỉnh khoảng cách sát đáy khung */
+        left: 10px;
+        right: 10px;
+        margin: 0;
+        
+        padding-left: 10px; 
+        border-left-width: 2.5px;
+        font-size: 10.5px; 
+        line-height: 1.45; 
+        
+        /* Đảm bảo co giãn rộng hết cỡ theo chiều ngang khung để không bị mất chữ */
+        width: auto; 
+        box-sizing: border-box;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+}
+
+/* =========================
+   Y2K SECTION DIVIDER
+========================= */
+
+.y2k-divider{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+
+    margin:45px auto;
+    transform:translateY(2.5px);
+
+    position:relative;
+    z-index:3;
+
+    opacity:.9;
+}
+
+.y2k-divider span{
+    height:1px;
+    flex:1;
+    max-width:420px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,214,109,.75),
+        rgba(170,210,255,.65),
+        transparent
+    );
+
+    box-shadow:0 0 10px rgba(255,214,109,.35);
+}
+
+.y2k-symbol{
+    white-space:nowrap;
+    font-size:22px;
+    letter-spacing:5px;
+    color:#ffe7a3;
+
+    text-shadow:
+        0 0 6px rgba(255,255,255,.8),
+        0 0 18px rgba(255,214,109,.65),
+        0 0 30px rgba(139,178,255,.5);
+
+    animation:y2kGlow 3s ease-in-out infinite;
+}
+
+@keyframes y2kGlow{
+    0%,100%{
+        opacity:.7;
+        transform:translateY(0);
+    }
+    50%{
+        opacity:1;
+        transform:translateY(-3px);
+    }
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width:768px){
+
+    .y2k-divider{
+        gap:12px;
+        margin:-14px auto 20px;
+    }
+
+    .y2k-divider span{
+        max-width:160px;
+    }
+
+    .y2k-symbol{
+        font-size:14px;
+        letter-spacing:2px;
+    }
+
+}
+
+@media (max-width:540px){
+    /* Giữ nguyên bố cục desktop */
+    .y2k-divider{
+        gap:8px;
+        margin:-10px auto 16px;
+    }
+    .y2k-divider span{
+        max-width:90px;
+    }
+    .y2k-symbol{
+        font-size:11px;
+        letter-spacing:1.5px;
+    }
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box{
+    max-width:900px;
+    margin:0 auto 70px;
+    margin-top:30px;
+
+    padding:34px 38px;
+
+    border:2px dashed rgba(205,225,255,.35);
+    border-radius:24px;
+
+    background:rgba(255,255,255,.035);
+    backdrop-filter:blur(10px);
+
+    position:relative;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.04),
+        0 12px 30px rgba(0,0,0,.12);
+}
+
+.contact-box::before{
+    content:"✦ một góc nhỏ";
+    position:absolute;
+    top:-13px;
+    left:28px;
+
+    padding:0 10px;
+
+    background:#27436f;
+
+    color:#ffe7a3;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    text-align:center;
+}
+
+.contact-box p{
+    max-width:620px;
+
+    color:#cfdcff;
+
+    font-size:15px;
+    line-height:1.9;
+
+    margin-bottom:24px;
+
+    text-align:center;
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.contact-links a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:12px 22px;
+
+    color:#eaf1ff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+
+    border-radius:999px;
+
+    border:1px dashed rgba(255,255,255,.22);
+
+    background:rgba(255,255,255,.05);
+
+    transition:.3s ease;
+}
+
+.contact-links a:hover{
+
+    transform:translateY(-3px);
+
+    color:#fff;
+
+    border-color:rgba(255,214,109,.45);
+
+    background:rgba(120,170,255,.12);
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.18),
+        0 0 18px rgba(255,214,109,.18);
+
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width:768px){
+    .contact-box{
+        padding:18px;
+        border-radius:18px;
+        margin:0 auto 50px;
+    }
+
+    .contact-box::before{
+        top:-11px;
+        left:18px;
+        font-size:11px;
+        padding:0 8px;
+    }
+
+    .contact-box p{
+        font-size:12px;
+        line-height:1.7;
+        margin-bottom:16px;
+    }
+
+    .contact-links{
+        gap:8px;
+    }
+
+    .contact-links a{
+        padding:9px 16px;
+        font-size:12px;
+    }
+
+}
+
+@media (max-width:540px){
+
+    /* Giữ nguyên bố cục desktop */
+
+    .contact-box{
+        padding:14px;
+        border-radius:16px;
+        margin:0 auto 36px;
+    }
+
+    .contact-box::before{
+        top:-9px;
+        left:14px;
+        font-size:9px;
+        letter-spacing:1px;
+        padding:0 6px;
+    }
+
+    .contact-box p{
+        font-size:10px;
+        line-height:1.6;
+        margin-bottom:12px;
+    }
+
+    .contact-links{
+        gap:6px;
+    }
+
+    .contact-links a{
+        gap:5px;
+        padding:7px 12px;
+        font-size:10px;
+        border-radius:999px;
+    }
+
+}
+
+/* =========================
+   CREATOR SECTION
+========================= */
+
+.creator-section{
+    position:relative;
+    margin:70px auto;
+    padding:48px;
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(96,145,255,.12),
+            rgba(255,214,109,.08),
+            rgba(155,185,255,.10)
+        );
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 25px 60px rgba(18,32,70,.18),
+        inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.creator-section::before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    top:-120px;
+    right:-100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,214,109,.22),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.creator-section::after{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    left:-70px;
+    bottom:-80px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(120,170,255,.18),
+            transparent 70%
+        );
+    pointer-events:none;
+}
+
+/* ========================= */
+
+.creator-title{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    margin-bottom:42px;
+}
+
+.creator-title span{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    color:#ffe7a3;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.creator-title h3{
+    margin:20px 0 18px;
+    font-size:42px;
+    font-weight:800;
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #fff4c7,
+            #ffd86b
+        );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 15px rgba(255,214,109,.2);
+}
+
+.creator-title p{
+    max-width:680px;
+    margin:auto;
+    color:#d7e4ff;
+    font-size:13px;
+    line-height:1.9;
+}
+
+/* ========================= */
+
+.creator-grid{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:24px;
+}
+
+/* ========================= */
+
+.creator-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:20px;
+    border-radius:22px;
+    text-decoration:none;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.08),
+            rgba(120,170,255,.05)
+        );
+
+    border:1px solid rgba(255,255,255,.12);
+    transition:.35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.creator-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+    );
+    transform:translateX(-120%);
+    transition:.6s;
+}
+
+.creator-card:hover::before{
+    transform:translateX(120%);
+}
+
+.creator-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,214,109,.25);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.18);
+}
+
+/* ========================= */
+
+.creator-card img{
+
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid rgba(255,255,255,.25);
+    flex-shrink:0;
+}
+
+.creator-card h3{
+    color:#fff;
+    font-size:18px;
+    margin-bottom:6px;
+}
+
+.creator-card span{
+    color:#c8d8ff;
+    font-size:11px;
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width:768px){
+
+    .creator-section{
+        margin:40px auto;
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .creator-section::before{
+        width:200px;
+        height:200px;
+        top:-80px;
+        right:-60px;
+    }
+
+    .creator-section::after{
+        width:170px;
+        height:170px;
+        left:-50px;
+        bottom:-50px;
+    }
+
+    .creator-title{
+        margin-bottom:22px;
+    }
+
+    .creator-title span{
+        padding:6px 14px;
+        font-size:10px;
+        letter-spacing:1px;
+    }
+
+    .creator-title h3{
+        font-size:24px;
+    }
+
+    .creator-title p{
+        font-size:10px;
+        line-height:1.7;
+    }
+
+    .creator-grid{
+        grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+        gap:12px;
+    }
+
+    .creator-card{
+        gap:12px;
+        padding:14px;
+        border-radius:16px;
+    }
+
+    .creator-card img{
+        width:54px;
+        height:54px;
+    }
+
+    .creator-card h3{
+        font-size:14px;
+    }
+
+    .creator-card span{
+        font-size:9px;
+    }
+
+}
+
+@media (max-width:540px){
+
+    /* Giữ nguyên bố cục desktop */
+
+    .creator-section{
+        margin:28px auto;
+        padding:14px;
+        border-radius:16px;
+    }
+
+    .creator-section::before{
+        width:130px;
+        height:130px;
+        top:-45px;
+        right:-35px;
+    }
+
+    .creator-section::after{
+        width:110px;
+        height:110px;
+        left:-30px;
+        bottom:-30px;
+    }
+
+    .creator-title{
+        margin-bottom:16px;
+    }
+
+    .creator-title span{
+        padding:4px 10px;
+        font-size:8px;
+        letter-spacing:1px;
+    }
+
+    .creator-title h3{
+        margin:10px 0 8px;
+        font-size:18px;
+    }
+
+    .creator-title p{
+        font-size:8px;
+        line-height:1.6;
+    }
+
+    .creator-grid{
+        grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+        gap:8px;
+    }
+
+    .creator-card{
+        gap:8px;
+        padding:10px;
+        border-radius:12px;
+    }
+
+    .creator-card img{
+        width:40px;
+        height:40px;
+    }
+
+    .creator-card h3{
+        font-size:11px;
+        margin-bottom:3px;
+    }
+
+    .creator-card span{
+        font-size:7px;
+    }
+
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-banner{
+    position:relative;
+    overflow:hidden;
+    border-radius:32px;
+    margin:70px auto;
+    min-height:420px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.18);
+}
+
+/* ảnh */
+
+.gallery-banner img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:
+        blur(5px)
+        brightness(.55);
+
+    transform:scale(1.08);
+}
+
+/* phủ màu */
+
+.gallery-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8,20,45,.45),
+            rgba(32,61,114,.35),
+            rgba(255,214,109,.08)
+        );
+}
+
+/* nội dung */
+
+.gallery-content{
+    position:relative;
+    z-index:2;
+    max-width:760px;
+    text-align:center;
+    padding:20px;
+}
+
+.gallery-tag{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+    color:#ffe7a3;
+    font-size:14px;
+    letter-spacing:2px;
+    transform:translateY(-25px);
+}
+
+.gallery-content h2{
+    width:100%;
+    display:block;
+    text-align:center;
+    white-space:nowrap;
+    margin:22px auto 16px;
+    font-size:52px;
+    line-height:1.15;
+
+    background:linear-gradient(
+        180deg,
+        #fff,
+        #fff5cf,
+        #ffd86b
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:
+        drop-shadow(0 0 14px rgba(255,214,109,.3));
+}
+
+.gallery-content p{
+    max-width:640px;
+    margin:auto;
+    color:#edf4ff;
+    line-height:1.9;
+    font-size:15px;
+}
+
+/* button */
+
+.gallery-btn{
+    margin-top:34px;
+    border:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 28px;
+    border-radius:999px;
+    background:
+        linear-gradient(
+            135deg,
+            #6f9dff,
+            #88b7ff
+        );
+
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    transition:.35s;
+    box-shadow:
+        0 10px 30px rgba(110,156,255,.35);
+}
+
+.gallery-btn span{
+    font-size:20px;
+}
+
+.gallery-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 18px 38px rgba(110,156,255,.45);
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:540px){
+
+    .gallery-banner{
+        min-height:220px;
+        margin:28px auto;
+        border-radius:18px;
+        box-shadow:
+            0 10px 24px rgba(0,0,0,.16);
+    }
+
+    .gallery-banner img{
+        filter:
+            blur(3px)
+            brightness(.6);
+
+        transform:scale(1.04);
+    }
+
+    .gallery-content{
+        max-width:260px;
+        padding:16px;
+    }
+
+    .gallery-tag{
+        padding:5px 12px;
+        font-size:8px;
+        letter-spacing:1px;
+    }
+
+    .gallery-content h2{
+        margin:12px 0 8px;
+        font-size:22px;
+        line-height:1.15;
+    }
+
+    .gallery-content p{
+        font-size:10px;
+        line-height:1.6;
+    }
+
+    .gallery-btn{
+        margin-top:16px;
+        padding:9px 16px;
+        gap:6px;
+        font-size:10px;
+    }
+
+    .gallery-btn span{
+        font-size:13px;
+    }
+
+}
+
+@media (max-width:420px){
+
+    .gallery-banner{
+        min-height:190px;
+        margin:22px auto;
+        border-radius:16px;
+    }
+
+    .gallery-content{
+        max-width:220px;
+        padding:12px;
+    }
+
+    .gallery-tag{
+        font-size:7px;
+        padding:4px 10px;
+    }
+
+    .gallery-content h2{
+        font-size:18px;
+        margin:10px 0 6px;
+    }
+
+    .gallery-content p{
+        font-size:8px;
+    }
+
+    .gallery-btn{
+        margin-top:12px;
+        padding:7px 13px;
+        font-size:8px;
+        gap:5px;
+    }
+
+    .gallery-btn span{
+        font-size:11px;
+    }
+
+}
+
+/* =========================
+   GALLERY POPUP
+========================= */
+
+.gallery-modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(5,12,25,.72);
+    backdrop-filter:blur(8px);
+    z-index:99999;
+    padding:24px;
+}
+
+.gallery-modal.active{
+    display:flex;
+}
+
+/* ========================= */
+
+.gallery-panel{
+    position:relative;
+    width:min(520px,100%);
+    padding:38px;
+    border-radius:28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,35,70,.95),
+            rgba(35,55,100,.95)
+        );
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.35);
+    text-align:center;
+    animation:popup .28s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:translateY(18px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* ========================= */
+
+.gallery-label{
+    display:inline-block;
+    padding:7px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.06);
+    color:#ffe7a3;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+.gallery-panel h2{
+    margin:18px 0 14px;
+    width:100%;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size:clamp(23px,3vw,34px);
+    background:linear-gradient(
+        180deg,
+        #fff,
+        #fff4c7,
+        #ffd96d
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.gallery-panel p{
+    color:#d9e7ff;
+    font-size:14px;
+    line-height:1.8;
+    max-width:420px;
+    margin:0 auto 28px;
+}
+
+/* ========================= */
+
+.gallery-category{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+}
+
+.gallery-category button{
+
+    cursor:pointer;
+
+    border:none;
+
+    padding:11px 18px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:#e9f2ff;
+
+    font-size:14px;
+
+    transition:.28s;
+}
+
+.gallery-category button:hover{
+
+    background:#6e9cff;
+
+    color:#fff;
+
+    transform:translateY(-2px);
+}
+
+/* ========================= */
+
+.gallery-close{
+
+    position:absolute;
+
+    top:18px;
+    right:18px;
+
+    width:38px;
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:17px;
+
+    transition:.25s;
+}
+
+.gallery-close:hover{
+
+    background:#ff6b6b;
+
+    transform:rotate(90deg);
+}
+
+body.modal-open{
+    overflow:hidden;
+    touch-action:none;
+}
+
+/* ========================= */
+
+@media(max-width:768px){
+
+.gallery-panel{
+
+    width:100%;
+
+    padding:28px 22px;
+
+    border-radius:22px;
+}
+
+.gallery-panel h2{
+
+    font-size:28px;
+}
+
+.gallery-panel p{
+
+    font-size:13px;
+}
+
+.gallery-category{
+
+    gap:10px;
+}
+
+.gallery-category button{
+
+    width:100%;
+
+    padding:13px;
+}
+
+}
+
+/* =========================
+   POPUP 2 (ART GALLERY)
+========================= */
+
+.art-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 26px;
+    background: rgba(8, 15, 30, .75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100000;
+}
+
+.art-modal.active {
+    display: flex;
+}
+
+/* ========================= */
+
+.art-panel {
+    width: min(980px, 100%);
+    height: min(760px, 88vh);
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 28px;
+    padding: 26px;
+    background: linear-gradient(145deg, rgba(18, 35, 70, .96), rgba(33, 54, 95, .96));
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .35);
+    
+    /* Hiệu ứng trượt lên nhẹ nhàng khi mở popup */
+    animation: artPopupFade 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes artPopupFade {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Tùy chỉnh thanh cuộn */
+.art-panel::-webkit-scrollbar {
+    width: 6px;
+}
+.art-panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, .05);
+    border-radius: 999px;
+}
+.art-panel::-webkit-scrollbar-thumb {
+    background: #7ca7ff;
+    border-radius: 999px;
+}
+
+/* ========================= */
+
+.art-header {
+    position: sticky;
+    top: -26px; /* Khớp với padding của panel để dính sát mép trên */
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Background gradient để che ảnh khi cuộn lên */
+    background: linear-gradient(145deg, rgba(18, 35, 70, .98), rgba(33, 54, 95, .98));
+    
+    /* Mở rộng margin/padding để lấp đầy phần đỉnh */
+    margin: -26px -26px 24px -26px;
+    padding: 20px 26px;
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.art-back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    height: 40px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(15, 28, 55, .75);
+    color: #ffe7a3;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.art-back:hover {
+    transform: translateX(-2px);
+    box-shadow: 0 0 18px rgba(255, 214, 109, .15);
+}
+
+.art-close {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(15, 28, 55, .75);
+    color: white;
+    font-size: 18px;
+    transition: .25s;
+}
+
+.art-close:hover {
+    background: #ff7171;
+    transform: rotate(90deg);
+}
+
+/* ========================= */
+
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 18px;
+}
+
+.art-item {
+    overflow: hidden;
+    border-radius: 18px;
+    background: #111c34;
+    cursor: pointer;
+    transition: .3s;
+    aspect-ratio: 1;
+}
+
+.art-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+}
+
+.art-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: .35s;
+}
+
+.art-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   MEDIA QUERIES (TABLET & MOBILE)
+========================================== */
+
+/* Tablet (<= 768px) */
+@media(max-width: 768px) {
+    .art-panel {
+        padding: 20px;
+        border-radius: 24px;
+    }
+    .art-header {
+        top: -20px;
+        margin: -20px -20px 20px -20px;
+        padding: 16px 20px;
+    }
+    .art-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+}
+
+/* Mobile Nhỏ (<= 540px) - TẠO DÁNG POPUP THẨM MỸ (Tỷ lệ ~ 3:4) */
+@media(max-width: 540px) {
+    .art-modal {
+        /* Giữ lề xung quanh để popup lơ lửng, không chạm mép màn hình */
+        padding: 16px; 
+    }
+
+    .art-panel {
+        /* Ép chiều rộng và chiều cao tối đa để tạo thành form hình chữ nhật đứng (card) */
+        width: 100%;
+        max-width: 380px; /* Giới hạn độ rộng để không bị bè ra trên máy ngang */
+        height: 72vh;     /* Chiều cao 72% màn hình, tạo form tỷ lệ đẹp */
+        
+        padding: 16px;
+        border-radius: 22px;
+    }
+
+    .art-header {
+        top: -16px;
+        margin: -16px -16px 16px -16px;
+        padding: 14px 16px;
+    }
+
+    /* Thu nhỏ nút bấm cho cân đối với khung nhỏ */
+    .art-back {
+        height: 36px;
+        padding: 0 14px;
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    .art-close {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .art-grid {
+        /* Khóa cứng 2 cột trên điện thoại */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .art-item {
+        border-radius: 14px;
+    }
+}
+
+/* =========================
+   LIGHTBOX (ĐỒNG BỘ POPUP 2)
+========================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 26px;
+    background: rgba(5, 10, 20, .85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100001;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+/* ========================= */
+
+.lightbox-panel {
+    /* Kích thước chuẩn bằng đúng Popup 2 */
+    width: min(980px, 100%);
+    height: min(760px, 88vh);
+    
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 28px;
+    padding: 26px;
+    
+    background: #182b4f;
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .45);
+    position: relative;
+    
+    /* Hiệu ứng trượt mở giống Popup 2 */
+    animation: lightboxFade 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes lightboxFade {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Tùy chỉnh thanh cuộn */
+.lightbox-panel::-webkit-scrollbar { width: 6px; }
+.lightbox-panel::-webkit-scrollbar-track { background: rgba(255, 255, 255, .05); border-radius: 999px; }
+.lightbox-panel::-webkit-scrollbar-thumb { background: #7ca7ff; border-radius: 999px; }
+
+/* ========================= */
+
+.lightbox-header {
+    position: sticky;
+    top: -26px;
+    display: flex;
+    justify-content: flex-end;
+    margin: -26px -26px 20px;
+    padding: 18px 26px;
+    
+    /* Thêm màu nền để che ảnh/chữ khi cuộn lên */
+    background: #182b4f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px 28px 0 0;
+    z-index: 20;
+}
+
+.lightbox-close {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, .12);
+    color: white;
+    font-size: 18px;
+    transition: .25s;
+}
+
+.lightbox-close:hover {
+    background: #ff7171;
+    transform: rotate(90deg);
+}
+
+/* ========================= */
+
+.lightbox-panel img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.2); /* Tạo nền tối nhẹ phía sau ảnh */
+}
+
+.lightbox-info {
+    margin-top: 24px;
+    display: grid;
+    gap: 16px;
+}
+
+.credit-item small {
+    display: block;
+    margin-bottom: 6px;
+    color: #9fc2ff;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.credit-item strong {
+    color: white;
+    font-size: 15px;
+}
+
+.credit-item p {
+    color: #d7e5ff;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.credit-item a {
+    color: #ffe7a3;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.credit-item a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 214, 109, 0.5);
+}
+
+/* ========================= */
+
+.lightbox-footer {
+    position: sticky;
+    bottom: -26px;
+    margin: 24px -26px -26px;
+    padding: 18px 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    
+    /* Thêm màu nền để che ảnh/chữ khi cuộn xuống */
+    background: #182b4f;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 28px 28px;
+    z-index: 20;
+}
+
+.lightbox-footer button {
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #6e9cff, #4f79c8);
+    color: white;
+    font-weight: 600;
+    transition: .25s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.lightbox-footer button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(110, 156, 255, 0.35);
+}
+
+/* ==========================================
+   MEDIA QUERIES (TABLET & MOBILE)
+========================================== */
+
+/* Tablet (<= 768px) */
+@media(max-width: 768px) {
+    .lightbox-panel {
+        padding: 20px;
+        border-radius: 24px;
+    }
+    .lightbox-header {
+        top: -20px;
+        margin: -20px -20px 20px;
+        padding: 16px 20px;
+    }
+    .lightbox-footer {
+        bottom: -20px;
+        margin: 20px -20px -20px;
+        padding: 16px 20px;
+    }
+}
+
+/* Mobile Nhỏ (<= 540px) - TẠO DÁNG POPUP THẨM MỸ (Tỷ lệ ~ 3:4) */
+@media(max-width: 540px) {
+    .lightbox {
+        padding: 16px; 
+    }
+
+    .lightbox-panel {
+        /* Form thẻ đứng giống hệt Popup 2 */
+        width: 100%;
+        max-width: 380px; 
+        height: 72vh;     
+        
+        padding: 16px;
+        border-radius: 22px;
+    }
+
+    .lightbox-header {
+        top: -16px;
+        margin: -16px -16px 16px;
+        padding: 12px 16px;
+    }
+
+    .lightbox-footer {
+        bottom: -16px;
+        margin: 16px -16px -16px;
+        padding: 14px 16px;
+    }
+
+    .lightbox-close {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    /* Thu nhỏ ảnh trên mobile để có chỗ hiển thị text thông tin (credit) */
+    .lightbox-panel img {
+        max-height: 40vh;
+        border-radius: 14px;
+    }
+
+    .lightbox-info {
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .credit-item p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .lightbox-footer button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   FLOATING LETTER BUTTON (Nút lơ lửng)
+========================================== */
+.floating-letter-btn {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    z-index: 99990;
+    
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(150, 190, 255, 0.4);
+    
+    /* Hiệu ứng kính (Glassmorphism) */
+    background: linear-gradient(135deg, rgba(30, 60, 110, 0.65), rgba(15, 30, 65, 0.85));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    color: #ffd86b; /* Màu vàng sao */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(110, 156, 255, 0.25);
+    
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation: floatGlow 3s ease-in-out infinite;
+}
+
+.floating-letter-btn svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.floating-letter-btn:hover {
+    right: 20px; /* Lùi ra một chút khi di chuột */
+    background: linear-gradient(135deg, rgba(50, 90, 160, 0.75), rgba(20, 45, 90, 0.95));
+    border-color: rgba(255, 214, 109, 0.6);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(255, 214, 109, 0.35);
+}
+
+.floating-letter-btn:hover svg {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+@keyframes floatGlow {
+    0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 15px rgba(110,156,255,0.25); }
+    50% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 25px rgba(110,156,255,0.5); }
+}
+
+/* ==========================================
+   FLOATING LETTER BUTTON (Nút lơ lửng)
+========================================== */
+.floating-letter-btn {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    z-index: 99990;
+    
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(150, 190, 255, 0.4);
+    
+    /* Hiệu ứng kính (Glassmorphism) */
+    background: linear-gradient(135deg, rgba(30, 60, 110, 0.65), rgba(15, 30, 65, 0.85));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    color: #ffd86b; /* Màu vàng sao */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(110, 156, 255, 0.25);
+    
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation: floatGlow 3s ease-in-out infinite;
+}
+
+.floating-letter-btn svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.floating-letter-btn:hover {
+    right: 20px; /* Lùi ra một chút khi di chuột */
+    background: linear-gradient(135deg, rgba(50, 90, 160, 0.75), rgba(20, 45, 90, 0.95));
+    border-color: rgba(255, 214, 109, 0.6);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(255, 214, 109, 0.35);
+}
+
+.floating-letter-btn:hover svg {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+@keyframes floatGlow {
+    0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 15px rgba(110,156,255,0.25); }
+    50% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 25px rgba(110,156,255,0.5); }
+}
+
+/* ==========================================
+   LETTER MODAL (Khung Popup Bức Thư)
+========================================== */
+.crt-letter-modal {
+    position: fixed;
+    inset: 0;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(5, 12, 25, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 99999;
+}
+
+.crt-letter-modal.active {
+    display: flex;
+}
+
+.crt-letter-panel {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    
+    /* GIỚI HẠN CHIỀU CAO: 85% màn hình để tạo form chữ nhật */
+    max-height: 85vh; 
+    display: flex;
+    flex-direction: column;
+    
+    /* Giảm padding bên phải để nhường chỗ cho thanh cuộn */
+    padding: 35px 15px 35px 30px; 
+    border-radius: 28px;
+    
+    background: linear-gradient(145deg, rgba(20, 40, 80, 0.85), rgba(10, 20, 45, 0.95));
+    border: 1px solid rgba(150, 190, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(110, 156, 255, 0.05);
+        
+    animation: letterPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes letterPop {
+    from { opacity: 0; transform: translateY(30px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Nút Đóng - Giữ cố định góc trên phải */
+.crt-letter-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #b9c8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 10;
+}
+
+.crt-letter-close svg { width: 18px; height: 18px; }
+
+.crt-letter-close:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* KHU VỰC NỘI DUNG CÓ THỂ CUỘN (SCROLL) */
+.crt-letter-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 15px; /* Tạo khoảng cách với thanh cuộn */
+}
+
+/* Tùy chỉnh thanh cuộn cho đẹp mắt */
+.crt-letter-content::-webkit-scrollbar { width: 4px; }
+.crt-letter-content::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+.crt-letter-content::-webkit-scrollbar-thumb { background: rgba(110, 156, 255, 0.5); border-radius: 10px; }
+
+.letter-header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.letter-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 214, 109, 0.12);
+    border: 1px solid rgba(255, 214, 109, 0.25);
+    color: #ffd86b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.letter-header h2 {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(180deg, #ffffff, #d9e5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.letter-body p {
+    color: #d9e5ff;
+    font-size: 14.5px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+.letter-signature {
+    margin-top: 30px;
+    text-align: right;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(150, 190, 255, 0.2);
+}
+
+.letter-signature small {
+    display: block;
+    color: #9bb8f3;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.letter-signature strong {
+    color: #ffd86b;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: cursive, sans-serif;
+    text-shadow: 0 0 10px rgba(255, 214, 109, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 540px) {
+    .floating-letter-btn {
+        width: 44px;
+        height: 44px;
+        right: 10px;
+    }
+    .floating-letter-btn svg { width: 20px; height: 20px; }
+    
+    .crt-letter-panel {
+        max-height: 75vh; /* Ngắn lại một chút trên điện thoại */
+        padding: 28px 10px 28px 22px; /* Cân chỉnh lại để vừa thanh cuộn */
+        border-radius: 22px;
+    }
+    
+    .crt-letter-content {
+        padding-right: 12px;
+    }
+    
+    .letter-header h2 { font-size: 18px; }
+    .letter-body p { font-size: 13px; line-height: 1.7; }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<div class="container">
+    <nav class="star-nav">
+    <a href="index.html">
+        ✦ Vườn Sao
+    </a>
+    <a href="thienthu.html" class="active">
+        ✦ Thiên Thư
+    </a>
+    <a href="dieu-uoc.html">
+        ✦ Điều Ước
+    </a>
+    <a href="thu-gui-tinh-ha.html">
+        ✦ Thư Gửi Tinh Hà
+    </a>
+<span class="nav-stars">୨ৎ</span>
+</nav>
+
+<section class="hero-magazine">
+
+    <!-- Background Blur -->
+    <div class="hero-bg">
+        <img src="nen.png" alt="Ảnh">
+    </div>
+
+    <div class="hero-wrapper">
+
+        <!-- Card -->
+        <div class="profile-card">
+
+            <div class="profile-cover">
+                <img src="star.png" alt="">
+            </div>
+
+            <div class="profile-content">
+
+                <span class="chapter">
+                    ✦ About Astra
+                </span>
+
+                <h3>
+                    🐟 cá muối.
+                </h3>
+
+                <p>
+                    chatbot creator · writer
+                </p>
+
+                <div class="author-info">
+
+                    <div>
+                        <small>État d'esprit</small>
+                        <strong>ᶻ 𝗓 𐰁</strong>
+                    </div>
+
+                    <div>
+                        <small>Communauté</small>
+                        <strong>Doki & GGAI</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="hero-right">
+
+            <span class="hero-small">
+
+                Livre des Étoiles
+
+            </span>
+
+            <h1 class="hero-title">
+              À bu xê dô?!
+            </h1>
+
+            <p class="hero-description">
+
+                Chào đằng đó, tui là <strong>star</strong>, người gánh vác cái tinh hà này!
+
+                Thiên Thư giống như một cuốn sổ nhỏ star ghi lại vài câu chuyện phía sau mỗi nhân vật, vài ý tưởng còn dang dở và và tất tần tật về bản thân star, như một kiểu để chúng ta làm quen nhau đó.
+
+                Hy vọng đằng đó không đặt ra ranh giới giữa người dùng và nhà sáng tạo, tui cũng giống như mọi người thôi hihi.
+
+                Cứ xem nơi này như một góc nhỏ để mình cùng trò chuyện, khám phá những thế giới mới và gặp gỡ những nhân vật mà star đã gửi gắm rất nhiều tâm huyết nha. Love y'all ₊˚♡           </p>
+
+            <blockquote>
+
+                "Người đi trăm ngả vẫn hướng về nơi trời gặp đất,<br>
+                mai này gặp lại vẫn là chúng ta."
+
+            </blockquote>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="y2k-divider">
+    <span></span>
+    <div class="y2k-symbol">
+        ✦ ⋆｡°✩ ୨ৎ ✩°｡⋆ ✦
+    </div>
+    <span></span>
+</div>
+
+<section class="contact-box">
+
+    <p>
+       Chuyện là dăm ba bận meta lại nổi loạn cho star bay acc fibi một lần, nên tui lưu contact ở đây nhé, sợ cảnh chia ly lắm ùi TT.    </p>
+
+    <div class="contact-links">
+         <a href="https://www.dokichat.club/vi/profile" target="_blank">🩷 Doki</a>
+
+        <a href="#" target="_blank">🌐 Facebook</a>
+
+        <a href="https://www.tiktok.com/@ghlissr__?lang=vi-VN" target="_blank">🎵 TikTok</a>
+
+        <a href="https://discord.com/channels/1509607948555653171/1526071741586346137" target="_blank">💬 Discord</a>
+
+        <a href="https://discord.gg/micsf" target="_blank">✨ Discord Server</a>
+    </div>
+
+</section>
+
+<section class="gallery-banner">
+    <img src="ptb.jpg" alt="Gallery">
+    <div class="gallery-overlay"></div>
+    <div class="gallery-content">
+        <span class="gallery-tag">✦ Phòng trưng bày</span>
+        <h2>⋆˚₊ Bắt tín hiệu từ tinh hà!</h2>
+        <p>Kỷ niệm nhỏ với các tình iu hihi. ୨ৎ</p>
+        <button class="gallery-btn">
+            <span>🖼️</span>
+            Mở phòng trưng bày
+        </button>
+    </div>
+</section>
+
+<section class="creator-section">
+
+    <div class="creator-title">
+        <span>✦⋆.˚ Những ngôi sao nhỏ ở gần tinh hà của star</span>
+        <h3>Ghé chơi nhà họ nữa nhé!</h3>
+
+        <p>
+            Mỗi người đều có một chất riêng, một thế giới riêng và đều đặt rất nhiều tâm huyết
+    vào những nhân vật mình tạo ra. Nếu có dịp thì nhấn vào từng ô bên dưới rồi đi dạo
+    một vòng nha, star tin là sẽ không làm đằng đó thất vọng đâu. ୨ৎ
+        </p>
+    </div>
+    <div class="creator-grid">
+
+        <a href="https://www.facebook.com/share/18FbdRLzn4/" class="creator-card" target="_blank">
+            <img src="phudu.png" alt="">
+            <div>
+                <h3>phù du.</h3>
+                <span>TXVT · Ngọt · Hiện đại</span>
+            </div>
+        </a>
+
+        <a href="https://tatuyennhi-design.github.io/index.html/" class="creator-card" target="_blank">
+            <img src="hy.jpg" alt="">
+            <div>
+                <h3>Tiệm Nhà Hy</h3>
+                <span>Hệ thống · Hiện đại · Cung đấu · Việt Nam Xưa</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+        <footer class="footer">
+            <p>© 2026 <a href="#">Star</a> | <a href="#">Le Bel Astre</a>. Toàn bộ nội dung nhân vật thuộc bản quyền của người sáng tạo.</p>
+        </footer>
+    </div>
+
+</main>
+
+<!-- POPUP 1 -->
+<div class="gallery-modal" id="galleryModal">
+    <div class="gallery-panel">
+        <button class="gallery-close" id="closeGallery">✕</button>
+        <span class="gallery-label">✦ Phòng trưng bày</span>
+        <h2>˚₊ ‧꒰ა sao nhỏ sao lớn ໒꒱‧₊˚</h2>
+        <p>
+            Một góc nhỏ lưu giữ những món quà xinh yêu mà mọi người đã gửi đến tinh hà. ୨ৎ<br><br>
+            ☄️ Chỉ ngắm nhìn thôi nhé, xin đừng mang những bức tranh này đi nơi khác khi chưa có sự đồng ý của người vẽ. Cảm ơn vì đã cùng gìn giữ góc nhỏ này. ♡
+        </p>
+        <div class="gallery-category">
+            <button>Sao nhỏ</button>
+            <button>Sao lớn</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP 2 -->
+<div class="art-modal" id="artModal">
+    <div class="art-panel">
+        <div class="art-header">
+            <button class="art-back" id="backCategory">← Sao nhỏ</button>
+            <button class="art-close" id="closeArt">✕</button>
+        </div>
+
+        <!-- Sao nhỏ -->
+        <div class="art-grid" data-category="Sao nhỏ" style="display: none;">
+            <div class="art-item">
+                <img
+                    src="saonho1.webp"
+                    data-full="saonho1.webp"
+                    data-artist="ry bel"
+                    data-gift="ry bel bel"
+                    data-message="star cố lên!!! bé kael cổ vũ nè"
+                    alt=""
+                >
+            </div>
+            <div class="art-item">
+                <img
+                    src="saonho2.png"
+                    data-full="saonho2.png"
+                    data-artist="ry bel"
+                    data-gift="ry siu bel"
+                    data-message='Hà Dĩ Trú "{{use}} ơi cứu chó iemmm!!! TT"'
+                    alt=""
+                >
+            </div>
+            <div class="art-item">
+                <img
+                    src="saonho4.png"
+                    data-full="saonho4.png"
+                    data-artist="ry bel"
+                    data-gift="ry siu bel"
+                    data-message='Hà Dĩ Trú "{{use}} ơi cứu chó iemmm!!! TT"'
+                    alt=""
+                >
+            </div>
+            <div class="art-item">
+                <img
+                    src="saonho3.png"
+                    data-full="saonho3.png"
+                    data-artist="ry bel"
+                    data-gift="ry bel but cte"
+                    data-message="hữu duyên tặng star"
+                    alt=""
+                >
+            </div>
+            <div class="art-item">
+                <img
+                    src="saonho5.png"
+                    data-full="saonho5.png"
+                    data-artist="Shino Star"
+                    data-gift="ry cte bel 1000kg"
+                    data-message='Duật tung chưởng: "Ăn gạch điiii"'
+                    alt=""
+                >
+            </div>
+            <div class="art-item">
+                <img
+                    src="saonho6.png"
+                    data-full="saonho6.png"
+                    data-artist="qiao cte"
+                    data-gift="qiao cte"
+                    data-message= "sì két anh Tae Oh"
+                    alt=""
+                >
+            </div>
+        </div> <!-- ĐÃ THÊM THẺ ĐÓNG CHO SAO NHỎ -->
+
+        <!-- Sao lớn -->
+        <div class="art-grid" data-category="Sao lớn" style="display: none;">
+            <div class="art-item">
+                <img
+                    src="saolon1.jpg"
+                    data-full="saolon1.jpg"
+                    data-artist="Mint Soda"
+                    data-gift="ry bel"
+                    data-message="star và đàn thỏ ry vừa hằm vừa bel"
+                    alt=""
+                >
+            </div>
+            <div class="art-item">
+                <img
+                    src="saolon2.png"
+                    data-full="saolon2.png"
+                    data-artist="adu"
+                    data-gift="star tặng ry bel"
+                    data-message="cảm ơn ry đã iu thương các sao nhỏ, iu ryy"
+                    alt=""
+                >
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-panel">
+    <div class="lightbox-header">
+        <button class="lightbox-close" id="closeLightbox">✕</button>
+    </div>
+        <img id="lightboxImage" src="" alt="Full view">
+
+        <div class="lightbox-info">
+            <div class="credit-item">
+                <small>🎨 Người vẽ</small>
+                <strong id="artistName"></strong>
+            </div>
+            <div class="credit-item">
+                <small>🎁 Người tặng</small>
+                <strong id="giftName"></strong>
+            </div>
+            <div class="credit-item">
+                <small>💌 Lời nhắn</small>
+                <p id="artistMessage"></p>
+            </div>
+        </div>
+
+        <div class="lightbox-footer">
+            <button id="prevArt">←</button>
+            <span id="artCounter">1 / 1</span>
+            <button id="nextArt">→</button>
+        </div>
+    </div>
+</div>
+
+<!-- NÚT BẤM LƠ LỬNG BÊN PHẢI -->
+<button class="floating-letter-btn" id="openLetterBtn" title="Thư từ Creator">
+    <!-- Icon Bức Thư SVG -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9 6 9-6l-9-6l-9 6z"></path>
+        <path d="M21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9"></path>
+        <path d="M3 13l9 6 9-6"></path>
+    </svg>
+</button>
+
+<!-- KHUNG POPUP BỨC THƯ -->
+<div class="crt-letter-modal" id="crtLetterModal">
+    <div class="crt-letter-panel">
+        <!-- Nút Đóng -->
+        <button class="crt-letter-close" id="closeLetterBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        
+        <!-- Nội dung thư -->
+        <div class="crt-letter-content">
+            <div class="letter-header">
+                <span class="letter-tag">✦ Đón sao về trời</span>
+                <h2>hù! gửi mấy tình iu đã ghé qua ♡</h2>
+            </div>
+            
+            <div class="letter-body">
+                <p>helu mấy trai xinh gái đẹp!</p>
+                <p>cảm ơn mn đã ghé qua góc nhỏ này nha. đây là nơi sốp gom góp những "sao nhỏ" của mình lại, mỗi em đều có câu chuyện riêng và được chăm chút bằng rất nhiều yêu thương. cũng nhờ những lời góp ý và feedback của mn mà sốp nhận ra mình vẫn còn nhiều thiếu sót. sốp vẫn đang học hỏi từng ngày, cố gắng hoàn thiện hơn để những "sao nhỏ" sau này có thể mang đến trải nghiệm tốt hơn cho mọi người. thật ra ban đầu sốp tạo mấy "sao nhỏ" này chỉ để vui thôi á kkk. kiểu nghĩ ra ý tưởng gì là viết đó, thấy hợp gu mình thì đăng, chứ lúc đó cũng không nghĩ sẽ có ai chơi nhiều đâu. nhiều khi viết xong đọc lại còn kiểu ừm, chắc cũng được ha rồi bấm đăng luôn =)) mà không ngờ sau này lại có người rcm char của sốp cho bạn bè, rồi người này truyền người kia, có mn còn quay lại chơi tiếp, lưu char, để feedback, kể cảm nhận hay chia sẻ mấy đoạn chat mà sốp từ chối nhận con luôn =))))))) chắc vì mấy "sao nhỏ" này đều được tạo từ đúng gu của sốp, nên khi gặp được những người cũng thích cùng một kiểu nhân vật, cùng một bầu không khí, sốp thấy như tìm được đúng đồng bọn vậy á. cảm giác có người hiểu cái mình muốn truyền tải vui lắm luôn. từ đó sốp cũng bắt đầu muốn làm chỉn chu hơn một chút, đầu tư logic và cả hình ảnh nữa. mong là trong lúc dạo một vòng, mn sẽ tìm được một nhân vật hợp gu, hoặc chỉ đơn giản là có thêm một chút niềm vui sau một ngày dài. nếu thích thì đừng ngại để lại vài lời nhắn cho sốp nha. sốp đọc hết đó, vui lắm luôn 🥹. 
+
+hoặc nếu có thể, hãy làm phiền, hối sốp ra char vì sốp máu m mà hihi.
+
+chúc mấy tình iu luôn gặp nhiều điều dễ thương, giữ được thật nhiều nụ cười, và cảm ơn vì đã ghé qua vườn sao nhỏ này. hẹn gặp mn ở những vì sao tiếp theo nhé! ✨</p>
+            </div>
+            
+            <div class="letter-signature">
+                <small>Thân mến,</small>
+                <strong>star bel💫</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+/* =========================
+   PHÒNG TRƯNG BÀY
+========================= */
+
+const galleryModal = document.getElementById("galleryModal");
+const artModal = document.getElementById("artModal");
+const lightbox = document.getElementById("lightbox");
+const body = document.body;
+
+const lightboxImage = document.getElementById("lightboxImage");
+const artistName = document.getElementById("artistName");
+const giftName = document.getElementById("giftName");
+const artistMessage = document.getElementById("artistMessage");
+const artCounter = document.getElementById("artCounter");
+
+let currentLightboxIndex = 0;
+let visibleImages = []; 
+
+function openGallery() {
+    galleryModal.classList.add("active");
+    body.classList.add("modal-open");
+}
+
+function closeAllGallery() {
+    lightbox.classList.remove("active");
+    artModal.classList.remove("active");
+    galleryModal.classList.remove("active");
+    body.classList.remove("modal-open");
+}
+
+/* --- XỬ LÝ SỰ KIỆN GALLERY & CATEGORY --- */
+
+const galleryBtn = document.querySelector(".gallery-btn");
+if (galleryBtn) galleryBtn.onclick = openGallery;
+
+document.getElementById("closeGallery").onclick = closeAllGallery;
+
+galleryModal.onclick = (e) => {
+    if (e.target === galleryModal) closeAllGallery();
+};
+
+document.querySelectorAll(".gallery-category button").forEach(btn => {
+    btn.onclick = () => {
+        const categoryName = btn.textContent.trim();
+        
+        galleryModal.classList.remove("active");
+        artModal.classList.add("active");
+        
+        const artBackBtn = document.getElementById("backCategory");
+        if (artBackBtn) artBackBtn.textContent = "← " + categoryName;
+
+        visibleImages = []; // Reset mảng ảnh cho danh mục mới
+
+        document.querySelectorAll(".art-grid").forEach(grid => {
+            if (grid.dataset.category === categoryName) {
+                grid.style.display = "grid";
+                
+                // Lấy ĐÚNG các ảnh thuộc danh mục đang chọn
+                const imagesInGrid = grid.querySelectorAll(".art-item img");
+                imagesInGrid.forEach((img, index) => {
+                    visibleImages.push(img);
+                    
+                    img.onclick = () => {
+                        openLightbox(index);
+                    };
+                });
+            } else {
+                grid.style.display = "none";
+            }
+        });
+    };
+});
+
+document.getElementById("backCategory").onclick = () => {
+    artModal.classList.remove("active");
+    galleryModal.classList.add("active");
+};
+
+document.getElementById("closeArt").onclick = closeAllGallery;
+
+artModal.onclick = (e) => {
+    if (e.target === artModal) closeAllGallery();
+};
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+function updateLightbox() {
+    if (visibleImages.length === 0) return;
+
+    if (currentLightboxIndex < 0) {
+        currentLightboxIndex = visibleImages.length - 1;
+    } else if (currentLightboxIndex >= visibleImages.length) {
+        currentLightboxIndex = 0;
+    }
+
+    const img = visibleImages[currentLightboxIndex];
+    lightboxImage.src = img.getAttribute("data-full") || img.getAttribute("src");
+    artistName.textContent = img.getAttribute("data-artist") || "-";
+    giftName.textContent = img.getAttribute("data-gift") || "-";
+    artistMessage.textContent = img.getAttribute("data-message") || "-";
+    
+    artCounter.textContent = `${currentLightboxIndex + 1} / ${visibleImages.length}`;
+}
+
+function openLightbox(index) {
+    currentLightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add("active");
+}
+
+document.getElementById("nextArt").onclick = () => {
+    currentLightboxIndex++;
+    updateLightbox();
+};
+
+document.getElementById("prevArt").onclick = () => {
+    currentLightboxIndex--;
+    updateLightbox();
+};
+
+document.getElementById("closeLightbox").onclick = () => {
+    lightbox.classList.remove("active");
+};
+
+lightbox.onclick = (e) => {
+    if (e.target === lightbox) lightbox.classList.remove("active");
+};
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        if (lightbox.classList.contains("active")) {
+            lightbox.classList.remove("active");
+        } else {
+            closeAllGallery();
+        }
+        return;
+    }
+
+    if (!lightbox.classList.contains("active")) return;
+    
+    if (e.key === "ArrowRight") {
+        currentLightboxIndex++;
+        updateLightbox();
+    } else if (e.key === "ArrowLeft") {
+        currentLightboxIndex--;
+        updateLightbox();
+    }
+});
+
+// Tính năng mở/đóng thư Creator
+document.addEventListener('DOMContentLoaded', function() {
+    const openBtn = document.getElementById('openLetterBtn');
+    const closeBtn = document.getElementById('closeLetterBtn');
+    const letterModal = document.getElementById('crtLetterModal');
+
+    // Mở thư
+    openBtn.addEventListener('click', function() {
+        letterModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Khóa cuộn trang nền
+    });
+
+    // Đóng thư khi bấm nút X
+    closeBtn.addEventListener('click', function() {
+        letterModal.classList.remove('active');
+        document.body.style.overflow = ''; // Mở lại cuộn trang
+    });
+
+    // Đóng thư khi bấm ra ngoài vùng tối (overlay)
+    letterModal.addEventListener('click', function(e) {
+        if (e.target === letterModal) {
+            letterModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
