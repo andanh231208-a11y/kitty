@@ -2178,6 +2178,48 @@ body.no-scroll {
     .music-popup { right: 15px; width: calc(100vw - 30px); max-width: 300px; }
 }
 
+/* =========================
+   LƯỢT TRUY CẬP INTRO
+========================= */
+
+#introVisitor {
+    position: absolute;
+    left: 22px;
+    bottom: 18px;
+
+    color: rgba(220, 235, 255, .55);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .3px;
+
+    padding: 7px 12px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .045);
+    border: 1px solid rgba(180, 220, 255, .12);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    z-index: 5;
+    pointer-events: none;
+}
+
+#visitorCount {
+    color: rgba(220, 235, 255, .8);
+    font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+    #introVisitor {
+        left: 12px;
+        bottom: 12px;
+        font-size: 10.5px;
+        padding: 6px 9px;
+    }
+}
+
 </style>
 
 </head>
@@ -2202,6 +2244,11 @@ Hãy chọn một ngôi sao trong vườn trời này, biết đâu nó đang ch
             <div class="loading-bar"></div>
         </div>
     </div>
+
+    <div id="introVisitor">
+        ✦ <span id="visitorCount">0</span> lượt ghé thăm
+    </div>
+
 </div>
 
     <div class="container">
@@ -3965,6 +4012,21 @@ document.addEventListener("click", (e) => {
     // Lưu thiết bị lập tức để F5 không bị mất dấu đỏ
     localStorage.setItem('star_user_likes', JSON.stringify(userLikedCards));
 });
+
+/* ========================= HỆ THỐNG LƯỢT TRUY CẬP ========================= */ 
+
+const visitorCountEl = document.getElementById("visitorCount");
+async function trackVisitor() { if (!visitorCountEl) return; 
+ try {
+/* Lấy IP của người truy cập */
+const ipResponse = await fetch("https://api.ipify.org?format=json");
+const ipData = await ipResponse.json(); const ip = ipData.ip; /* Tạo ID riêng cho IP */
+const safeIP = ip.replace(/\./g, "_").replace(/:/g, "_"); const visitorRef = database.ref("visitors/" + safeIP); /* Kiểm tra IP này đã từng truy cập chưa */ 
+const snapshot = await visitorRef.once("value"); 
+     if (!snapshot.exists()) { /* IP mới */ await visitorRef.set({ ip: ip, firstVisit: firebase.database.ServerValue.TIMESTAMP, lastVisit: firebase.database.ServerValue.TIMESTAMP, visits: 1 }); /* Tăng tổng lượt truy cập */ await database.ref("visitor_stats/total").transaction( current => (current || 0) + 1 ); } else { /* IP cũ */ await visitorRef.update({ lastVisit: firebase.database.ServerValue.TIMESTAMP }); } /* Hiển thị tổng lượt */ const totalSnapshot = await database.ref("visitor_stats/total").once("value"); visitorCountEl.textContent = Number(totalSnapshot.val() || 0).toLocaleString("vi-VN"); } 
+ catch (error) { console.error("Không thể ghi nhận lượt truy cập:", error); /* Không để lỗi visitor làm hỏng web */ 
+ visitorCountEl.textContent = "—"; } } 
+    trackVisitor();
 </script>
 
 </body>
