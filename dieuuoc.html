@@ -1,3 +1,4 @@
+--- START OF FILE dieuuoc.html ---
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -16,7 +17,6 @@
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
-        // Khởi tạo EmailJS (THAY BẰNG PUBLIC KEY CỦA BẠN)
         (function() { emailjs.init("YOUR_PUBLIC_KEY"); })();
     </script>
 
@@ -68,7 +68,7 @@
         .nav-stars { margin-left: 6px; font-size: 17px; background: linear-gradient(180deg, #ffffff 0%, #fff5cf 45%, #ffd86b 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 12px rgba(255, 214, 109, 0.7)); pointer-events: none; }
 
         /* ==========================================
-           BỐ CỤC CHÍNH & THẨM MỸ (Giữ nguyên)
+           BỐ CỤC CHÍNH & THẨM MỸ
         ========================================== */
         .header-title { text-align: center; margin: 30px 0 40px; animation: floatTitle 4s ease-in-out infinite; }
         @keyframes floatTitle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
@@ -95,7 +95,7 @@
 
         .card-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 20px; border-bottom: 1px dashed rgba(255,255,255,0.15); padding-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         
-        .card-scroll-area { max-height: 280px; overflow-y: auto; padding-right: 8px; display: flex; flex-direction: column; gap: 14px; }
+        .card-scroll-area { max-height: 480px; overflow-y: auto; padding-right: 8px; display: flex; flex-direction: column; gap: 14px; }
         .card-scroll-area::-webkit-scrollbar { width: 5px; }
         .card-scroll-area::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 10px; }
         .card-scroll-area::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #6e9cff, #4f79c8); border-radius: 10px; }
@@ -113,22 +113,6 @@
         }
         @keyframes bgShift { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
 
-        .bxh-tabs { display: flex; gap: 10px; margin-bottom: 15px; background: rgba(0,0,0,0.25); padding: 6px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
-        .bxh-tabs button { flex: 1; padding: 8px 0; border: none; border-radius: 12px; background: transparent; color: var(--text-muted); font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 13px;}
-        .bxh-tabs button.active { background: linear-gradient(135deg, rgba(110, 156, 255, 0.3), rgba(79, 121, 200, 0.3)); color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-
-        .rank-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-        .rank-item:hover { background: rgba(255,255,255,0.08); transform: translateX(4px); }
-        .rank-num { font-size: 22px; font-weight: 800; width: 30px; text-align: center; }
-        .rank-1 .rank-num { color: #ffd86b; text-shadow: 0 0 10px rgba(255, 214, 109, 0.6); }
-        .rank-2 .rank-num { color: #c0c0c0; text-shadow: 0 0 10px rgba(192, 192, 192, 0.6); }
-        .rank-3 .rank-num { color: #cd7f32; text-shadow: 0 0 10px rgba(205, 127, 50, 0.6); }
-        .rank-info { flex: 1; }
-        .rank-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-        .rank-stats { font-size: 12px; color: var(--text-muted); }
-        .btn-visit-mini { padding: 6px 14px; border-radius: 10px; background: linear-gradient(135deg, #6e9cff, #4f79c8); color: #fff; text-decoration: none; font-size: 11px; font-weight: 600; transition: 0.25s; box-shadow: 0 4px 10px rgba(110, 156, 255, 0.2); }
-        .btn-visit-mini:hover { transform: scale(1.05); box-shadow: 0 6px 15px rgba(110, 156, 255, 0.5); }
-
         .wish-input { width: 100%; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(150, 190, 255, 0.2); border-radius: 14px; padding: 16px; color: #fff; font-family: inherit; font-size: 14px; outline: none; margin-bottom: 14px; transition: 0.3s; box-shadow: inset 0 2px 8px rgba(0,0,0,0.2); }
         .wish-input:focus { border-color: rgba(255, 214, 109, 0.6); background: rgba(0, 0, 0, 0.4); box-shadow: 0 0 15px rgba(255, 214, 109, 0.15), inset 0 2px 8px rgba(0,0,0,0.3); }
         textarea.wish-input { height: 110px; resize: none; }
@@ -138,8 +122,35 @@
         .wish-item { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(150, 190, 255, 0.12); border-radius: 18px; padding: 18px; position: relative; z-index: 1; transition: 0.3s;}
         .wish-item:hover { background: rgba(255, 255, 255, 0.08); }
         
-        .wish-item.top-1 { border: 1.5px solid rgba(255, 214, 109, 0.6); background: linear-gradient(145deg, rgba(255, 214, 109, 0.08), rgba(255, 255, 255, 0.02)); box-shadow: 0 0 20px rgba(255, 214, 109, 0.15); }
-        .rank-badge { font-size: 20px; float: left; margin-right: 8px; filter: drop-shadow(0 0 8px rgba(255,214,109,0.8)); }
+        /* Hiệu ứng điều ước đã hoàn thành (Tối màu, gạch ngang, nhãn hoàn thành) */
+        .wish-item.fulfilled {
+            background: rgba(10, 18, 35, 0.45);
+            border: 1px solid rgba(150, 190, 255, 0.08);
+            opacity: 0.65;
+            filter: grayscale(0.25);
+        }
+        .wish-item.fulfilled:hover {
+            opacity: 0.85;
+            background: rgba(12, 22, 42, 0.6);
+        }
+        .wish-item.fulfilled .wish-text {
+            text-decoration: line-through;
+            color: rgba(185, 200, 230, 0.65);
+        }
+        .fulfilled-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffd86b;
+            background: rgba(255, 214, 109, 0.15);
+            border: 1px solid rgba(255, 214, 109, 0.35);
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+            text-decoration: none !important;
+        }
 
         .wish-text { font-size: 14px; line-height: 1.7; color: #e9efff; font-style: italic; margin-bottom: 12px; word-wrap: break-word; }
         .wish-meta { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 12px; }
@@ -160,6 +171,108 @@
         .wish-like-btn:hover { background: rgba(255, 75, 75, 0.15); }
         .wish-like-btn.liked { background: linear-gradient(135deg, #ff4757, #ff6b81); color: #fff; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4); border-color: transparent; }
         .wish-like-btn:active { transform: scale(0.9); }
+
+        /* ==========================================
+           CARD NHÂN VẬT ĐÃ THÀNH HIỆN THỰC
+        ========================================== */
+        .fulfilled-char-card {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 16px;
+            background: linear-gradient(135deg, rgba(255, 214, 109, 0.08), rgba(20, 38, 75, 0.6));
+            border: 1px solid rgba(255, 214, 109, 0.4);
+            border-radius: 20px;
+            padding: 16px;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 214, 109, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .fulfilled-char-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 214, 109, 0.7);
+        }
+
+        .fulfilled-char-card img {
+            width: 90px;
+            aspect-ratio: 7/10;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 214, 109, 0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .fulfilled-char-info h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .fulfilled-char-info .tagline {
+            font-size: 12.5px;
+            color: rgba(210, 225, 255, 0.8);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .fulfilled-wishes-box {
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 2.5px solid #ffd86b;
+            padding: 6px 10px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .fulfilled-wishes-box p {
+            font-size: 11.5px;
+            color: #ffd86b;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .fulfilled-wishes-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fulfilled-wishes-box li {
+            font-size: 11px;
+            color: rgba(233, 239, 255, 0.75);
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .fulfilled-btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .fulfilled-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4f8cff, #67c4ff);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(60, 140, 255, 0.3);
+            transition: 0.2s;
+        }
+
+        .fulfilled-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(60, 140, 255, 0.5);
+        }
 
         .empty-state { text-align: center; padding: 30px 10px; color: var(--text-muted); font-style: italic; font-size: 14px; }
         .empty-state svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 10px; }
@@ -186,13 +299,12 @@
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
         /* ==========================================
-           RESPONSIVE CHUẨN INDEX
+           RESPONSIVE
         ========================================== */
         @media(max-width:768px){
             .container{ width:92%; margin-bottom:30px; padding:14px; }
             .star-nav{ width:calc(100% - 24px); max-width:none; justify-content:center; gap:4px; padding:5px; top:8px; }
             .star-nav a{ padding:7px 8px; font-size:12px; }
-            /* Đồng bộ padding panel modal cho mobile */
             .modal-panel { padding: 24px; }
         }
 
@@ -201,178 +313,60 @@
             .star-nav{ width:calc(100% - 8px); max-width:100%; height:30px; margin:8px auto 16px; padding:0 10px; display:flex; align-items:center; justify-content:space-evenly; gap:2px; border-radius:999px; top:8px; }
             .star-nav a{ flex:0 1 auto; min-width:0; display:flex; align-items:center; justify-content:center; padding:6px 8px; font-size:10px; line-height:1; white-space:nowrap; }
             .nav-stars{ font-size:12px; margin-left:3px; }
-            
-            /* Giữ nguyên các nội dung đặc thù Điều ước trên mobile */
             .glass-card { padding: 20px; border-radius: 20px; }
-            .rank-item { padding: 10px; }
-            .btn-visit-mini { padding: 5px 10px; font-size: 10px; }
             .modal-panel { padding: 20px; border-radius: 24px; }
             .modal-header h2 { font-size: 18px; }
+
+            .fulfilled-char-card {
+                grid-template-columns: 75px 1fr;
+                padding: 12px;
+                gap: 12px;
+            }
+            .fulfilled-char-card img {
+                width: 75px;
+            }
+            .fulfilled-char-info h3 {
+                font-size: 15px;
+            }
         }
 
         .footer { margin-top:50px; padding-top:25px; border-top: 1px solid rgba(150,190,255,.14); text-align:center; font-size:13px; color: rgba(210,225,255,.55); }
         .footer a { color:#8db8ff; text-decoration:none; }
 
-/* =========================================
-   FLOATING TOOLS (CUỘN TRANG & TRÌNH PHÁT NHẠC)
-========================================= */
-.floating-tools {
-    position: fixed;
-    bottom: 30px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 9999;
-    align-items: center;
-}
-
-/* Nút cuộn */
-.scroll-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(20, 38, 75, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(150, 190, 255, 0.3);
-    color: #8db8ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-}
-.scroll-btn.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-.scroll-btn:hover {
-    background: rgba(100, 150, 255, 0.2);
-    color: #fff;
-    transform: translateY(-3px);
-}
-
-/* Đĩa nhạc xoay */
-.music-disk-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(135deg, #4f8cff, #ff8da1);
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(79, 140, 255, 0.4);
-    transition: transform 0.3s ease;
-    position: relative;
-}
-.music-disk-btn:hover {
-    transform: scale(1.05);
-}
-.music-disk-btn img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    animation: spinDisk 6s linear infinite;
-    animation-play-state: paused; /* Mặc định dừng */
-}
-.music-disk-btn.playing img {
-    animation-play-state: running; /* Xoay khi đang phát */
-}
-@keyframes spinDisk { 100% { transform: rotate(360deg); } }
-
-/* Nhịp điệu phát nhạc mini */
-.music-waves {
-    position: absolute;
-    top: -5px; right: -5px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 50%;
-    width: 20px; height: 20px;
-    display: flex; justify-content: center; align-items: center; gap: 2px;
-    opacity: 0; transition: 0.3s;
-}
-.music-disk-btn.playing .music-waves { opacity: 1; }
-.music-waves span {
-    width: 2px; height: 8px;
-    background: #fff; border-radius: 2px;
-    animation: waveBounce 1s infinite alternate ease-in-out;
-}
-.music-waves span:nth-child(2) { animation-delay: 0.2s; }
-.music-waves span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes waveBounce { 0% { height: 3px; } 100% { height: 12px; } }
-
-/* =========================================
-   POPUP TRÌNH PHÁT NHẠC (IOS STYLE)
-========================================= */
-.music-popup {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 280px;
-    background: rgba(15, 32, 60, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(150, 190, 255, 0.2);
-    border-radius: 24px;
-    padding: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(100, 150, 255, 0.15);
-    transform: translateY(20px) scale(0.9);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 9998;
-}
-.music-popup.active {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-    visibility: visible;
-}
-.music-info { text-align: center; margin-bottom: 15px; }
-.music-info h4 { color: #fff; font-size: 15px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.music-info p { color: #8db8ff; font-size: 12px; }
-
-/* Thanh tiến trình (Seekbar) */
-.music-progress-container { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-.music-time { font-size: 11px; color: #a0b8d8; min-width: 35px; }
-.music-slider {
-    flex: 1;
-    -webkit-appearance: none;
-    width: 100%; height: 4px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-    outline: none; cursor: pointer;
-}
-.music-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
-
-/* Nút điều khiển */
-.music-controls { display: flex; justify-content: center; align-items: center; gap: 20px; }
-.music-controls button {
-    background: none; border: none; cursor: pointer;
-    color: #fff; transition: 0.2s;
-    display: flex; justify-content: center; align-items: center;
-}
-.music-controls button:hover { color: #8db8ff; transform: scale(1.1); }
-.music-btn-play {
-    width: 45px; height: 45px;
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 50% !important;
-}
-
-@media (max-width: 540px) {
-    .floating-tools { bottom: 20px; right: 15px; }
-    .music-popup { right: 15px; width: calc(100vw - 30px); max-width: 300px; }
-}
-    </style>
+        /* Floating Tools & Player */
+        .floating-tools { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; align-items: center; }
+        .scroll-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(20, 38, 75, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(150, 190, 255, 0.3); color: #8db8ff; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; opacity: 0; visibility: hidden; transform: translateY(10px); }
+        .scroll-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .scroll-btn:hover { background: rgba(100, 150, 255, 0.2); color: #fff; transform: translateY(-3px); }
+        .music-disk-btn { width: 50px; height: 50px; border-radius: 50%; padding: 3px; background: linear-gradient(135deg, #4f8cff, #ff8da1); cursor: pointer; box-shadow: 0 0 20px rgba(79, 140, 255, 0.4); transition: transform 0.3s ease; position: relative; }
+        .music-disk-btn:hover { transform: scale(1.05); }
+        .music-disk-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; animation: spinDisk 6s linear infinite; animation-play-state: paused; }
+        .music-disk-btn.playing img { animation-play-state: running; }
+        @keyframes spinDisk { 100% { transform: rotate(360deg); } }
+        .music-waves { position: absolute; top: -5px; right: -5px; background: rgba(0,0,0,0.6); border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center; gap: 2px; opacity: 0; transition: 0.3s; }
+        .music-disk-btn.playing .music-waves { opacity: 1; }
+        .music-waves span { width: 2px; height: 8px; background: #fff; border-radius: 2px; animation: waveBounce 1s infinite alternate ease-in-out; }
+        .music-waves span:nth-child(2) { animation-delay: 0.2s; }
+        .music-waves span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes waveBounce { 0% { height: 3px; } 100% { height: 12px; } }
+        .music-popup { position: fixed; bottom: 90px; right: 20px; width: 280px; background: rgba(15, 32, 60, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(150, 190, 255, 0.2); border-radius: 24px; padding: 20px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(100, 150, 255, 0.15); transform: translateY(20px) scale(0.9); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 9998; }
+        .music-popup.active { transform: translateY(0) scale(1); opacity: 1; visibility: visible; }
+        .music-info { text-align: center; margin-bottom: 15px; }
+        .music-info h4 { color: #fff; font-size: 15px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        .music-info p { color: #8db8ff; font-size: 12px; }
+        .music-progress-container { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .music-time { font-size: 11px; color: #a0b8d8; min-width: 35px; }
+        .music-slider { flex: 1; -webkit-appearance: none; width: 100%; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; outline: none; cursor: pointer; }
+        .music-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .music-controls { display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .music-controls button { background: none; border: none; cursor: pointer; color: #fff; transition: 0.2s; display: flex; justify-content: center; align-items: center; }
+        .music-controls button:hover { color: #8db8ff; transform: scale(1.1); }
+        .music-btn-play { width: 45px; height: 45px; background: rgba(255, 255, 255, 0.1) !important; border-radius: 50% !important; }
+        @media (max-width: 540px) {
+            .floating-tools { bottom: 20px; right: 15px; }
+            .music-popup { right: 15px; width: calc(100vw - 30px); max-width: 300px; }
+        }
+</style>
 </head>
 
 <body>
@@ -405,45 +399,37 @@
                 </form>
             </section>
 
-            <!-- 2. Điều Ước Yêu Thích (CHỈ HIỆN TOP 3 - KHÔNG CÓ NÚT XEM TẤT CẢ) -->
-            <section class="glass-card">
-                <h2 class="card-title">✨ Lời Nguyện Cầu Yêu Thích Nhất</h2>
-                <div class="card-scroll-area" id="topWishesList" style="max-height: none; overflow: hidden;">
-                    <div class="empty-state">Đang tải...</div>
-                </div>
-            </section>
-
-            <!-- 3. Dòng Chảy Tinh Tú -->
+            <!-- 2. Dòng Chảy Tinh Tú -->
             <section class="glass-card animated-bg-card">
-                <h2 class="card-title" style="position:relative; z-index:2; border-color: rgba(120,170,255,0.3);">📜 Dòng Chảy Tinh Tú (Mới nhất)</h2>
+                <h2 class="card-title" style="position:relative; z-index:2; border-color: rgba(120,170,255,0.3);">📜 Dòng Chảy Tinh Tú</h2>
                 <div class="card-scroll-area" id="recentWishesList" style="position:relative; z-index:2;">
                     <div class="empty-state">Đang tải...</div>
                 </div>
                 <button class="btn-see-all" onclick="openModal('modalRecentWishes', '🌌 Dòng Chảy Tinh Tú')" style="position:relative; z-index:2;">Xem tất cả</button>
             </section>
 
-            <!-- 4. Bảng Xếp Hạng -->
-            <section class="glass-card">
-                <h2 class="card-title">👑 Bảng Xếp Hạng Tinh Tú</h2>
-                <div class="bxh-tabs">
-                    <button class="active" onclick="switchTab('top-char')">Top Character</button>
-                    <button onclick="switchTab('top-tuan')">Top Tuần</button>
-                    <button onclick="switchTab('top-thang')">Top Tháng</button>
-                </div>
-
-                <div class="card-scroll-area" id="bxhContent">
-                    <div class="empty-state">Đang đồng bộ dữ liệu từ Tinh Hà...</div>
-                </div>
-                <button class="btn-see-all" onclick="openModal('modalBxh', '👑 Bảng Xếp Hạng Chi Tiết')">Xem tất cả</button>
-            </section>
-
-            <!-- 5. Điều Ước Thành Hiện Thực -->
+            <!-- 3. Điều Ước Thành Hiện Thực -->
             <section class="glass-card">
                 <h2 class="card-title" style="color: var(--gold); border-color: rgba(255,214,109,0.2);">🌟 Đã Thành Hiện Thực</h2>
                 <div class="card-scroll-area" id="fulfilledList">
-                    <div class="empty-state">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4M12 20V4M8 8l8 8M16 8l-8 8"></path></svg>
-                        <br>Chưa có điều ước nào được hoàn thành.<br>Tinh Hà vẫn đang nỗ lực!
+                    <!-- Card Nhân Vật Hà Uyển Linh -->
+                    <div class="fulfilled-char-card">
+                        <img src="hul.png" alt="Hà Uyển Linh" loading="lazy">
+                        <div class="fulfilled-char-info">
+                            <h3>Hà Uyển Linh <span style="font-size:11px; font-weight:700; color:#ffd86b; background:rgba(255,214,109,0.18); border:1px solid rgba(255,214,109,0.4); padding:2px 8px; border-radius:999px;">✓ Đã ra mắt</span></h3>
+                            <p class="tagline">Máu của người làm nhà họ Hà có mùi rất thơm.</p>
+                            <div class="fulfilled-wishes-box">
+                                <p>✦ Ước nguyện đã đáp ứng:</p>
+                                <ul>
+                                    <li>• "mong có thêm nhân vật nữ~~~"</li>
+                                    <li>• "CHAR NỮ USER NAM ĐI SỐP THỂ LOẠI NÀO CŨNG NHAIII"</li>
+                                </ul>
+                            </div>
+                            <div class="fulfilled-btn-group">
+                                <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Ky_-h4VPGJN578Gnt_ZKytySE_YgtVun%22%5D,%22action%22:%22open%22,%22userId%22:%22105171518628850021069%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" target="_blank" class="fulfilled-btn">Trò chuyện (GGAI)</a>
+                                <a href="index.html" class="fulfilled-btn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(150,190,255,0.25);">Ghé Vườn Sao</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button class="btn-see-all" onclick="openModal('modalFulfilled', '🌟 Điều Ước Đã Hoàn Thành')">Xem thêm</button>
@@ -463,34 +449,25 @@
                 <h2 id="modalTitle">Tiêu đề</h2>
                 <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Nội dung sẽ được JS inject vào đây -->
-            </div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
 
-<!-- ==========================================
-     GÓC PHẢI DƯỚI: NÚT CUỘN & MUSIC PLAYER
-=========================================== -->
+<!-- FLOATING TOOLS & MUSIC PLAYER -->
 <div class="floating-tools">
-    <!-- Nút cuộn lên -->
     <button id="scrollTopBtn" class="scroll-btn" title="Lên đầu trang">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
-    
-    <!-- Nút cuộn xuống -->
     <button id="scrollBottomBtn" class="scroll-btn" title="Xuống cuối trang">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </button>
 
-    <!-- Đĩa nhạc mini -->
     <div id="musicToggleBtn" class="music-disk-btn">
         <img id="musicCover" src="avt.jpg" alt="Music">
         <div class="music-waves"><span></span><span></span><span></span></div>
     </div>
 </div>
 
-<!-- POPUP TRÌNH PHÁT NHẠC IOS -->
 <div id="musicPopup" class="music-popup">
     <div class="music-info">
         <h4 id="songTitle">Đang tải nhạc...</h4>
@@ -508,9 +485,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
         </button>
         <button id="playPauseSong" class="music-btn-play">
-            <!-- Icon Play (Mặc định) -->
             <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <!-- Icon Pause (Ẩn) -->
             <svg id="pauseIcon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
         </button>
         <button id="nextSong">
@@ -523,18 +498,15 @@
 
 <script>
 /* ========================================================
-   HIỆU ỨNG GỬI ĐIỀU ƯỚC (DISCORD STARFALL EFFECT CHUẨN)
+   HIỆU ỨNG GỬI ĐIỀU ƯỚC
 ======================================================== */
 function triggerDiscordStarfall() {
-    // 1. Tạo Overlay Nền Tinh Hà Ảo Diệu
     const overlay = document.createElement('div');
     overlay.className = 'starfall-overlay';
     document.body.appendChild(overlay);
 
-    // Kích hoạt hiệu ứng Fade in
     setTimeout(() => overlay.classList.add('active'), 50);
 
-    // 2. Rải các đốm sao lấp lánh nổ nhẹ (Sparkles)
     const sparkleCount = window.innerWidth < 768 ? 20 : 40;
     const symbols = ['✦', '✨', '⋆', '·'];
     for (let i = 0; i < sparkleCount; i++) {
@@ -544,21 +516,16 @@ function triggerDiscordStarfall() {
         sparkle.style.left = Math.random() * 100 + 'vw';
         sparkle.style.top = Math.random() * 100 + 'vh';
         sparkle.style.fontSize = (10 + Math.random() * 20) + 'px';
-        
-        // Căn thời gian nổ
         sparkle.style.animationDelay = (Math.random() * 0.5) + 's';
-        
         overlay.appendChild(sparkle);
     }
 
-    // 3. Gọi Mưa Sao Băng Khủng
     const meteorCount = window.innerWidth < 768 ? 30 : 60; 
     for (let i = 0; i < meteorCount; i++) {
         setTimeout(() => {
             const meteor = document.createElement('div');
             meteor.className = 'meteor';
             
-            // Đổ sao từ góc trên và bên phải
             if (Math.random() > 0.3) {
                 meteor.style.top = (Math.random() * 100 - 20) + 'vh'; 
                 meteor.style.left = '110vw'; 
@@ -567,22 +534,15 @@ function triggerDiscordStarfall() {
                 meteor.style.left = (Math.random() * 100 + 20) + 'vw'; 
             }
             
-            // Custom tỷ lệ để truyền vào keyframes
             const scale = 0.5 + Math.random() * 1.5;
             meteor.style.setProperty('--scale', scale);
-            
             meteor.style.animationDuration = (0.3 + Math.random() * 0.6) + 's';
-            
-            // Phải append thẳng vào body để tránh lỗi toạ độ của position: fixed khi nằm trong div con
             document.body.appendChild(meteor);
-            
-            // Dọn dẹp DOM
             setTimeout(() => meteor.remove(), 1500);
 
-        }, i * 35); // Nhịp độ dồn dập
+        }, i * 35);
     }
 
-    // 4. Dọn dẹp Overlay sau 3.5 giây
     setTimeout(() => {
         overlay.classList.remove('active');
         setTimeout(() => overlay.remove(), 500); 
@@ -604,119 +564,37 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-const likesRef = database.ref("character_likes");
 const wishesRef = database.ref("wishes");
 
 /* ========================================================
-   LOGIC BẢNG XẾP HẠNG TỪ FIREBASE
+   KIỂM TRA ĐIỀU ƯỚC ĐÃ THÀNH HIỆN THỰC
 ======================================================== */
-const charNames = {
-    "ace-merceron": "Ace Merceron", "luc-chien-dinh": "Lục Chiến Đình",
-    "co-yen-than": "Cố Yến Thần", "hoac-chi-quan": "Hoắc Chí Quân",
-    "kael-donovan": "Kael Donovan", "bui-khanh-luan": "Bùi Khánh Luân",
-    "nghiem-so-yen": "Nghiêm Sở Yến", "to-ve-chau": "Tô Vệ Châu",
-    "sam-da": "Sầm Dã", "uc-van-huc": "Úc Vãn Húc",
-    "ha-di-tru": "Hà Dĩ Trú", "ky-thua-chau": "Kỷ Thừa Châu",
-    "huynh-thi-ngoc-dao": "Huỳnh Thị Ngọc Đào", "bach-than-duat": "Bách Thần Duật",
-    "on-van-du": "Ôn Vãn Dư", "kang-tae-oh": "Kang Tae Oh", "seo-jihyun": "Seo Jihyun"
-};
-
-let topCharactersHTML = ""; 
-
-likesRef.on("value", (snapshot) => {
-    const data = snapshot.val() || {};
-    let sortedChars = Object.keys(data).map(key => ({
-        id: key,
-        likes: data[key],
-        name: charNames[key] || key
-    })).sort((a, b) => b.likes - a.likes);
-
-    let html = "";
-    sortedChars.forEach((char, index) => {
-        let rankClass = index === 0 ? "rank-1" : index === 1 ? "rank-2" : index === 2 ? "rank-3" : "";
-        html += `
-            <div class="rank-item ${rankClass}">
-                <div class="rank-num">${index + 1}</div>
-                <div class="rank-info">
-                    <div class="rank-name">${char.name}</div>
-                    <div class="rank-stats"><span>❤️ ${char.likes}</span></div>
-                </div>
-                <a href="index.html" class="btn-visit-mini">Ghé xem</a>
-            </div>
-        `;
-    });
-    topCharactersHTML = html;
-    document.getElementById("bxhContent").innerHTML = html || '<div class="empty-state">Chưa có dữ liệu</div>';
-});
-
-function switchTab(tabId) {
-    const buttons = document.querySelectorAll('.bxh-tabs button');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    const content = document.getElementById("bxhContent");
-    if(tabId === 'top-char') {
-        content.innerHTML = topCharactersHTML;
-    } else {
-        content.innerHTML = '<div class="empty-state">Đang cập nhật thuật toán thời gian...<br>Sẽ sớm ra mắt!</div>';
-    }
+function isFulfilledWish(content) {
+    if (!content) return false;
+    const norm = content.toLowerCase().trim();
+    return norm.includes("mong có thêm nhân vật nữ") || 
+           norm.includes("char nữ user nam đi sốp thể loại nào cũng nhaiii") ||
+           norm.includes("char nu user nam di sop");
 }
 
 /* ========================================================
-   LOGIC XỬ LÝ ĐIỀU ƯỚC (LIKE / UNLIKE + TOP 3)
+   LOGIC XỬ LÝ ĐIỀU ƯỚC (XẾP THEO TIM, ĐẨY ĐÃ HOÀN THÀNH XUỐNG CUỐI)
 ======================================================== */
 let allWishesHTML = "";
 let currentModalType = "";
 
-wishesRef.on("value", (snapshot) => {
-    const data = snapshot.val() || {};
-    
-    let wishesArray = Object.keys(data).map(key => ({
-        id: key,
-        ...data[key]
-    }));
-
-    // 1. Dòng Chảy Tinh Tú
-    let recentArray = [...wishesArray].sort((a, b) => b.timestamp - a.timestamp);
-    let recentHtml = "";
-    recentArray.forEach(wish => {
-        recentHtml += renderWishItem(wish);
-    });
-    allWishesHTML = recentHtml || '<div class="empty-state">Chưa có điều ước nào. Hãy là người đầu tiên!</div>';
-    document.getElementById("recentWishesList").innerHTML = allWishesHTML;
-
-    // Cập nhật DOM trực tiếp nếu Popup đang mở
-    const modalBody = document.getElementById("modalBody");
-    const modal = document.getElementById("universalModal");
-    if (modal.classList.contains("active") && currentModalType === 'modalRecentWishes') {
-        let scrollPos = modalBody.scrollTop;
-        modalBody.innerHTML = allWishesHTML;
-        modalBody.scrollTop = scrollPos;
-    }
-
-    // 2. CHỈ LẤY TOP 3 YÊU THÍCH NHẤT
-    let top3Array = [...wishesArray].filter(w => (w.likes || 0) > 0).sort((a, b) => b.likes - a.likes).slice(0, 3);
-    let topHtml = "";
-    top3Array.forEach((wish, index) => {
-        let rankBadge = index === 0 ? "🥇" : index === 1 ? "🥈" : "🥉";
-        let isTop1Class = index === 0 ? "top-1" : "";
-        topHtml += renderWishItem(wish, rankBadge, isTop1Class);
-    });
-    
-    document.getElementById("topWishesList").innerHTML = topHtml || '<div class="empty-state">Chưa có điều ước nào được thả tim.</div>';
-});
-
-// Render HTML
-function renderWishItem(wish, rankBadge = "", extraClass = "") {
+function renderWishItem(wish) {
     const isLiked = localStorage.getItem('wish_liked_' + wish.id) ? "liked" : "";
     const nameStr = wish.name ? ` - Từ: ${wish.name}` : " - Từ: Ẩn danh";
     const dateStr = new Date(wish.timestamp).toLocaleDateString('vi-VN');
+    const fulfilled = isFulfilledWish(wish.content || "");
     
-    const badgeHtml = rankBadge ? `<span class="rank-badge">${rankBadge}</span>` : "";
+    const fulfilledTagHtml = fulfilled ? `<div class="fulfilled-tag">✦ Đã thực hiện: Hà Uyển Linh</div>` : "";
+    const fulfilledClass = fulfilled ? "fulfilled" : "";
 
     return `
-        <div class="wish-item ${extraClass}">
-            ${badgeHtml}
+        <div class="wish-item ${fulfilledClass}">
+            ${fulfilledTagHtml}
             <div class="wish-text">${wish.content}</div>
             <div class="wish-meta">
                 <span class="wish-id">${dateStr}${nameStr}</span>
@@ -728,7 +606,43 @@ function renderWishItem(wish, rankBadge = "", extraClass = "") {
     `;
 }
 
-// Logic Thả tim VÀ Bỏ tim (Đồng bộ mọi nơi)
+wishesRef.on("value", (snapshot) => {
+    const data = snapshot.val() || {};
+    
+    let wishesArray = Object.keys(data).map(key => ({
+        id: key,
+        ...data[key]
+    }));
+
+    // Tách riêng điều ước đang mở và điều ước đã hoàn thành
+    let activeWishes = wishesArray.filter(w => !isFulfilledWish(w.content || ""));
+    let fulfilledWishes = wishesArray.filter(w => isFulfilledWish(w.content || ""));
+
+    // Sắp xếp nhiều tim đến ít tim
+    activeWishes.sort((a, b) => (b.likes || 0) - (a.likes || 0) || (b.timestamp || 0) - (a.timestamp || 0));
+    fulfilledWishes.sort((a, b) => (b.likes || 0) - (a.likes || 0) || (b.timestamp || 0) - (a.timestamp || 0));
+
+    // Đẩy điều ước đã hoàn thành xuống cuối danh sách Dòng Chảy Tinh Tú
+    let combinedWishes = [...activeWishes, ...fulfilledWishes];
+
+    let streamHtml = "";
+    combinedWishes.forEach(wish => {
+        streamHtml += renderWishItem(wish);
+    });
+
+    allWishesHTML = streamHtml || '<div class="empty-state">Chưa có điều ước nào. Hãy là người đầu tiên!</div>';
+    document.getElementById("recentWishesList").innerHTML = allWishesHTML;
+
+    // Cập nhật DOM trực tiếp nếu Modal Dòng Chảy đang mở
+    const modalBody = document.getElementById("modalBody");
+    const modal = document.getElementById("universalModal");
+    if (modal.classList.contains("active") && currentModalType === 'modalRecentWishes') {
+        let scrollPos = modalBody.scrollTop;
+        modalBody.innerHTML = allWishesHTML;
+        modalBody.scrollTop = scrollPos;
+    }
+});
+
 function toggleLikeWish(wishId, btnElement) {
     btnElement.style.pointerEvents = 'none'; 
     setTimeout(() => { btnElement.style.pointerEvents = 'auto'; }, 600);
@@ -765,10 +679,8 @@ function submitWish(e) {
     btn.innerText = "⏳ Đang gửi...";
     btn.disabled = true;
 
-    // Kích hoạt Hiệu ứng Discord Starfall
     triggerDiscordStarfall();
 
-    // 1. Lưu vào Firebase
     const newWishRef = wishesRef.push();
     newWishRef.set({
         name: nameInput,
@@ -777,7 +689,6 @@ function submitWish(e) {
         likes: 0
     });
 
-    // 2. Gửi mail qua EmailJS
     emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
         from_name: nameInput,
         message: contentInput,
@@ -789,7 +700,6 @@ function submitWish(e) {
             btn.disabled = false;
         }, 2500); 
     }).catch((err) => {
-        console.error("Lỗi EmailJS:", err);
         setTimeout(() => {
             alert("Đã lưu lên web, Tinh Hà đã nhận được ước nguyện của bạn rồi!");
             document.getElementById("wishForm").reset();
@@ -800,7 +710,7 @@ function submitWish(e) {
 }
 
 /* ========================================================
-   LOGIC POPUP MODAL THẨM MỸ
+   MODAL DIALOG
 ======================================================== */
 const modal = document.getElementById("universalModal");
 const modalTitle = document.getElementById("modalTitle");
@@ -810,9 +720,7 @@ function openModal(type, titleText) {
     currentModalType = type; 
     modalTitle.innerHTML = `✨ ${titleText}`;
     
-    if(type === 'modalBxh') {
-        modalBody.innerHTML = topCharactersHTML;
-    } else if(type === 'modalFulfilled') {
+    if(type === 'modalFulfilled') {
         modalBody.innerHTML = document.getElementById("fulfilledList").innerHTML;
     } else if(type === 'modalRecentWishes') {
         modalBody.innerHTML = allWishesHTML;
@@ -833,13 +741,12 @@ modal.addEventListener("click", (e) => {
 });
 
 /* ========================================================
-   LOGIC CUỘN TRANG LÊN / XUỐNG
+   CUỘN TRANG LÊN / XUỐNG
 ======================================================== */
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 const scrollBottomBtn = document.getElementById("scrollBottomBtn");
 
 window.addEventListener("scroll", () => {
-    // Hiện nút cuộn khi lăn chuột xuống 200px
     if (window.scrollY > 200) {
         scrollTopBtn.classList.add("show");
         scrollBottomBtn.classList.add("show");
@@ -858,70 +765,19 @@ scrollBottomBtn.addEventListener("click", () => {
 });
 
 /* ========================================================
-   LOGIC TRÌNH PHÁT NHẠC (TỰ ĐỘNG PHÁT & ĐỒNG BỘ)
+   TRÌNH PHÁT NHẠC
 ======================================================== */
-// THAY ĐỔI DANH SÁCH NHẠC CỦA BẠN Ở ĐÂY
 const playlist = [
-    {
-        title: "hello em có khỏe không",
-        artist: "Dfoxie37 & Myhoa & Tuann",
-        cover: "avt.jpg",
-        src: "nhac1.mp3" // Đảm bảo file nhac1.mp3 nằm cùng thư mục với file html
-    },
-    {
-        title: "KỊCH BẢN",
-        artist: "Táo ft. Hoàng Yến Chibi",
-        cover: "avt.jpg",
-        src: "nhac2.mp3"
-    },
-    {
-        title: "WELCOME HOME",
-        artist: "LYHAN",
-        cover: "avt.jpg",
-        src: "nhac7.mp3"
-    },
-    {
-        title: "Vật đổi sao dời",
-        artist: "LYHAN",
-        cover: "avt.jpg",
-        src: "nhac8.mp3"
-    },
-    {
-        title: "Rơi tự do",
-        artist: "LYHAN",
-        cover: "avt.jpg",
-        src: "nhac9.mp3"
-    },
-    {
-        title: "Sài Gòn ơi",
-        artist: "Obito",
-        cover: "avt.jpg",
-        src: "nhac3.mp3"
-    },
-    {
-        title: "23:40",
-        artist: "Hào",
-        cover: "avt.jpg",
-        src: "nhac4.mp3"
-    },
-    {
-        title: "‘ NHỨC TIỀM THỨC",
-        artist: "Hà An Huy",
-        cover: "avt.jpg",
-        src: "nhac5.mp3"
-    },
-    {
-        title: "Cỏ may",
-        artist: "Hào",
-        cover: "avt.jpg",
-        src: "nhac6.mp3"
-    },
-    {
-        title: "Vùng An Toàn",
-        artist: "B Ray (ft. V#)",
-        cover: "avt.jpg",
-        src: "nhac10.mp3"
-    }
+    { title: "hello em có khỏe không", artist: "Dfoxie37 & Myhoa & Tuann", cover: "avt.jpg", src: "nhac1.mp3" },
+    { title: "KỊCH BẢN", artist: "Táo ft. Hoàng Yến Chibi", cover: "avt.jpg", src: "nhac2.mp3" },
+    { title: "WELCOME HOME", artist: "LYHAN", cover: "avt.jpg", src: "nhac7.mp3" },
+    { title: "Vật đổi sao dời", artist: "LYHAN", cover: "avt.jpg", src: "nhac8.mp3" },
+    { title: "Rơi tự do", artist: "LYHAN", cover: "avt.jpg", src: "nhac9.mp3" },
+    { title: "Sài Gòn ơi", artist: "Obito", cover: "avt.jpg", src: "nhac3.mp3" },
+    { title: "23:40", artist: "Hào", cover: "avt.jpg", src: "nhac4.mp3" },
+    { title: "‘ NHỨC TIỀM THỨC", artist: "Hà An Huy", cover: "avt.jpg", src: "nhac5.mp3" },
+    { title: "Cỏ may", artist: "Hào", cover: "avt.jpg", src: "nhac6.mp3" },
+    { title: "Vùng An Toàn", artist: "B Ray (ft. V#)", cover: "avt.jpg", src: "nhac10.mp3" }
 ];
 
 const audio = document.getElementById("globalAudio");
@@ -941,7 +797,7 @@ const durationTimeEl = document.getElementById("durationTime");
 
 let currentSongIndex = 0;
 let isPlaying = false;
-let waitingForInteraction = false; // Biến cờ đánh dấu việc chờ người dùng click để phát nhạc
+let waitingForInteraction = false;
 
 function formatTime(seconds) {
     if (isNaN(seconds)) return "0:00";
@@ -955,32 +811,22 @@ function loadSong(index) {
     songTitle.innerText = song.title;
     songArtist.innerText = song.artist;
     musicCover.src = song.cover;
-    
-    if(!audio.src.includes(song.src)) {
-        audio.src = song.src;
-    }
+    if(!audio.src.includes(song.src)) audio.src = song.src;
 }
 
-// Hàm Phát nhạc
 function playSong() {
     isPlaying = true;
     musicToggleBtn.classList.add("playing");
     playIcon.style.display = "none";
     pauseIcon.style.display = "block";
-    
-    // Thử phát nhạc
     audio.play().then(() => {
-        waitingForInteraction = false; // Phát thành công
-    }).catch(error => {
-        // Nếu trình duyệt chặn, bật cờ chờ click
-        console.log("Trình duyệt chặn autoplay. Đợi người dùng click vào trang...");
+        waitingForInteraction = false;
+    }).catch(() => {
         waitingForInteraction = true; 
     });
-    
     saveState();
 }
 
-// Hàm Dừng nhạc
 function pauseSong() {
     isPlaying = false;
     waitingForInteraction = false;
@@ -996,7 +842,6 @@ playPauseBtn.addEventListener("click", () => {
     else playSong();
 });
 
-// Chuyển bài
 nextBtn.addEventListener("click", () => {
     currentSongIndex = (currentSongIndex + 1) % playlist.length;
     audio.currentTime = 0;
@@ -1011,33 +856,23 @@ prevBtn.addEventListener("click", () => {
     playSong();
 });
 
-// Tiến trình
 audio.addEventListener("timeupdate", () => {
     const currentTime = audio.currentTime;
     const duration = audio.duration;
-    
     if(duration) {
-        const progressPercent = (currentTime / duration) * 100;
-        progressBar.value = progressPercent;
+        progressBar.value = (currentTime / duration) * 100;
         currentTimeEl.innerText = formatTime(currentTime);
         durationTimeEl.innerText = formatTime(duration);
     }
-    
-    if (Math.floor(currentTime) % 2 === 0) {
-        saveState();
-    }
+    if (Math.floor(currentTime) % 2 === 0) saveState();
 });
 
-audio.addEventListener("ended", () => {
-    nextBtn.click();
-});
+audio.addEventListener("ended", () => nextBtn.click());
 
 progressBar.addEventListener("input", (e) => {
-    const seekTime = (e.target.value / 100) * audio.duration;
-    audio.currentTime = seekTime;
+    audio.currentTime = (e.target.value / 100) * audio.duration;
 });
 
-// Đóng mở Popup Music
 musicToggleBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     musicPopup.classList.toggle("active");
@@ -1048,53 +883,30 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// ================== LƯU & KHÔI PHỤC ĐỒNG BỘ TRANG ==================
 function saveState() {
-    const state = {
+    localStorage.setItem("musicState", JSON.stringify({
         index: currentSongIndex,
         time: audio.currentTime,
         isPlaying: isPlaying
-    };
-    localStorage.setItem("musicState", JSON.stringify(state));
+    }));
 }
 
 function restoreState() {
     const savedState = JSON.parse(localStorage.getItem("musicState"));
-    
     if (savedState) {
         currentSongIndex = savedState.index;
         loadSong(currentSongIndex);
         audio.currentTime = savedState.time;
-        
-        if (savedState.isPlaying) {
-            playSong();
-        } else {
-            pauseSong();
-        }
+        if (savedState.isPlaying) playSong();
+        else pauseSong();
     } else {
-        // NẾU LÀ LẦN ĐẦU TIÊN VÀO WEB -> TỰ ĐỘNG PHÁT LUÔN
         loadSong(0);
         playSong(); 
     }
 }
 
-// Khôi phục khi tải trang
 window.addEventListener("DOMContentLoaded", restoreState);
 
-// ================== MẸO VƯỢT RÀO TRÌNH DUYỆT (AUTOPLAY HACK) ==================
-
-// 1. Khi người dùng bấm nút "Visite" ở màn Intro -> Phát nhạc ngay lập tức
-const btnVisit = document.getElementById("visitBtn");
-if (btnVisit) {
-    btnVisit.addEventListener("click", () => {
-        if (isPlaying || waitingForInteraction) {
-            audio.play();
-            waitingForInteraction = false;
-        }
-    });
-}
-
-// 2. Chạm vào bất cứ đâu trên màn hình nếu nhạc đang bị trình duyệt "giam"
 document.body.addEventListener("click", () => {
     if (waitingForInteraction && isPlaying) {
         audio.play().then(() => {
@@ -1102,8 +914,7 @@ document.body.addEventListener("click", () => {
         }).catch(e => console.log(e));
     }
 });
-
 </script>
-
 </body>
 </html>
+--- END OF FILE dieuuoc.html ---
