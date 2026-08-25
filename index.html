@@ -4240,13 +4240,31 @@ btnAdminSendNotice?.addEventListener("click", () => {
 });
 
 /* ========================================================
-   2. XỬ LÝ SỰ KIỆN NÚT "DÍ STAR" (THÔNG BÁO THANH TRẠNG THÁI ĐIỆN THOẠI)
+   2. HỆ THỐNG THÔNG BÁO TỰ ĐỘNG VĨNH VIỄN (ĐIỆN THOẠI & MÁY TÍNH)
 ======================================================== */
 const memeModal = document.getElementById("memeModal");
 const btnCloseMeme = document.getElementById("btnCloseMeme");
 
-// 1. Tự động đăng ký Service Worker để hiện thông báo lên thanh trạng thái điện thoại
-let swRegistration = null;
+// 1. Tự tạo âm thanh "Ting Ting" thông báo khi có người Dí Star
+function playNotificationChime() {
+    try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime); // Nốt La cao
+        osc.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+    } catch(e) {}
+}
+
+// 2. Tự động đăng ký Service Worker chạy ngầm cho Chrome / Safari điện thoại
+let swReadyPromise = null;
 if ('serviceWorker' in navigator) {
     const swCode = `
         self.addEventListener('install', e => self.skipWaiting());
@@ -4254,7 +4272,7 @@ if ('serviceWorker' in navigator) {
         self.addEventListener('notificationclick', e => {
             e.notification.close();
             e.waitUntil(
-                clients.matchAll({ type: 'window' }).then(clientList => {
+                clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
                     for (const client of clientList) {
                         if (client.url && 'focus' in client) return client.focus();
                     }
@@ -4264,31 +4282,102 @@ if ('serviceWorker' in navigator) {
         });
     `;
     const blob = new Blob([swCode], { type: 'application/javascript' });
-    navigator.serviceWorker.register(URL.createObjectURL(blob))
-        .then(reg => { swRegistration = reg; })
-        .catch(err => console.log("SW Error:", err));
+    swReadyPromise = navigator.serviceWorker.register(URL.createObjectURL(blob))
+        .then(() => navigator.serviceWorker.ready)
+        .catch(err => console.log("SW Init:", err));
 }
 
-// 2. Hàm kích hoạt thông báo thanh trạng thái + Rung điện thoại
-function triggerMobileNotification(title, bodyText, iconUrl) {
+// 3. Hàm phát thông báo đa nền tảng (Đẩy lên thanh thông báo + Rung)
+function pushSystemNotification(title, bodyText, iconUrl) {
+    playNotificationChime();
+
     const options = {
         body: bodyText,
         icon: iconUrl || 'avt.jpg',
         badge: 'bel.jpg',
-        vibrate: [200, 100, 200, 100, 200], // Rung điện thoại
-        tag: 'di-star-alert-' + Date.now(),
+        vibrate: [300, 100, 300, 100, 300], // Rung điện thoại mạnh
+        tag: 'di-star-' + Date.now(),
         renotify: true,
-        requireInteraction: true
+        requireInteraction: true,
+        silent: false
     };
 
-    if (swRegistration && swRegistration.showNotification) {
-        swRegistration.showNotification(title, options);
-    } else if (navigator.serviceWorker && navigator.serviceWorker.ready) {
-        navigator.serviceWorker.ready.then(reg => reg.showNotification(title, options));
+    // Đẩy lên thanh thông báo điện thoại qua Service Worker
+    if (swReadyPromise) {
+        swReadyPromise.then(reg => {
+            if (reg && reg.showNotification) {
+                reg.showNotification(title, options);
+            } else if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification(title, options);
+            }
+        });
     } else if ('Notification' in window && Notification.permission === 'granted') {
+        // Cho máy tính
         new Notification(title, options);
     }
 }
+
+// 4. Kích hoạt vĩnh viễn (Nhấp đúp vào @Le Bel Astre)
+authorTag?.addEventListener("dblclick", () => {
+    localStorage.setItem("is_star_admin", "true");
+    if ('Notification' in window) {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                alert("👑 ĐÃ BẬT VĨNH VIỄN! Điện thoại & Máy tính sẽ luôn nhận thông báo trên thanh trạng thái.");
+                pushSystemNotification("✨ Tinh Hà Astrid", "Hệ thống thông báo đã bật vĩnh viễn trên thiết bị này!", "avt.jpg");
+            } else {
+                alert("⚠️ Bạn cần nhấn 'Cho phép (Allow)' để Chrome hiển thị thông báo trên máy!");
+            }
+        });
+    }
+});
+
+// 5. Sự kiện khi người dùng bấm nút Dí Star
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-di-star");
+    if (!btn) return;
+    const charName = btn.dataset.name || "nhân vật bí ẩn";
+    const charImg = btn.dataset.img || "avt.jpg";
+
+    if (memeModal) memeModal.classList.add("active");
+    lockScroll();
+
+    // Gửi cảnh báo lên Firebase
+    database.ref("admin_alerts/di_star").push({
+        charName: charName,
+        img: charImg,
+        threatText: `Sì tar bel ơi link đâu rồi?! Mau nhả link bot "${charName}" ra không thì ăn đòn roi nha!! 💢`,
+        time: Date.now()
+    });
+});
+
+btnCloseMeme?.addEventListener("click", () => {
+    if (memeModal) memeModal.classList.remove("active");
+    unlockScroll();
+});
+
+memeModal?.addEventListener("click", (e) => {
+    if (e.target === memeModal) {
+        memeModal.classList.remove("active");
+        unlockScroll();
+    }
+});
+
+// 6. Lắng nghe Realtime liên tục (Tự động bật khi tải trang nếu đã cấp quyền Admin)
+const sessionStartTime = Date.now();
+database.ref("admin_alerts/di_star").orderByChild("time").startAt(sessionStartTime).on("child_added", (snapshot) => {
+    const alertData = snapshot.val();
+    if (!alertData) return;
+
+    const isAdmin = localStorage.getItem("is_star_admin") === "true";
+    if (isAdmin && 'Notification' in window && Notification.permission === 'granted') {
+        pushSystemNotification(
+            `🔥 BỊ DÍ DEADLINE: ${alertData.charName}`,
+            alertData.threatText,
+            alertData.img || 'avt.jpg'
+        );
+    }
+});
 
 // 3. Admin nhấp đúp vào @Le Bel Astre để cấp quyền nhận thông báo trên điện thoại
 authorTag?.addEventListener("dblclick", () => {
