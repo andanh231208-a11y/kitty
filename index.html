@@ -4240,31 +4240,72 @@ btnAdminSendNotice?.addEventListener("click", () => {
 });
 
 /* ========================================================
-   2. XỬ LÝ SỰ KIỆN NÚT "DÍ STAR" (THÔNG BÁO CHO THIẾT BỊ ADMIN)
+   2. XỬ LÝ SỰ KIỆN NÚT "DÍ STAR" (THÔNG BÁO THANH TRẠNG THÁI ĐIỆN THOẠI)
 ======================================================== */
 const memeModal = document.getElementById("memeModal");
 const btnCloseMeme = document.getElementById("btnCloseMeme");
 
-// Khi Admin nhấp đúp vào tác giả @Le Bel Astre -> Kích hoạt quyền Admin & xin cấp quyền thông báo
+// 1. Tự động đăng ký Service Worker để hiện thông báo lên thanh trạng thái điện thoại
+let swRegistration = null;
+if ('serviceWorker' in navigator) {
+    const swCode = `
+        self.addEventListener('install', e => self.skipWaiting());
+        self.addEventListener('activate', e => self.clients.claim());
+        self.addEventListener('notificationclick', e => {
+            e.notification.close();
+            e.waitUntil(
+                clients.matchAll({ type: 'window' }).then(clientList => {
+                    for (const client of clientList) {
+                        if (client.url && 'focus' in client) return client.focus();
+                    }
+                    if (clients.openWindow) return clients.openWindow('/');
+                })
+            );
+        });
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    navigator.serviceWorker.register(URL.createObjectURL(blob))
+        .then(reg => { swRegistration = reg; })
+        .catch(err => console.log("SW Error:", err));
+}
+
+// 2. Hàm kích hoạt thông báo thanh trạng thái + Rung điện thoại
+function triggerMobileNotification(title, bodyText, iconUrl) {
+    const options = {
+        body: bodyText,
+        icon: iconUrl || 'avt.jpg',
+        badge: 'bel.jpg',
+        vibrate: [200, 100, 200, 100, 200], // Rung điện thoại
+        tag: 'di-star-alert-' + Date.now(),
+        renotify: true,
+        requireInteraction: true
+    };
+
+    if (swRegistration && swRegistration.showNotification) {
+        swRegistration.showNotification(title, options);
+    } else if (navigator.serviceWorker && navigator.serviceWorker.ready) {
+        navigator.serviceWorker.ready.then(reg => reg.showNotification(title, options));
+    } else if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification(title, options);
+    }
+}
+
+// 3. Admin nhấp đúp vào @Le Bel Astre để cấp quyền nhận thông báo trên điện thoại
 authorTag?.addEventListener("dblclick", () => {
     localStorage.setItem("is_star_admin", "true");
-    if ("Notification" in window) {
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                alert("👑 Đã kích hoạt quyền Admin! Trình duyệt sẽ phát thông báo mỗi khi có người 'Dí Star'.");
-                // Phát thử 1 thông báo kiểm tra
-                new Notification("✨ Tinh Hà Astrid", {
-                    body: "Đã kết nối thành công hệ thống thông báo Admin!",
-                    icon: "avt.jpg"
-                });
+    if ('Notification' in window) {
+        Notification.requestPermission().then(perm => {
+            if (perm === "granted") {
+                alert("👑 Đã bật quyền Admin! Điện thoại sẽ rung và hiện thông báo khi có người Dí Star.");
+                triggerMobileNotification("✨ Tinh Hà Astrid", "Đã kết nối thông báo thanh trạng thái điện thoại!", "avt.jpg");
             } else {
-                alert("⚠️ Bạn đã chặn hoặc chưa cấp quyền thông báo. Vui lòng nhấn vào biểu tượng ổ khóa bên cạnh thanh địa chỉ web để 'Cho phép (Allow)' thông báo.");
+                alert("⚠️ Bạn cần chọn 'Cho phép (Allow)' khi điện thoại hỏi quyền thông báo.");
             }
         });
     }
 });
 
-// Sự kiện bấm nút Dí Star
+// 4. Sự kiện bấm nút Dí Star
 document.addEventListener("click", (e) => {
     const btn = e.target.closest(".btn-di-star");
     if (!btn) return;
@@ -4274,7 +4315,7 @@ document.addEventListener("click", (e) => {
     if (memeModal) memeModal.classList.add("active");
     lockScroll();
 
-    // Gửi cảnh báo lên Firebase
+    // Gửi dữ liệu cảnh báo lên Firebase
     database.ref("admin_alerts/di_star").push({
         charName: charName,
         img: charImg,
@@ -4295,18 +4336,19 @@ memeModal?.addEventListener("click", (e) => {
     }
 });
 
-// LẮNG NGHE REALTIME: CHỈ THIẾT BỊ ĐÃ KÍCH HOẠT ADMIN MỚI NHẬN THÔNG BÁO
+// 5. Lắng nghe Realtime để đẩy thông báo lên màn hình điện thoại
 const pageStartTime = Date.now();
 database.ref("admin_alerts/di_star").orderByChild("time").startAt(pageStartTime).on("child_added", (snapshot) => {
     const alertData = snapshot.val();
     if (!alertData) return;
 
     const isAdmin = localStorage.getItem("is_star_admin") === "true";
-    if (isAdmin && "Notification" in window && Notification.permission === "granted") {
-        new Notification(`🔥 BỊ DÍ DEADLINE: ${alertData.charName}`, {
-            body: alertData.threatText,
-            icon: alertData.img || "avt.jpg"
-        });
+    if (isAdmin && 'Notification' in window && Notification.permission === 'granted') {
+        triggerMobileNotification(
+            `🔥 BỊ DÍ DEADLINE: ${alertData.charName}`,
+            alertData.threatText,
+            alertData.img || 'avt.jpg'
+        );
     }
 });
     
