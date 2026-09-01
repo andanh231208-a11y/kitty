@@ -2549,26 +2549,330 @@ body.no-scroll {
     }
 }
 
-/* =========================================
-   ADMIN: THÊM NHÂN VẬT & CARD CUSTOM
-========================================= */
-.admin-input-group { margin-bottom: 12px; text-align: left; }
-.admin-input-group label { display: block; color: #ffd86b; font-size: 13px; margin-bottom: 6px; font-weight: 600; }
-.admin-input-group input, .admin-input-group textarea {
-    width: 100%; padding: 10px; border-radius: 10px; background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(150,190,255,0.3); color: #fff; font-family: inherit; font-size: 13.5px;
-    outline: none; box-sizing: border-box;
+/* ========================================================
+   POPUP BACKSTORY & OPENING SCENE (CHUẨN GIAO DIỆN IOS DARK GLASS)
+======================================================== */
+.character-card {
+    cursor: pointer;
 }
-.admin-input-group input:focus, .admin-input-group textarea:focus { border-color: #ffd86b; }
-.admin-input-group input[type="file"] { padding: 6px; font-size: 12px; color: #b9c8e8; }
-.admin-input-group input[type="file"]::file-selector-button {
-    background: #4f8cff; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer;
+.character-card .button-group,
+.character-card a,
+.character-card button {
+    cursor: default;
+}
+.character-card .chat-btn,
+.character-card .like-btn {
+    cursor: pointer;
 }
 
+/* Khung Popup iOS Frosted Glass - Nhìn xuyên nền tối */
+.story-modal-container {
+    width: min(640px, 92vw);
+    max-height: 86vh;
+    
+    /* Nền kính tối màu bán trong suốt */
+    background: rgba(8, 18, 38, 0.72) !important;
+    backdrop-filter: blur(32px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+    
+    border: 1px solid rgba(255, 214, 109, 0.35) !important;
+    border-radius: 28px !important;
+    
+    box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.65),
+        0 0 30px rgba(110, 156, 255, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25),
+        inset 0 0 20px rgba(255, 214, 109, 0.04);
+        
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: iosPopIn 0.32s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes iosPopIn {
+    from { transform: scale(0.92) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Header Avatar + Tên nhân vật */
+.story-char-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.story-char-avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 18px;
+    object-fit: cover;
+    border: 1.5px solid rgba(255, 214, 109, 0.8);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 214, 109, 0.3);
+}
+
+.story-char-title h3 {
+    margin: 0 0 4px;
+    font-size: 19px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+
+.story-char-title p {
+    margin: 0;
+    font-size: 13px;
+    color: #ffd86b;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Thân nội dung cuộn */
+.story-body-content {
+    padding: 20px 22px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.story-body-content::-webkit-scrollbar {
+    width: 5px;
+}
+.story-body-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 214, 109, 0.3);
+    border-radius: 999px;
+}
+
+/* Box thẻ thông tin */
+.story-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 16px 18px;
+    backdrop-filter: blur(10px);
+}
+
+.story-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #8db8ff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.story-text {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: #e4edff;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Bong bóng chat iOS Opening Scene */
+.opening-chat-bubble {
+    background: linear-gradient(145deg, rgba(60, 100, 180, 0.25), rgba(20, 40, 85, 0.4));
+    border: 1px solid rgba(140, 190, 255, 0.25);
+    border-left: 3.5px solid #ffd86b;
+    padding: 14px 16px;
+    border-radius: 6px 20px 20px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #ffffff;
+    white-space: pre-wrap;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================================
+   POPUP ADMIN: QUẢN LÝ / THÊM MỚI & SỬA CARD (IOS DARK THEME)
+======================================================== */
+.add-char-box {
+    width: min(560px, 94vw);
+    max-height: 88vh;
+    background: rgba(10, 20, 42, 0.78) !important;
+    backdrop-filter: blur(35px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
+    border: 1px solid rgba(255, 214, 109, 0.35) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.admin-input-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin-input-group label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ffd86b;
+    letter-spacing: 0.3px;
+}
+
+/* Ô nhập liệu chuẩn iOS Dark Input */
+.admin-input, 
+.admin-input-group input, 
+.admin-input-group textarea, 
+.admin-input-group select {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.32) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 14px !important;
+    padding: 10px 14px;
+    color: #ffffff !important;
+    font-family: inherit;
+    font-size: 13.5px;
+    outline: none;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.admin-input::placeholder,
+.admin-input-group input::placeholder,
+.admin-input-group textarea::placeholder {
+    color: rgba(220, 235, 255, 0.4);
+    font-size: 12.5px;
+}
+
+.admin-input:focus, 
+.admin-input-group input:focus, 
+.admin-input-group textarea:focus, 
+.admin-input-group select:focus {
+    border-color: #ffd86b !important;
+    background: rgba(20, 40, 80, 0.45) !important;
+    box-shadow: 0 0 0 3.5px rgba(255, 216, 107, 0.15) !important;
+}
+
+/* Menu chọn Card để sửa */
+select.admin-input, .admin-input-group select {
+    cursor: pointer;
+    background-color: rgba(12, 24, 50, 0.9) !important;
+    font-weight: 600;
+    color: #ffd86b !important;
+}
+
+select.admin-input option {
+    background-color: #0b1730;
+    color: #fff;
+    padding: 8px;
+}
+
+/* Nút tải ảnh iOS File Picker */
+.admin-input-group input[type="file"] {
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.04) !important;
+    cursor: pointer;
+}
+
+.admin-input-group input[type="file"]::file-selector-button {
+    background: linear-gradient(135deg, #4f8cff, #3870e0);
+    color: #ffffff;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(60, 120, 255, 0.3);
+}
+
+.admin-input-group input[type="file"]::file-selector-button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(60, 120, 255, 0.5);
+}
+
+/* Nút Submit Lưu & Đăng */
+#btnSubmitAddChar {
+    width: 100%;
+    padding: 13px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #4f8cff 0%, #00c6ff 100%) !important;
+    color: #ffffff !important;
+    font-size: 14.5px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 22px rgba(0, 180, 255, 0.35);
+    transition: all 0.25s ease;
+    margin-top: 6px;
+}
+
+#btnSubmitAddChar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 180, 255, 0.5);
+}
+
+#btnSubmitAddChar:active {
+    transform: scale(0.98);
+}
+
+/* ========================================================
+   RESPONSIVE MOBILE (<= 540px)
+======================================================== */
 @media (max-width: 540px) {
-    .add-char-box { width: 96vw !important; max-height: 85vh !important; }
-    .admin-input-group input, .admin-input-group textarea { padding: 8px; font-size: 13px; }
-    .admin-input-group label { font-size: 12px; }
+    .story-modal-container, .add-char-box {
+        width: 94vw !important;
+        max-height: 86vh !important;
+        border-radius: 24px !important;
+    }
+
+    .story-char-header {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .story-char-avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+    }
+
+    .story-char-title h3 {
+        font-size: 16.5px;
+    }
+
+    .story-char-title p {
+        font-size: 12px;
+    }
+
+    .story-body-content {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .story-section {
+        padding: 12px 14px;
+        border-radius: 16px;
+    }
+
+    .story-text, .opening-chat-bubble {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .admin-input, 
+    .admin-input-group input, 
+    .admin-input-group textarea, 
+    .admin-input-group select {
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 12px !important;
+    }
+
+    .admin-input-group label {
+        font-size: 12px;
+    }
 }
 
 </style>
